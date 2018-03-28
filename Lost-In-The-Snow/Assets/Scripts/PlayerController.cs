@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
             movingVelocity.y = jumpVelocity;
         else
             movingVelocity.y += Physics.gravity.y*Time.deltaTime;
-        movingVelocity.y = Mathf.Clamp(movingVelocity.y, -9.82f, 10f);
+        movingVelocity.y = Mathf.Clamp(movingVelocity.y, Physics.gravity.y, 100f);
         characterController.Move(speed * movingVelocity * Time.deltaTime);
     }
 }
