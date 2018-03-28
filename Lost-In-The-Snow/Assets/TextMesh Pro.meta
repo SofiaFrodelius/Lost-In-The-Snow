@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Lost-In-The-Snow/Assets/TextMesh Pro.meta
 guid: 622bd6b3a7e22cd4a8257c2f6c11156b
 folderAsset: yes
 timeCreated: 1522237997
+=======
+guid: 91ee594b1e5f64a4cb43da1efec46d98
+folderAsset: yes
+timeCreated: 1522239786
+>>>>>>> 61d904cb9d411a59e1f8454f6af9cc09bab7a66d:Lost-In-The-Snow/Assets/Scene/etc.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
