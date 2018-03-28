@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
         if (characterController.isGrounded && Input.GetKeyDown(KeyCode.Space))
             movingVelocity.y = 209f;
         else
-            movingVelocity.y -= Physics.gravity.y*Time.deltaTime;
+            movingVelocity.y += Physics.gravity.y*Time.deltaTime;
         characterController.Move(speed * movingVelocity * Time.deltaTime);
     }
 }
