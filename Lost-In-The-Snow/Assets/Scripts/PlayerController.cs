@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour {
     CharacterController characterController;
@@ -18,6 +19,15 @@ public class PlayerController : MonoBehaviour {
         jumpVelocity = Physics.gravity.y * TimeToApex;
     }
     void Update(){
+        if (Input.GetKey(KeyCode.E)) {
+            RaycastHit hit = new RaycastHit();
+            Ray ray = new Ray(transform.GetChild(0).transform.position, transform.GetChild(0).transform.forward);
+            Debug.DrawRay(ray.origin, ray.direction, Color.red);
+            if (Physics.Raycast(ray, out hit)){
+                ExecuteEvents.Execute<IDogHandler>(hit.transform.gameObject, null, (handler, eventData) => handler.Pet());
+            }
+        }
+
         movingVelocity = new Vector3(Input.GetAxis("Horizontal"), movingVelocity.y, Input.GetAxis("Vertical"));
         if (characterController.isGrounded && Input.GetKeyDown(KeyCode.Space))
             movingVelocity.y = jumpVelocity;
