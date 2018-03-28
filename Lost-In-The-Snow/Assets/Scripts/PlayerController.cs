@@ -5,15 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     CharacterController characterController;
     public float speed = 10f;
+    public float TimeToApex = 1f;
+    public float JumpHeight = 2f;
+    private float jumpVelocity;
+    Vector3 movingVelocity;
     private void Awake(){
         characterController = GetComponent<CharacterController>();
+        jumpVelocity = Mathf.Abs(2*JumpHeight/Mathf.Pow(TimeToApex,2)) * TimeToApex / 2;
     }
     void Update(){
-        Vector3 movingVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        movingVelocity = new Vector3(Input.GetAxis("Horizontal"), movingVelocity.y, Input.GetAxis("Vertical"));
         if (characterController.isGrounded && Input.GetKeyDown(KeyCode.Space))
-            movingVelocity.y = 209f;
+            movingVelocity.y = jumpVelocity;
         else
             movingVelocity.y += Physics.gravity.y*Time.deltaTime;
+        movingVelocity.y = Mathf.Clamp(movingVelocity.y, -9.82f, 10f);
         characterController.Move(speed * movingVelocity * Time.deltaTime);
     }
 }
