@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     CharacterController characterController;
+    [Header("Character Settings")]
+    [Range(0, 10f)]
     public float speed = 10f;
-    public float TimeToApex = 1f;
+    [Range(0, 10f)]
     public float JumpHeight = 2f;
     private float jumpVelocity;
+    private float TimeToApex;
     Vector3 movingVelocity;
     private void Awake(){
         characterController = GetComponent<CharacterController>();
-        jumpVelocity = Mathf.Abs(2*JumpHeight/Mathf.Pow(TimeToApex,2)) * TimeToApex / 2;
+        TimeToApex = JumpHeight / Physics.gravity.y;
+        jumpVelocity = Physics.gravity.y * TimeToApex;
     }
     void Update(){
         movingVelocity = new Vector3(Input.GetAxis("Horizontal"), movingVelocity.y, Input.GetAxis("Vertical"));
@@ -20,6 +24,7 @@ public class PlayerController : MonoBehaviour {
         else
             movingVelocity.y += Physics.gravity.y*Time.deltaTime;
         movingVelocity.y = Mathf.Clamp(movingVelocity.y, Physics.gravity.y, 100f);
+        movingVelocity = transform.TransformDirection(movingVelocity);
         characterController.Move(speed * movingVelocity * Time.deltaTime);
     }
 }
