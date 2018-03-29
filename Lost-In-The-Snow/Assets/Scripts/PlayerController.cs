@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     private float jumpVelocity;
     private float TimeToApex;
     Vector3 movingVelocity;
+    Vector3 movingVelocityController;
     private void Awake(){
         characterController = GetComponent<CharacterController>();
         TimeToApex = JumpHeight / Physics.gravity.y;
@@ -28,13 +29,26 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        movingVelocity = new Vector3(Input.GetAxis("Horizontal"), movingVelocity.y, Input.GetAxis("Vertical"));
-        if (characterController.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        movingVelocity = new Vector3(Input.GetAxisRaw("Horizontal"), movingVelocity.y, Input.GetAxisRaw("Vertical"));
+        movingVelocityController = new Vector3(Input.GetAxis("Left Stick Horizontal"), movingVelocityController.y, Input.GetAxis("Left Stick Vertical"));
+
+        if (characterController.isGrounded && Input.GetButtonDown("Jump"))
+        {
             movingVelocity.y = jumpVelocity;
+            movingVelocityController.y = jumpVelocity;
+        }
         else
-            movingVelocity.y += Physics.gravity.y*Time.deltaTime;
+            movingVelocity.y += Physics.gravity.y * Time.deltaTime;
         movingVelocity.y = Mathf.Clamp(movingVelocity.y, Physics.gravity.y, 100f);
         movingVelocity = transform.TransformDirection(movingVelocity);
+
+        //controller lazy fix
+        movingVelocityController.y += Physics.gravity.y * Time.deltaTime;
+        movingVelocityController.y = Mathf.Clamp(movingVelocityController.y, Physics.gravity.y, 100f);
+        movingVelocityController = transform.TransformDirection(movingVelocityController);
+
+
         characterController.Move(speed * movingVelocity * Time.deltaTime);
+        characterController.Move(speed * movingVelocityController * Time.deltaTime);
     }
 }

@@ -17,14 +17,24 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         Vector2 move = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Vector2 controllerMove = new Vector2(Input.GetAxisRaw("Right Stick Horizontal"), Input.GetAxisRaw("Right Stick Vertical"));
         move *= sensitivity;
+        controllerMove *= sensitivity;
         look += move;
+        look += controllerMove;
         look.y = Mathf.Clamp(look.y, -90, 90);
 
         transform.localRotation = Quaternion.AngleAxis(-look.y, Vector3.right);
         transform.parent.transform.localRotation = Quaternion.AngleAxis(look.x, transform.parent.transform.up);
 
+
+
+        //Temp
         if (Input.GetKeyDown(KeyCode.Escape))
             Cursor.lockState = CursorLockMode.None;
+
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            Cursor.lockState = CursorLockMode.Locked;
+
     }
 }
