@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
             Debug.DrawRay(ray.origin, ray.direction, Color.red);
             if (Physics.Raycast(ray, out hit)){
                 ExecuteEvents.Execute<IDogHandler>(hit.transform.gameObject, null, (handler, eventData) => handler.Pet());
+
             }
         }
 

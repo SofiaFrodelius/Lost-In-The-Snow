@@ -11,11 +11,15 @@ public class DogMovement : MonoBehaviour, IDogHandler {
         navAgent = GetComponent<NavMeshAgent>();
 	}
 	
-	// Update is called once per frame
+	// Update is called once per frameX 
 	void Update () {
         navAgent.SetDestination(player.position + player.forward);
 	}
     public void Pet(){
         transform.Translate(new Vector3(0, 10, 0));
+    }
+    public void Interact()
+    {
+
     }
 }
