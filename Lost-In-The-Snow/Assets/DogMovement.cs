@@ -13,7 +13,7 @@ public class DogMovement : MonoBehaviour, IDogHandler {
 	
 	// Update is called once per frame
 	void Update () {
-        navAgent.SetDestination(player.position);
+        navAgent.SetDestination(player.position + player.forward);
 	}
     public void Pet(){
         transform.Translate(new Vector3(0, 10, 0));

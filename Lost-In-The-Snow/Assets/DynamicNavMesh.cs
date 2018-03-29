@@ -8,13 +8,11 @@ public class DynamicNavMesh : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         navSurface = GetComponent<NavMeshSurface>();
-	}
+        //StartCoroutine("BuildNav");
+        navSurface.BuildNavMesh();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-    void FixedUpdate(){
-        //navSurface.BuildNavMesh();
     }
 }
