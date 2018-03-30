@@ -11,8 +11,10 @@ public class DogMovement : MonoBehaviour, IInteractible {
 	void Start () {
         navAgent = GetComponent<NavMeshAgent>();
 	}
+	public void Update() {
+		navAgent.SetDestination (player.position);
+	}
     public void Interact(){
-        DogAction dogAction = new Pet(gameObject, player);
-        dogAction.StartAction();
+		
     }
 }

@@ -10,6 +10,7 @@ public class Pet : DogAction {
     }
     public override void StartAction(){
         isActive = true;
+		//StartCoroutine (UpdateDestination (0.1f));
         //Kalla på UpdateDestnation Och borde följa target tills EndAction körs
     }
     public override void EndAction(){
