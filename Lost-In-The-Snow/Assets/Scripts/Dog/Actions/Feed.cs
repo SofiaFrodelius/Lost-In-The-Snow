@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Pet : DogAction {
+public class Feed : DogAction {
 	public override void OnActionStart(){
-		//Get happy
-		animator.SetTrigger ("ActionDone");
-    }
+		dog.GrabbedObject = null;
+	}
 	public override void OnActionUpdate(){
 	}
 	public override void OnActionEnd(){

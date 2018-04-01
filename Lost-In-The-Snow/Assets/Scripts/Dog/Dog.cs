@@ -14,8 +14,8 @@ public class Dog : MonoBehaviour, IInteractible {
 		animator = GetComponent<Animator> ();
 	}
 	void Start () {
-		target = TESTBONE;
-		animator.SetTrigger ("Fetch");
+		//target = TESTBONE;
+		animator.SetTrigger ("Walk");
 	}
 	void Update(){
 		if (Input.GetKey (KeyCode.Q)) {
@@ -23,31 +23,22 @@ public class Dog : MonoBehaviour, IInteractible {
 		}
 	}
 	public void Interact(){
-		//animator.SetTrigger ("FollowPlayer");
-
+		//animator.SetTrigger ("Pet");
+		animator.SetTrigger("Feed");
+	}
+	public void ActionDone(){
+		animator.SetTrigger ("ActionDone");
 	}
 	public Transform Player{
-		get{
-			return player;
-		}
-		set{
-			player = value;
-		}
+		get{ return player; }
+		set{ player = value; }
 	}
 	public Transform Target{
-		get{
-			return target;
-		}
-		set{
-			target = value;
-		}
+		get{ return target; }
+		set{ target = value; }
 	}
 	public GameObject GrabbedObject{
-		get{
-			return grabbedObject;
-		}
-		set{
-			grabbedObject = value;
-		}
+		get{ return grabbedObject; }
+		set{ grabbedObject = value; }
 	}
 }
