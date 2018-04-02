@@ -73,7 +73,9 @@ public class PlayerController : MonoBehaviour {
 		else
 			transform.GetChild(0).transform.localPosition = new Vector3(0,1,0);
 	}
-	//Evenen shittier name
+
+
+	//Function sends out a ray checking if object infront of player is interacteble
 	void Interact(){
 		RaycastHit hit = new RaycastHit();
 		Ray ray = new Ray(transform.GetChild(0).transform.position, transform.GetChild(0).transform.forward);
@@ -82,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 			if (rayText != null)
 				rayText.text = hit.transform.gameObject.name;
 			if (Input.GetKeyDown (KeyCode.E)) {
-				ExecuteEvents.Execute<IInteractible> (hit.transform.gameObject, null, (handler, eventData) => handler.Interact ());
+				ExecuteEvents.ExecuteHierarchy<IInteractible> (hit.transform.gameObject, null, (handler, eventData) => handler.Interact ());
 				ExecuteEvents.Execute<IGrabable> (hit.transform.gameObject, null, (handler, eventData) => handler.Grab (WeaponHand));
 			}
 		}
