@@ -10,7 +10,7 @@ public class Walk : DogAction {
 		navAgent.SetDestination(target);
 	}
 	public override void OnActionUpdate(){
-		dog.GrabbedObject.transform.position = target;
+		//dog.GrabbedObject.transform.position = target;
 		if (Vector3.Distance (dog.transform.position, target) < 1.5f) {
 			navAgent.ResetPath ();
 			target = GetRandomTarget ();

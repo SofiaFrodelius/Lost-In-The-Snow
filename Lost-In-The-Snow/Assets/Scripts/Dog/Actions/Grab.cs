@@ -17,6 +17,6 @@ public class Grab : DogAction {
 	public override void OnActionEnd(){
 	}
 	private void HandleEvent(IGrabable handler, BaseEventData eventData){
-		//dog.GrabbedObject = handler.Grab (dog.gameObject);
+        handler.pickUp(out dog.grabbedItem);
 	}
 }
