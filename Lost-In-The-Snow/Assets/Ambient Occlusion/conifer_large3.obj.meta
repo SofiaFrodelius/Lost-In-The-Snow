@@ -1,22 +1,23 @@
 fileFormatVersion: 2
-guid: 346a14b3c418a2a45b5651b0cc92e205
-timeCreated: 1522664133
+guid: 8f11f5a5348df6046861aebeaf48735a
+timeCreated: 1522755106
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: conifer_2
+    100002: //RootNode
+    400000: conifer_2
+    400002: //RootNode
+    2300000: conifer_2
+    3300000: conifer_2
     4300000: conifer_2
-    9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 89d5e528057225f40a8439bd55a8524a, type: 2}
+      name: conifer_2Mat
+    second: {fileID: 2100000, guid: 77d20d89551195640b72cfa241e17a75, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +47,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 0.01
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -88,7 +89,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
