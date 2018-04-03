@@ -1,14 +1,52 @@
 ﻿using UnityEngine;
 
-public class Item : MonoBehaviour
-{
-    private int id;
-    private string name;
-    private int itemAmmount;
 
-    public Item(int tID, string tName)
+[CreateAssetMenu(fileName = "New Item", menuName = "Item")]
+public class Item : ScriptableObject
+{
+    [SerializeField]
+    private int itemID, maxStack;
+    [SerializeField]
+    private string itemName, itemDescription;
+    [SerializeField]
+    private Sprite image;
+    [SerializeField]
+    private GameObject associatedGameobject;
+    [SerializeField]
+    private bool holdableItem;
+
+
+
+    public Sprite getImage()
     {
-        id = tID;
-        name = tName;
+        return image;
     }
+
+    public int getId()
+    {
+        return itemID;
+    }
+
+    public int getMaxStack()
+    {
+        return maxStack;
+    }
+
+    public string getName()
+    {
+        return itemName;
+    }
+
+    public string getDescription()
+    {
+        return itemDescription;
+    }
+
+    public GameObject getAssociatedGameobject()
+    {
+        return associatedGameobject;
+    }
+
+
+
 }

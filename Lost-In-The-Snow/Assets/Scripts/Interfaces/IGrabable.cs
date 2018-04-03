@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public interface IGrabable : IEventSystemHandler{
-	GameObject Grab(GameObject parent);
-	void Drop();
+    void pickUp(out Item item);
+    void Drop();
+
 }
