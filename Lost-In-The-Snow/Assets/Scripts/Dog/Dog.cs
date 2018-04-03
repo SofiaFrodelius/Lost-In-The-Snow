@@ -15,8 +15,8 @@ public class Dog : MonoBehaviour, IInteractible {
 		animator = GetComponent<Animator> ();
 	}
 	void Start () {
-		target = player;
-		animator.SetTrigger ("FollowPlayer");
+		target = TESTBONE;
+		animator.SetTrigger ("Fetch");
 	}
 	void Update(){
 		if (Input.GetKey (KeyCode.Q)) {

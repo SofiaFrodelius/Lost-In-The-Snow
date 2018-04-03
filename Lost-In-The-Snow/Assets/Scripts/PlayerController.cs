@@ -101,10 +101,9 @@ public class PlayerController : MonoBehaviour
     }
     private void pickup(IGrabable handler, BaseEventData eventData)
     {
-        //dog.GrabbedObject = handler.Grab (dog.gameObject);
         Item item;
-
         handler.pickUp(out item);
-        inventory.addItem(item);
+        if(inventory != null)
+            inventory.addItem(item);
     }
 }
