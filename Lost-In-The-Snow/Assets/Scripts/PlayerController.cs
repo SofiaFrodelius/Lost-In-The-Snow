@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	private float JumpVelocity;
 	private bool isCrouching = false;
 	private bool isRunning = false;
+    private bool controllerInput = false;
 
 
     Vector3 movingVelocity;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour {
     void Update(){
 		CalculateSpeed ();
 		Interact ();
+        Attack();
 
 		movingVelocity = new Vector3(Input.GetAxisRaw("Horizontal"), movingVelocity.y, Input.GetAxisRaw("Vertical"));
         movingVelocityController = new Vector3(Input.GetAxis("Left Stick Horizontal"), movingVelocityController.y, Input.GetAxis("Left Stick Vertical"));
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour {
 	void Interact(){
 		RaycastHit hit = new RaycastHit();
 		Ray ray = new Ray(transform.GetChild(0).transform.position, transform.GetChild(0).transform.forward);
-		Debug.DrawRay(ray.origin, ray.direction*maxInteractLength, Color.red, 0.1f);
+		//Debug.DrawRay(ray.origin, ray.direction*maxInteractLength, Color.red, 0.1f);
 		if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask)){
 			if (rayText != null)
 				rayText.text = hit.transform.gameObject.name;
@@ -89,4 +91,14 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 	}
+    void Attack(){
+        if (Input.GetMouseButtonDown(0)){
+            RaycastHit hit = new RaycastHit();
+            Ray ray = new Ray(transform.GetChild(0).transform.position, transform.GetChild(0).transform.forward);
+            Debug.DrawRay(ray.origin, ray.direction * maxInteractLength, Color.blue, 0.1f);
+            if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask)){
+                //ExecuteEvents.Execute<IAttackable>(hit.transform.gameObject, null, (handler, eventData) => handler.Attack());
+            }
+        }
+    }
 }

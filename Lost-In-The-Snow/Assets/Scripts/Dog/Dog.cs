@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Dog : MonoBehaviour, IInteractible {
 	public Transform player;
@@ -14,17 +15,16 @@ public class Dog : MonoBehaviour, IInteractible {
 		animator = GetComponent<Animator> ();
 	}
 	void Start () {
-		//target = TESTBONE;
-		animator.SetTrigger ("Walk");
+		target = player;
+		animator.SetTrigger ("FollowPlayer");
 	}
 	void Update(){
 		if (Input.GetKey (KeyCode.Q)) {
-			
-		}
+        }
 	}
 	public void Interact(){
 		//animator.SetTrigger ("Pet");
-		animator.SetTrigger("Feed");
+		//animator.SetTrigger("Feed");
 	}
 	public void ActionDone(){
 		animator.SetTrigger ("ActionDone");
