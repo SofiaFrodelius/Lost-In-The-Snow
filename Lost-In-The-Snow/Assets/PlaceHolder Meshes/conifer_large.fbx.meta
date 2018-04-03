@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 346a14b3c418a2a45b5651b0cc92e205
-timeCreated: 1522664133
+guid: f2cf2ab4939f5734db6217ddfd2ba47a
+timeCreated: 1522760823
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -15,8 +15,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 89d5e528057225f40a8439bd55a8524a, type: 2}
+      name: conifermain
+    second: {fileID: 2100000, guid: 650279783a966f5479e2d17fc7591d39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: conifertrunk
+    second: {fileID: 2100000, guid: 4f683bb9dbc93f040a4ec133b3b691be, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

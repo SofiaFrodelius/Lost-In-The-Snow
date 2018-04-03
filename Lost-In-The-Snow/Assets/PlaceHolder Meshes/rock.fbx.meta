@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: dcbff6d140676814ba189094f66b0a94
-timeCreated: 1522664135
+guid: 8114afb10b595324eb5290c5fd62d88d
+timeCreated: 1522760821
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -16,7 +16,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: rock_large_1_lambert
-    second: {fileID: 2100000, guid: 49fe83bf66d1d114eb313af6fe99a88f, type: 2}
+    second: {fileID: 2100000, guid: 020ab326417d95142b29b5ac445210e9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

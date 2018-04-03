@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 67e6e2d4766ac354d8ca469f69892782
-timeCreated: 1522664133
+guid: 37ad031672235444cbca6bdca2858302
+timeCreated: 1522760819
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -15,8 +15,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 89d5e528057225f40a8439bd55a8524a, type: 2}
+      name: lambert12
+    second: {fileID: 2100000, guid: 9c148169532fb55478762f9ecfae39aa, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
