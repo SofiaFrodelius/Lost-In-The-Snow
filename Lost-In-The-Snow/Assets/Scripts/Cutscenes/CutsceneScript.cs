@@ -31,13 +31,24 @@ public class CutsceneScript : MonoBehaviour
         else
             finished = true;
     }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        for (int i = 0; i < nodeList.Count; i++)
+        {
+            if (i > 0)
+                Debug.DrawLine(nodeList[i - 1].transform.position, nodeList[i].transform.position, Color.red);
+            Gizmos.DrawSphere(nodeList[i].transform.position, 0.1f);
+            //Debug.DrawLine(nodeList[i].transform.position, nodeList[i].transform.position +
+            //    new Vector3(Mathf.Cos(nodeList[i].transform.rotation.x),
+            //    Mathf.Cos(nodeList[i].transform.rotation.y),
+            //    Mathf.Cos(nodeList[i].transform.rotation.z)), Color.blue);
+        }
+    }
 
     private void LateUpdate()
     {
-        for (int i = 1; i < nodeList.Count; i++)
-        {
-            Debug.DrawLine(nodeList[i - 1].transform.position, nodeList[i].transform.position, Color.red);
-        }
+        
 
         if (!finished)
         {
