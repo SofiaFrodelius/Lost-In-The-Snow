@@ -6,17 +6,20 @@ using UnityEngine.AI;
 public class Dog : MonoBehaviour, IInteractible {
 	public Transform player;
 	public Transform target;
-	public GameObject grabbedObject;
 
-	public Transform TESTBONE;
+    public Item grabbedItem;
+    public GameObject itemObject;
+
+
+    public Transform TESTBONE;
 
 	private Animator animator;
 	void Awake(){
 		animator = GetComponent<Animator> ();
 	}
 	void Start () {
-		target = player;
-		animator.SetTrigger ("FollowPlayer");
+		target = TESTBONE;
+		animator.SetTrigger ("Fetch");
 	}
 	void Update(){
 		if (Input.GetKey (KeyCode.Q)) {
@@ -37,8 +40,12 @@ public class Dog : MonoBehaviour, IInteractible {
 		get{ return target; }
 		set{ target = value; }
 	}
-	public GameObject GrabbedObject{
-		get{ return grabbedObject; }
-		set{ grabbedObject = value; }
+	public Item GrabbedItem{
+		get{ return grabbedItem; }
+		set{ grabbedItem = value; }
 	}
+    public GameObject ItemObject{
+        get { return ItemObject; }
+        set { ItemObject = value; }
+    }
 }
