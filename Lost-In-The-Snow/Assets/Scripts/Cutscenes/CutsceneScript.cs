@@ -39,8 +39,6 @@ public class CutsceneScript : MonoBehaviour
         {
             if (!paused)
             {
-                if (nodeIterator == 0) Debug.Log("iterator is 0");
-
                 relevantCamera.transform.position = new Vector3(Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.x, nodeList[nodeIterator].transform.position.x, t),
                 Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.y, nodeList[nodeIterator].transform.position.y, t),
                 Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.z, nodeList[nodeIterator].transform.position.z, t));
@@ -69,7 +67,6 @@ public class CutsceneScript : MonoBehaviour
                 if (paused)
                 {
                     nodeIterator++;
-                    Debug.Log(nodeIterator);
                     if (nodeIterator >= nodeList.Count)
                     {
                         EndCutscene();
@@ -92,9 +89,6 @@ public class CutsceneScript : MonoBehaviour
 
     public void StartCutscene()
     {
-        Debug.Log("Start Cutscene");
-        Debug.Log(nodeList.Count);
-
         cutsceneRunning = true;
 
         startPosition = relevantCamera.transform.position;
@@ -116,11 +110,14 @@ public class CutsceneScript : MonoBehaviour
 
     private void EndCutscene()
     {
-        Debug.Log("End Cutscene");
-
         relevantCamera.transform.position = startPosition;
         relevantCamera.transform.rotation = startRotation;
         cutsceneRunning = false;
         StartCutscene();
+    }
+
+    public bool IsCutsceneRunning()
+    {
+        return cutsceneRunning;
     }
 }
