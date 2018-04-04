@@ -4,83 +4,123 @@ using UnityEngine;
 
 public class CutsceneScript : MonoBehaviour
 {
-    public List<GameObject> nodeList;
     public Camera relevantCamera;
+    public List<GameObject> nodeList;
 
     private Vector3 startPosition;
     private Quaternion startRotation;
-    private int nodeIterator = 1;
+    private int nodeIterator = 0;
     private int nodeTime = 0, nodePause = 0;
     private float t = 0.0f;
-    private bool finished = false;
+    private bool paused = true, cutsceneRunning = false;
 
     private void Start()
     {
-        startPosition = relevantCamera.transform.position;
-        startRotation = relevantCamera.transform.rotation;
-        relevantCamera.transform.position = nodeList[0].transform.position;
-        relevantCamera.transform.rotation = nodeList[0].transform.rotation;
-
-        if (nodeList.Count > 1)
+        for (int i = 0; i < transform.Find("Nodes").childCount; i++)
         {
-            CutsceneNodeScript nodeScript;
-            nodeScript = (CutsceneNodeScript)nodeList[1].GetComponent("CutsceneNodeScript");
-            nodeTime = nodeScript.movementTime;
-            nodePause = nodeScript.pauseTime;
+            nodeList.Add(transform.Find("Nodes").GetChild(i).gameObject);
         }
-        else
-            finished = true;
+
+        StartCutscene();
     }
+
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        for (int i = 0; i < nodeList.Count; i++)
+        Gizmos.color = Color.blue;
+        for (int i = 1; i < transform.Find("Nodes").childCount; i++)
         {
-            if (i > 0)
-                Debug.DrawLine(nodeList[i - 1].transform.position, nodeList[i].transform.position, Color.red);
-            Gizmos.DrawSphere(nodeList[i].transform.position, 0.1f);
-            //Debug.DrawLine(nodeList[i].transform.position, nodeList[i].transform.position +
-            //    new Vector3(Mathf.Cos(nodeList[i].transform.rotation.x),
-            //    Mathf.Cos(nodeList[i].transform.rotation.y),
-            //    Mathf.Cos(nodeList[i].transform.rotation.z)), Color.blue);
+            Debug.DrawLine(transform.Find("Nodes").GetChild(i - 1).position, transform.Find("Nodes").GetChild(i).position, Color.red);
         }
     }
 
     private void LateUpdate()
     {
-        
-
-        if (!finished)
+        if (cutsceneRunning)
         {
-            relevantCamera.transform.position = new Vector3(Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.x, nodeList[nodeIterator].transform.position.x, t),
-              Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.y, nodeList[nodeIterator].transform.position.y, t),
-              Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.z, nodeList[nodeIterator].transform.position.z, t));
+            if (!paused)
+            {
+                if (nodeIterator == 0) Debug.Log("iterator is 0");
 
-            relevantCamera.transform.rotation = new Quaternion(Mathf.Lerp(nodeList[nodeIterator - 1].transform.rotation.x, nodeList[nodeIterator].transform.rotation.x, t),
-                Mathf.Lerp(nodeList[nodeIterator - 1].transform.rotation.y, nodeList[nodeIterator].transform.rotation.y, t),
-                Mathf.Lerp(nodeList[nodeIterator - 1].transform.rotation.z, nodeList[nodeIterator].transform.rotation.z, t),
-                Mathf.Lerp(nodeList[nodeIterator - 1].transform.rotation.w, nodeList[nodeIterator].transform.rotation.w, t));
+                relevantCamera.transform.position = new Vector3(Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.x, nodeList[nodeIterator].transform.position.x, t),
+                Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.y, nodeList[nodeIterator].transform.position.y, t),
+                Mathf.Lerp(nodeList[nodeIterator - 1].transform.position.z, nodeList[nodeIterator].transform.position.z, t));
 
-            t += Time.deltaTime * 1000 / nodeTime;
+                relevantCamera.transform.rotation = new Quaternion(Mathf.Lerp(nodeList[nodeIterator - 1].transform.rotation.x, nodeList[nodeIterator].transform.rotation.x, t),
+                    Mathf.Lerp(nodeList[nodeIterator - 1].transform.rotation.y, nodeList[nodeIterator].transform.rotation.y, t),
+                    Mathf.Lerp(nodeList[nodeIterator - 1].transform.rotation.z, nodeList[nodeIterator].transform.rotation.z, t),
+                    Mathf.Lerp(nodeList[nodeIterator - 1].transform.rotation.w, nodeList[nodeIterator].transform.rotation.w, t));
 
-            if (t > 1.0f)
+                if (nodeTime == 0)
+                    t = 1.0f;
+                else
+                    t += Time.deltaTime * 1000 / nodeTime;
+            }
+            else
+            {
+                if (nodePause == 0)
+                    t = 1.0f;
+                else
+                    t += Time.deltaTime * 1000 / nodePause;
+            }
+
+            if (t >= 1.0f)
             {
                 t = 0.0f;
-                nodeIterator++;
-                if (nodeIterator < nodeList.Count)
+                if (paused)
                 {
-                    CutsceneNodeScript nodeScript;
-                    nodeScript = (CutsceneNodeScript)nodeList[nodeIterator].GetComponent("CutsceneNodeScript");
-                    nodeTime = nodeScript.movementTime;
-                    nodePause = nodeScript.pauseTime;
+                    nodeIterator++;
+                    Debug.Log(nodeIterator);
+                    if (nodeIterator >= nodeList.Count)
+                    {
+                        EndCutscene();
+                    }
+                    else
+                    {
+                        CutsceneNodeScript nodeScript;
+                        nodeScript = (CutsceneNodeScript)nodeList[nodeIterator].GetComponent("CutsceneNodeScript");
+                        nodeTime = nodeScript.movementTime;
+                        nodePause = nodeScript.pauseTime;
+
+                        paused = !paused;
+                    }
                 }
                 else
-                {
-                    finished = true;
-                    relevantCamera.transform.position = startPosition;
-                    relevantCamera.transform.rotation = startRotation;
-                }
+                    paused = !paused;
             }
         }
+    }
+
+    public void StartCutscene()
+    {
+        Debug.Log("Start Cutscene");
+        Debug.Log(nodeList.Count);
+
+        cutsceneRunning = true;
+
+        startPosition = relevantCamera.transform.position;
+        startRotation = relevantCamera.transform.rotation;
+
+        nodeIterator = 0;
+        relevantCamera.transform.position = nodeList[0].transform.position;
+        relevantCamera.transform.rotation = nodeList[0].transform.rotation;
+
+        CutsceneNodeScript nodeScript;
+        nodeScript = (CutsceneNodeScript)nodeList[0].GetComponent("CutsceneNodeScript");
+        nodePause = nodeScript.pauseTime;
+        nodeTime = nodeScript.movementTime;
+
+        t = 0.0f;
+
+        paused = true;
+    }
+
+    private void EndCutscene()
+    {
+        Debug.Log("End Cutscene");
+
+        relevantCamera.transform.position = startPosition;
+        relevantCamera.transform.rotation = startRotation;
+        cutsceneRunning = false;
+        StartCutscene();
     }
 }
