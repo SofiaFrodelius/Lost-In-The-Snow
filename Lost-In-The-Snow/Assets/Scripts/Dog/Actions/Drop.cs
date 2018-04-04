@@ -19,7 +19,4 @@ public class Drop : DogAction {
 	}
 	public override void OnActionEnd(){
 	}
-	private void HandleEvent(IGrabable handler, BaseEventData eventData){
-		handler.Drop ();
-	}
 }
