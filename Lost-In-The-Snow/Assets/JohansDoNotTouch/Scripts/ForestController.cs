@@ -6,15 +6,15 @@ public class ForestController : MonoBehaviour
 {
     TerrainData td;
     List<TreeInstance> treeInstances;
-    List<WoodChopper> woodChoppers;
-    [SerializeField] private int[] chopebleIndexes;
+    List<TreeController> treeControllers;
+    [SerializeField] private bool[] choppeble;
 
     // Use this for initialization
     void Start () {
         td = GetComponent<Terrain>().terrainData;
         
         treeInstances = new List<TreeInstance>(td.treeInstances);
-        woodChoppers = new List<WoodChopper>();
+        treeControllers = new List<TreeController>();
         spawnForestColliders();
 
     }
@@ -31,8 +31,9 @@ public class ForestController : MonoBehaviour
             copyCapsuleCollider(gO.AddComponent<CapsuleCollider>(), tp.prefab.GetComponent<CapsuleCollider>());
 
             gO.transform.parent = gameObject.transform;
-            gO.AddComponent<WoodChopper>().index = i;
-            woodChoppers.Add(gO.GetComponent<WoodChopper>());
+            gO.AddComponent<TreeController>().index = i;
+            gO.GetComponent<TreeController>().choppeble = choppeble[td.treeInstances[i].prototypeIndex];
+            treeControllers.Add(gO.GetComponent<TreeController>());
             gO.name = "tree";
         }
     }
@@ -48,17 +49,17 @@ public class ForestController : MonoBehaviour
     public void RemoveOnIndex(int index)
     {
         TreeInstance tmp = treeInstances[treeInstances.Count - 1];
-        WoodChopper tmpWC = woodChoppers[woodChoppers.Count - 1];
+        TreeController tmpWC = treeControllers[treeControllers.Count - 1];
         tmpWC.index = index;
 
         treeInstances[treeInstances.Count - 1] = treeInstances[index];
-        woodChoppers[woodChoppers.Count - 1] = woodChoppers[index];
+        treeControllers[treeControllers.Count - 1] = treeControllers[index];
 
         treeInstances[index] = tmp;
-        woodChoppers[index] = tmpWC;
+        treeControllers[index] = tmpWC;
 
         treeInstances.RemoveAt(treeInstances.Count - 1);
-        woodChoppers.RemoveAt(woodChoppers.Count - 1);
+        treeControllers.RemoveAt(treeControllers.Count - 1);
         td.treeInstances = treeInstances.ToArray();
         
     }

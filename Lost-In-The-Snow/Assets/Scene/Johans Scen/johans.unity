@@ -274,7 +274,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1278840748
+  randomSeed: 1136692688
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3830,7 +3830,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4128551625533168, guid: 42374d17b0254ce44ba3170100e00448, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4128551625533168, guid: 42374d17b0254ce44ba3170100e00448, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -4247,7 +4247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c95efe6ae47b3499882dee14e3aa21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chopebleIndexes: 
+  choppeble: 010000
 --- !u!1 &2033727551
 GameObject:
   m_ObjectHideFlags: 0
