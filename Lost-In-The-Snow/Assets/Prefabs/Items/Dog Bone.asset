@@ -9,12 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9803c63d76a10e24e908e452f02b4fce, type: 3}
-  m_Name: Axe
+  m_Name: Dog Bone
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 2
   maxStack: 1
-  itemName: Axe
-  itemDescription: Axe that can be used to chop wood.
-  image: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  associatedGameobject: {fileID: 100000, guid: 71e97bbdf7ea9cd4fb81f440a71e089e, type: 3}
+  itemName: Dog Bone
+  itemDescription: Usually attached to the dog bone.
+  image: {fileID: 21300024, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
+  associatedGameobject: {fileID: 1964514818041596, guid: f73b9e6b65af90a428718e22ef9d50b9,
+    type: 2}
   holdableItem: 1

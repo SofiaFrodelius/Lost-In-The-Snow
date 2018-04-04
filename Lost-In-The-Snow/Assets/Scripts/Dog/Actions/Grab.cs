@@ -17,6 +17,12 @@ public class Grab : DogAction {
 	public override void OnActionEnd(){
 	}
 	private void HandleEvent(IGrabable handler, BaseEventData eventData){
-        handler.pickUp(out dog.grabbedItem);
-	}
+        Item temp;
+        handler.pickUp(out temp);
+        dog.GrabbedItem = temp;
+        dog.ItemObject = Instantiate(dog.GrabbedItem.getAssociatedGameobject(), dog.bone)as GameObject;
+        dog.ItemObject.GetComponent<Rigidbody>().isKinematic = true;
+        dog.ItemObject.transform.localPosition = Vector3.zero;
+        dog.ItemObject.transform.localRotation = Quaternion.identity;
+    }
 }
