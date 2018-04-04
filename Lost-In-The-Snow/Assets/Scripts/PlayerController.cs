@@ -28,15 +28,12 @@ public class PlayerController : MonoBehaviour
     private bool isCrouching = false;
     private bool isRunning = false;
 
-    Inventory inventory;
-
     Vector3 movingVelocity;
     Vector3 movingVelocityController;
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         JumpVelocity = Mathf.Sqrt(2 * JumpHeight / -Physics.gravity.y) * -Physics.gravity.y;
-        inventory = Inventory.instance;
     }
     void Update()
     {
@@ -101,6 +98,8 @@ public class PlayerController : MonoBehaviour
     }
     private void pickup(IGrabable handler, BaseEventData eventData)
     {
+        Inventory inventory;
+        inventory = Inventory.instance;
         Item item;
         handler.pickUp(out item);
         if(inventory != null)

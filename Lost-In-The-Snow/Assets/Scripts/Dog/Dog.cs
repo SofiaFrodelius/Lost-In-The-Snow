@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Dog : MonoBehaviour, IInteractible {
 	public Transform player;
 	public Transform target;
+    public Transform bone;
 
     public Item grabbedItem;
     public GameObject itemObject;
@@ -45,7 +46,7 @@ public class Dog : MonoBehaviour, IInteractible {
 		set{ grabbedItem = value; }
 	}
     public GameObject ItemObject{
-        get { return ItemObject; }
-        set { ItemObject = value; }
+        get { return itemObject; }
+        set { itemObject = value; }
     }
 }
