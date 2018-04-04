@@ -26,7 +26,6 @@ public class InventorySlotHUD : MonoBehaviour, IPointerEnterHandler, IPointerDow
 
     public void updateSlot(Item item)
     {
-        Debug.Log("Added");
         itemImage.enabled = true;
         currentItem = item;
         itemImage.sprite = item.getImage();

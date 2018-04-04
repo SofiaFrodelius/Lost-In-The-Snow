@@ -42,8 +42,5 @@ public class InventoryHUD : MonoBehaviour
                 inventorySlots[i].updateSlot(current);
             }
         }
-
-
-
     }
 }
