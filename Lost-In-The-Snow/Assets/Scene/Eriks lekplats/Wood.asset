@@ -15,7 +15,7 @@ MonoBehaviour:
   maxStack: 3
   itemName: Wood
   itemDescription: TEST TEST TEST TEST TEST
-  image: {fileID: 21300004, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
-  associatedGameobject: {fileID: 1921015891244424, guid: 6413ea7d516c8ad4ab25fba171e19784,
+  image: {fileID: 21300002, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  associatedGameobject: {fileID: 1982692177095370, guid: 6413ea7d516c8ad4ab25fba171e19784,
     type: 2}
   holdableItem: 0

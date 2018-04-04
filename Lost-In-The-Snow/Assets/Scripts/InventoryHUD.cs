@@ -39,7 +39,7 @@ public class InventoryHUD : MonoBehaviour
             Item current = inventory.getItemFromSlot(i);
             if(current != null)
             {
-                inventorySlots[i].updateSlot(current);
+                inventorySlots[i].updateSlot(current, inventory.getNumOfItemsInSlot(i));
             }
         }
     }
