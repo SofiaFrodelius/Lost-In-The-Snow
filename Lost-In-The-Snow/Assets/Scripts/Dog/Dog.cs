@@ -7,46 +7,53 @@ public class Dog : MonoBehaviour, IInteractible {
 	public Transform player;
 	public Transform target;
     public Transform bone;
+    public GameObject TESTBONE;
 
     public Item grabbedItem;
     public GameObject itemObject;
 
-
-    public Transform TESTBONE;
-
+    private NavMeshAgent navAgent;
 	private Animator animator;
+
+    private DogAction currentAction;
+    public List<DogAction> dogActions = new List<DogAction>();
 	void Awake(){
+        navAgent = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator> ();
 	}
 	void Start () {
-		target = TESTBONE;
 		animator.SetTrigger ("Fetch");
-	}
+        dogActions.Add(new FollowPlayer(this,navAgent, animator, player));
+        //currentAction = dogActions[0];
+        currentAction = new Fetch(this, navAgent, animator, TESTBONE.transform, player);
+    }
+    void FixedUpdate() {
+        if(currentAction != null)
+            currentAction.UpdateAction();
+    }
 	void Update(){
 		if (Input.GetKey (KeyCode.Q)) {
         }
 	}
 	public void Interact(){
-		//animator.SetTrigger ("Pet");
-		//animator.SetTrigger("Feed");
+        DogAction waitForPlayer = new WaitForPlayer(this,navAgent, animator, player, 3f);
 	}
-	public void ActionDone(){
-		animator.SetTrigger ("ActionDone");
-	}
-	public Transform Player{
-		get{ return player; }
-		set{ player = value; }
-	}
-	public Transform Target{
-		get{ return target; }
-		set{ target = value; }
-	}
-	public Item GrabbedItem{
-		get{ return grabbedItem; }
-		set{ grabbedItem = value; }
-	}
-    public GameObject ItemObject{
-        get { return itemObject; }
-        set { itemObject = value; }
+    public Item GrabbedItem{
+        get{ return grabbedItem; }
+        set{
+            if (value != null) { 
+                grabbedItem = value;
+                if (itemObject != null){
+                    itemObject.GetComponent<Rigidbody>().isKinematic = false;
+                    itemObject.transform.parent = null;
+                }
+                itemObject = Instantiate(grabbedItem.getAssociatedGameobject(), bone) as GameObject;
+                itemObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
+        }
+    }
+    public void print()
+    {
+        print("HEJSAN");
     }
 }

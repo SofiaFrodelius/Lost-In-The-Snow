@@ -3,26 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class DogAction : StateMachineBehaviour {
+public class DogAction : ScriptableObject{
 	protected Dog dog;
 	protected NavMeshAgent navAgent;
 	protected Animator animator;
-
-	public override void OnStateEnter (Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
-		dog = animator.gameObject.GetComponent<Dog> ();
-		navAgent = dog.gameObject.GetComponent<NavMeshAgent> ();
-		this.animator = animator;
-		OnActionStart ();
-	}
-	public virtual void OnActionStart(){}
-
-	public override void OnStateUpdate (Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
-		OnActionUpdate ();
-	}
-	public virtual void OnActionUpdate(){}
-
-	public override void OnStateExit (Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
-		OnActionEnd ();
-	}
-	public virtual void OnActionEnd(){}
+    protected bool isDone;
+    public DogAction(Dog dog, NavMeshAgent navA, Animator anim){
+        this.dog = dog;
+        navAgent = navA;
+        animator = anim;
+        isDone = false;
+    }
+    public virtual void StartAction(){
+    }
+    public virtual void UpdateAction(){
+    }
+    public virtual void EndAction(){
+    }
+    public bool IsDone(){
+        return isDone;
+    }
 }
