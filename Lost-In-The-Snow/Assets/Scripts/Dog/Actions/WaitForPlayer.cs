@@ -10,8 +10,11 @@ public class WaitForPlayer : DogAction{
         this.distance = distance;
     }
     public override void UpdateAction(){
-        if(Vector3.Distance(dog.transform.position, player.position) > distance){
-
+        if(Vector3.Distance(dog.transform.position, player.position) < distance){
+            isDone = true;
+        }
+        else{
+            //woof
         }
     }
 }

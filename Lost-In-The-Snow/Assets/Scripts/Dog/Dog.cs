@@ -43,13 +43,16 @@ public class Dog : MonoBehaviour, IInteractible {
         set{
             if (value != null) { 
                 grabbedItem = value;
-                if (itemObject != null){
-                    itemObject.GetComponent<Rigidbody>().isKinematic = false;
-                    itemObject.transform.parent = null;
-                }
+                DropGrabbedItem();
                 itemObject = Instantiate(grabbedItem.getAssociatedGameobject(), bone) as GameObject;
                 itemObject.GetComponent<Rigidbody>().isKinematic = true;
             }
+        }
+    }
+    public void DropGrabbedItem(){
+        if(itemObject != null){
+            itemObject.GetComponent<Rigidbody>().isKinematic = false;
+            itemObject.transform.parent = null;
         }
     }
     public void print()

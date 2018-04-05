@@ -10,11 +10,7 @@ public class Drop : DogAction {
         
 	}
     public override void StartAction(){
-//        dog.GrabbedItem;
+        dog.DropGrabbedItem();
         isDone = true;
-        dog.print();
     }
-    public override void UpdateAction(){
-        //dog.print();
-    }   
 }

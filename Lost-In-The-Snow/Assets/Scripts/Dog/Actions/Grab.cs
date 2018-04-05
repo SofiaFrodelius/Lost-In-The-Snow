@@ -14,9 +14,6 @@ public class Grab : DogAction{
         ExecuteEvents.Execute<IGrabable>(itemObject, null, GrabEvent);
         isDone = true;
     }
-    public override void UpdateAction(){
-        base.UpdateAction();
-    }
     public void GrabEvent(IGrabable handler, BaseEventData baseEvent){
         handler.pickUp(out item);
         dog.GrabbedItem = item;

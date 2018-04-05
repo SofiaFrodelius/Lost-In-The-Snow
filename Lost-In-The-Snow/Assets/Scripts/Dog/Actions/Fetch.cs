@@ -18,6 +18,7 @@ public class Fetch : DogAction{
         actions.Add(new Grab(d, navA, anim, item.gameObject));
         actions.Add(new FollowTarget(d, navA, anim, player, true));
         actions.Add(new Drop(d, navA, anim));
+        actions.Add(new FollowPlayer(d, navA, anim,player));
         NextAction();
     }
     public override void UpdateAction(){

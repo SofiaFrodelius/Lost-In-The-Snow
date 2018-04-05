@@ -25,6 +25,9 @@ public class FollowTarget : DogAction{
             }
         }
     }
+    public override void EndAction(){
+        navAgent.ResetPath();
+    }
     public bool IsAtTarget(){
         return isAtTarget;
     }
