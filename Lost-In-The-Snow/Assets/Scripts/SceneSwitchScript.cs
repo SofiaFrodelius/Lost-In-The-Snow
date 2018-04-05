@@ -24,14 +24,14 @@ public class SceneSwitchScript : MonoBehaviour
         if (active)
         {
             if (fadeTime == 0)
-                wait = 1;
+                wait = 1.0f;
             else
                 wait += 1000 / fadeTime * Time.deltaTime;
             if (wait >= 1.0f)
             {
                 active = false;
                 wait = 0.0f;
-                SceneManager.LoadScene(sceneTarget);
+                SceneHandler.ChangeScene(sceneTarget);
             }
         }
     }
