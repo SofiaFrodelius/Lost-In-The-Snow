@@ -12,5 +12,11 @@ EditorBuildSettings:
     path: Assets/Scene/MainMenu.unity
     guid: ffd198116886841458246eef3b504acf
   - enabled: 1
-    path: Assets/Scene/Main.unity
+    path: Assets/Scene/Emils/Main.unity
     guid: 290f175a86355cf488498ed32aae13d4
+  - enabled: 1
+    path: Assets/Scene/Rasmus Scenes/FadeScene 1.unity
+    guid: 4fc5c3dcc4c89ba4cb87a2d02eb8bba5
+  - enabled: 1
+    path: Assets/Scene/Rasmus Scenes/FadeScene 2.unity
+    guid: 2c8651925cb3950438bcea05427d8d14
