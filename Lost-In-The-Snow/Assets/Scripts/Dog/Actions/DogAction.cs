@@ -8,10 +8,10 @@ public class DogAction : ScriptableObject{
 	protected NavMeshAgent navAgent;
 	protected Animator animator;
     protected bool isDone;
-    public DogAction(Dog dog, NavMeshAgent navA, Animator anim){
+    public DogAction(Dog dog){
         this.dog = dog;
-        navAgent = navA;
-        animator = anim;
+        navAgent = dog.GetComponent<NavMeshAgent>();
+        animator = dog.GetComponent<Animator>();
         isDone = false;
     }
     public virtual void StartAction(){

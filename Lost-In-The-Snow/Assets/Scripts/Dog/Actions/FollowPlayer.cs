@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 public class FollowPlayer : DogAction{
     Transform player;
     FollowTarget followTarget;
-    public FollowPlayer(Dog d, NavMeshAgent navA, Animator anim, Transform player) : base(d, navA, anim){
+    public FollowPlayer(Dog d, Transform player) : base(d){
         this.player = player;
-        followTarget = new FollowTarget(d, navA, anim, player, false);
+        followTarget = new FollowTarget(d, player, false);
     }
     public override void UpdateAction(){
         followTarget.UpdateAction();

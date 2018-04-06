@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Grab : DogAction{
     Item item;
     GameObject itemObject;
-    public Grab(Dog d, NavMeshAgent navA, Animator anim, GameObject itemObject) : base(d, navA, anim){
+    public Grab(Dog d, GameObject itemObject) : base(d){
         this.itemObject = itemObject;
     }
     public override void StartAction(){

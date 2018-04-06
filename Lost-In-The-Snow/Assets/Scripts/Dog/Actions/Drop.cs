@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Drop : DogAction {
 	Transform target;
-	public Drop(Dog d, NavMeshAgent navA, Animator anim) : base(d,navA, anim){
+	public Drop(Dog d) : base(d){
         
 	}
     public override void StartAction(){

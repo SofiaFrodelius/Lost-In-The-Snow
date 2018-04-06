@@ -17,27 +17,21 @@ public class Dog : MonoBehaviour, IInteractible {
 
     private DogAction currentAction;
     public List<DogAction> dogActions = new List<DogAction>();
-	void Awake(){
-        navAgent = GetComponent<NavMeshAgent>();
-		animator = GetComponent<Animator> ();
-	}
 	void Start () {
-		animator.SetTrigger ("Fetch");
-        dogActions.Add(new FollowPlayer(this,navAgent, animator, player));
+        navAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        animator.SetTrigger ("Fetch");
+        //navAgent.updatePosition = false;
+        //navAgent.updateRotation = false;
+        dogActions.Add(new FollowPlayer(this, player));
         //currentAction = dogActions[0];
-        currentAction = new Fetch(this, navAgent, animator, TESTBONE.transform, player);
-    }
-    void FixedUpdate() {
-        if(currentAction != null)
-            currentAction.UpdateAction();
+        currentAction = new Fetch(this, TESTBONE.transform, player);
     }
 	void Update(){
-		if (Input.GetKey (KeyCode.Q)) {
-        }
-	}
-	public void Interact(){
-        DogAction waitForPlayer = new WaitForPlayer(this,navAgent, animator, player, 3f);
-	}
+        if (currentAction != null)
+            currentAction.UpdateAction();
+    }
+	public void Interact(){}
     public Item GrabbedItem{
         get{ return grabbedItem; }
         set{
@@ -46,6 +40,8 @@ public class Dog : MonoBehaviour, IInteractible {
                 DropGrabbedItem();
                 itemObject = Instantiate(grabbedItem.getAssociatedGameobject(), bone) as GameObject;
                 itemObject.GetComponent<Rigidbody>().isKinematic = true;
+                itemObject.transform.localPosition = Vector3.zero;
+                itemObject.transform.localRotation = Quaternion.identity;
             }
         }
     }
@@ -54,9 +50,5 @@ public class Dog : MonoBehaviour, IInteractible {
             itemObject.GetComponent<Rigidbody>().isKinematic = false;
             itemObject.transform.parent = null;
         }
-    }
-    public void print()
-    {
-        print("HEJSAN");
     }
 }

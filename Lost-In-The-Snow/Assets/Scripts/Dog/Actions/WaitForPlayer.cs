@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class WaitForPlayer : DogAction{
     Transform player;
     float distance;
-    public WaitForPlayer(Dog d, NavMeshAgent navA, Animator anim, Transform player, float distance): base(d,navA, anim){
+    public WaitForPlayer(Dog d, Transform player, float distance): base(d){
         this.player = player;
         this.distance = distance;
     }

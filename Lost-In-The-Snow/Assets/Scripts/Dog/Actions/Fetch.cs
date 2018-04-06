@@ -10,15 +10,15 @@ public class Fetch : DogAction{
     DogAction currentAction;
     List<DogAction> actions = new List<DogAction>();
     int actionCount;
-    public Fetch(Dog d, NavMeshAgent navA, Animator anim, Transform item, Transform player) : base(d, navA, anim){
+    public Fetch(Dog d, Transform item, Transform player) : base(d){
         this.item = item;
         this.player = player;
         actionCount = 0;
-        actions.Add(new FollowTarget(d, navA, anim, item, true));
-        actions.Add(new Grab(d, navA, anim, item.gameObject));
-        actions.Add(new FollowTarget(d, navA, anim, player, true));
-        actions.Add(new Drop(d, navA, anim));
-        actions.Add(new FollowPlayer(d, navA, anim,player));
+        actions.Add(new FollowTarget(d, item, true));
+        actions.Add(new Grab(d, item.gameObject));
+        actions.Add(new FollowTarget(d, player, true));
+        actions.Add(new Drop(d));
+        actions.Add(new FollowPlayer(d, player));
         NextAction();
     }
     public override void UpdateAction(){

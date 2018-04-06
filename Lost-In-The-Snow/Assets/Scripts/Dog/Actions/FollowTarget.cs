@@ -8,7 +8,7 @@ public class FollowTarget : DogAction{
     bool isAtTarget;
     bool doneAtTarget;
     float width = 1.5f;
-    public FollowTarget(Dog d, NavMeshAgent navA, Animator anim, Transform target, bool doneAtTarget) : base(d, navA, anim){
+    public FollowTarget(Dog d, Transform target, bool doneAtTarget) : base(d){
         this.target = target;
         this.doneAtTarget = doneAtTarget;
     }
