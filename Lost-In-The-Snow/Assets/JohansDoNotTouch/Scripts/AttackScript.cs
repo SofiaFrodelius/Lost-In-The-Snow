@@ -12,6 +12,8 @@ public class AttackScript : MonoBehaviour {
     void Update () {
         if (Input.GetMouseButtonDown(0))
         {
+            
+
             //Debug.Log("Klicka Knapp");
             RaycastHit hit = new RaycastHit();
             Ray ray = new Ray(transform.GetChild(0).transform.position, transform.GetChild(0).transform.forward);

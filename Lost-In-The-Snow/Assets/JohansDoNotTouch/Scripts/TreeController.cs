@@ -1,31 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class TreeController : MonoBehaviour, IAttackeble  {
-    int myIndex;
+public class TreeController : MonoBehaviour, IAttackeble {
+    int index;
     bool isChoppeble = false;
+    int amountToDrop;
+    TreeInstance treeInstance;
 
+
+    void Awake()
+    {
+        NavMeshObstacle nMO = gameObject.AddComponent<NavMeshObstacle>();
+    }
     public void onAttack()
     {
         if (isChoppeble)
         {
-            GetComponentInParent<ForestController>().RemoveOnIndex(myIndex);
+            GetComponentInParent<ForestController>().RemoveOnIndex(index);
             Destroy(gameObject);
         }
     }
-    public int index
+    public int Index
     {
         set
         {
-            myIndex = value;
+            index = value;
         }
     }
-    public bool choppeble
+    public bool IsChoppeble
     {
         set
         {
             isChoppeble = value;
+        }
+    }
+    public TreeInstance TreeInstance
+    {
+        set
+        {
+            treeInstance = value;
+        }
+    }
+    public int AmountToDrop
+    {
+        set
+        {
+            amountToDrop = value;
+        }
+        get
+        {
+            return amountToDrop;
         }
     }
 }
