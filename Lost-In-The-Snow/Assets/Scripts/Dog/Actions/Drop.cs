@@ -6,15 +6,11 @@ using UnityEngine.EventSystems;
 
 public class Drop : DogAction {
 	Transform target;
-	public override void OnActionStart(){
-		ExecuteEvents.Execute<IGrabable> (dog.ItemObject, null, HandleEvent);
-		animator.SetTrigger ("ActionDone");
+	public Drop(Dog d, NavMeshAgent navA, Animator anim) : base(d,navA, anim){
+        
 	}
-	public override void OnActionUpdate(){
-	}
-	public override void OnActionEnd(){
-	}
-	private void HandleEvent(IGrabable handler, BaseEventData eventData){
-		handler.Drop ();
-	}
+    public override void StartAction(){
+        dog.DropGrabbedItem();
+        isDone = true;
+    }
 }

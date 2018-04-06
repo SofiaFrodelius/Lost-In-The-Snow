@@ -4,19 +4,18 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class Grab : DogAction {
-	Transform target;
-	public override void OnActionStart(){
-		target = dog.Target;
-		ExecuteEvents.Execute<IGrabable> (target.gameObject, null, HandleEvent);
-		dog.Target = dog.Player;
-		animator.SetTrigger ("ActionDone");
-	}
-	public override void OnActionUpdate(){
-	}
-	public override void OnActionEnd(){
-	}
-	private void HandleEvent(IGrabable handler, BaseEventData eventData){
-        handler.pickUp(out dog.grabbedItem);
-	}
+public class Grab : DogAction{
+    Item item;
+    GameObject itemObject;
+    public Grab(Dog d, NavMeshAgent navA, Animator anim, GameObject itemObject) : base(d, navA, anim){
+        this.itemObject = itemObject;
+    }
+    public override void StartAction(){
+        ExecuteEvents.Execute<IGrabable>(itemObject, null, GrabEvent);
+        isDone = true;
+    }
+    public void GrabEvent(IGrabable handler, BaseEventData baseEvent){
+        handler.pickUp(out item);
+        dog.GrabbedItem = item;
+    }
 }

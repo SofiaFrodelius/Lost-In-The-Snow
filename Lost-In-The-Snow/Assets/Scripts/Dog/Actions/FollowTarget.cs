@@ -3,25 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FollowTarget : DogAction {
-	Transform target;
-    Vector3 offset;
-	public override void OnActionStart(){
-		target = dog.Target;
-        offset = target.forward;
-		navAgent.SetDestination(target.position+ offset);
-		animator.SetBool ("isAtTarget", false);
-	}
-	public override void OnActionUpdate(){
-        offset = target.forward;
-        if (target.position + offset != navAgent.destination)
-			navAgent.SetDestination(target.position+ offset);
-		if (Vector3.Distance (dog.transform.position, target.position+ offset) < 1.2f) {
-			navAgent.ResetPath ();
-			animator.SetBool ("isAtTarget", true);
-		}
-	}
-	public override void OnActionEnd(){
-		navAgent.ResetPath ();
-	}
+public class FollowTarget : DogAction{
+    Transform target;
+    bool isAtTarget;
+    bool doneAtTarget;
+    float width = 1.5f;
+    public FollowTarget(Dog d, NavMeshAgent navA, Animator anim, Transform target, bool doneAtTarget) : base(d, navA, anim){
+        this.target = target;
+        this.doneAtTarget = doneAtTarget;
+    }
+    public override void UpdateAction(){
+        if (!isDone){
+            if (Vector3.Distance(dog.transform.position, target.position) > width){
+                isAtTarget = false;
+                navAgent.SetDestination(target.position);
+            }
+            else{
+                if (doneAtTarget)
+                    isDone = true;
+                isAtTarget = true;
+            }
+        }
+    }
+    public override void EndAction(){
+        navAgent.ResetPath();
+    }
+    public bool IsAtTarget(){
+        return isAtTarget;
+    }
 }

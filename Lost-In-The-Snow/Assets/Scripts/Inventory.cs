@@ -54,6 +54,11 @@ public class Inventory : MonoBehaviour
         return inventorySlots[slot].getItem();
     }
 
+    public int getNumOfItemsInSlot(int slot)
+    {
+        return inventorySlots[slot].getItemsInSlot();
+    }
+
     public void addItem(Item item)
     {
         for(int i = 0; i < numOfUsedSlots; i++)

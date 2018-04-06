@@ -5,8 +5,6 @@ using UnityEngine;
 public class Dorra : MonoBehaviour, IInteractible {
     private Vector3 StartRotation;
 
-    private bool isOpen = false;
-
     public void Interact()
     {
         //Debug.Log("Door");
