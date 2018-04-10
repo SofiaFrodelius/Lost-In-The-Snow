@@ -11,11 +11,11 @@ public class SceneSwitchScript : MonoBehaviour
     private int fadeTime = 0;
     private float wait = 0.0f;
 
-    public void SceneSwitcher()
+    public void ActivateSceneSwitch()
     {
-        GameObject SceneTransition = GameObject.Find("Scene Transition");
-        if (SceneTransition != null)
-            fadeTime = SceneTransition.GetComponent<SceneFade>().BeginFade(1);
+        GameObject SceneSwitcher = GameObject.Find("Scene Switcher");
+        if (SceneSwitcher != null)
+            fadeTime = SceneSwitcher.GetComponent<SceneFade>().BeginFade(1);
         active = true;
     }
 
