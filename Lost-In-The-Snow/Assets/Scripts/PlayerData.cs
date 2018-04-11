@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public static class PlayerData
+public class PlayerData : MonoBehaviour
 {
-    private static Transform playerTransform;
+
 }
+
