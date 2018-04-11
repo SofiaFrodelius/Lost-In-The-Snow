@@ -46,8 +46,12 @@ public class Inventory : MonoBehaviour
     //tempkod
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return)) addItem(testItem);
+        if (Input.GetKeyDown(KeyCode.Tab)) inventoryHUD.showInventory();
     }
+
+
+
+
 
     public Item getItemFromSlot(int slot)
     {
@@ -61,6 +65,8 @@ public class Inventory : MonoBehaviour
 
     public void addItem(Item item)
     {
+
+
         for(int i = 0; i < numOfUsedSlots; i++)
         {
             if(inventorySlots[i].getItem() != null && inventorySlots[i].getItem().getId() == item.getId())
