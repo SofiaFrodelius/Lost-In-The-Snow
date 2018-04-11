@@ -43,4 +43,13 @@ public class InventoryHUD : MonoBehaviour
             }
         }
     }
+
+    public void showInventory()
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            if(inventorySlots[i].getCurrentItem() != null)
+                inventorySlots[i].showInventorySlot();
+        }
+    }
 }

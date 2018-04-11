@@ -2,11 +2,16 @@
 
 public static class SceneHandler
 {
-//    private static int currentSceneIndex = 0;
+    //private static int currentSceneIndex = 0;
 
     public static void ChangeScene(int index)
     {
         SceneManager.LoadSceneAsync(index);
+    }
+
+    public static void ChangeSceneByName(string name)
+    {
+        SceneManager.LoadSceneAsync(name);
     }
 
     public static void NextScene()

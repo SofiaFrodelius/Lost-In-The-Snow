@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   itemID: 1
-  maxStack: 3
+  maxStack: 1000
   itemName: Wood
   itemDescription: TEST TEST TEST TEST TEST
   image: {fileID: 21300002, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
