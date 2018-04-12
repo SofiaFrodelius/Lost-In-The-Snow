@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         Inventory inventory;
         inventory = Inventory.instance;
         Item item;
-        handler.pickUp(out item);
+        handler.getItemOnPickup(out item);
         if(inventory != null)
             inventory.addItem(item);
     }

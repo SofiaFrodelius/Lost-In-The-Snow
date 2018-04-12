@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public interface IGrabable : IEventSystemHandler{
-    void pickUp(out Item item);
+    void getItemOnPickup(out Item item);
     void Drop();
 
 }

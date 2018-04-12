@@ -6,7 +6,7 @@ public class GrabableObject : MonoBehaviour, IGrabable {
     [SerializeField]
     private Item itemType;
 
-    public void pickUp(out Item item)
+    public void getItemOnPickup(out Item item)
     {
         //all i want from c# is pointers :(
         item = itemType;

@@ -10,6 +10,8 @@ public class CharacterMovement : MonoBehaviour {
     [SerializeField] private float sprintMultiplier;
     [Range(0, 10f)]
     [SerializeField] private float jumpStartSpeed;
+    [Range(0, 3)]
+    [SerializeField] private float fallMultiplier;
 
     private float inputH, inputV;
     private bool inputSprint, inputJump, allowedToJump;
@@ -20,7 +22,7 @@ public class CharacterMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         cc = GetComponent<CharacterController>();
-
+        
 
     }
 	
@@ -29,15 +31,23 @@ public class CharacterMovement : MonoBehaviour {
         CheckInputs();
         CalculateMovement();
         CalculateCurrentSpeed();
-        CalculateAirTime();
         CalculateJump();
+        CalculateAirTime();
         ApplyMovement();
 
     }
     void CalculateAirTime()
     {
-        if(!cc.isGrounded)
-            moveDirection.y = lastMoveDirection.y + ((Physics.gravity.y * Time.deltaTime) / 2);
+        float dt = Time.deltaTime;
+
+        if (cc.velocity.y < 0)
+        {
+            moveDirection.y += dt * fallMultiplier * Physics.gravity.y;
+        }
+        else
+        {
+            moveDirection.y += dt * Physics.gravity.y;
+        }
     }
     
     void CalculateJump()
@@ -57,16 +67,16 @@ public class CharacterMovement : MonoBehaviour {
     void ApplyMovement()
     {
         moveDirection = transform.TransformDirection(moveDirection);
-        cc.Move(moveDirection);
+        cc.Move(moveDirection * Time.deltaTime);
         lastMoveDirection = moveDirection;
     }
 
 
     private void CalculateCurrentSpeed()
     {
-        float dt = Time.deltaTime;
-        moveDirection.x *= movementSpeed * dt;
-        moveDirection.z *= movementSpeed * dt;
+        //float dt = Time.deltaTime;
+        moveDirection.x *= movementSpeed;
+        moveDirection.z *= movementSpeed;
         moveDirection.x *= inputSprint ? sprintMultiplier : 1.0f;
         moveDirection.z *= inputSprint ? sprintMultiplier : 1.0f;
     }
