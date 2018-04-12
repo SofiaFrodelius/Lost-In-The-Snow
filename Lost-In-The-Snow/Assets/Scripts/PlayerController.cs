@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         JumpVelocity = Mathf.Sqrt(2 * JumpHeight / -Physics.gravity.y) * -Physics.gravity.y;
     }
+
     void Update()
     {
         CalculateSpeed();
@@ -63,6 +65,36 @@ public class PlayerController : MonoBehaviour
         movingVelocity.z *= speedModifier;
         characterController.Move(movingVelocity * Time.deltaTime);
         //characterController.Move(speed * movingVelocityController * Time.deltaTime);
+
+        //temporary stuff to deal with saves
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SaveLoad.saveLoad.Delete();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SaveLoad.saveLoad.playerPositionX = transform.position.x;
+            SaveLoad.saveLoad.playerPositionY = transform.position.y;
+            SaveLoad.saveLoad.playerPositionZ = transform.position.z;
+            SaveLoad.saveLoad.sceneNumber = SceneManager.GetActiveScene().buildIndex;
+            SaveLoad.saveLoad.Save();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SaveLoad.saveLoad.Load();
+            transform.position = new Vector3
+            (
+                SaveLoad.saveLoad.playerPositionX,
+                SaveLoad.saveLoad.playerPositionY,
+                SaveLoad.saveLoad.playerPositionZ
+            );
+
+
+
+            //SceneHandler.ChangeScene(SaveLoad.saveLoad.sceneNumber);
+        }
     }
     //Shit name 
     void CalculateSpeed()

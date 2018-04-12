@@ -1,19 +1,81 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 using UnityEngine;
+using UnityEditor.SceneManagement;
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveLoad {
+public class SaveLoad : MonoBehaviour {
 
-    //public static List<Game> savedGames = new List<Game>();
+    public static SaveLoad saveLoad;
 
-    //public static void Save()
-    //{
-    //savedGames.Add(Game.current);
-    //BinaryFormatter bf = new BinaryFormatter();
-    //FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
-    //bf.Serialize(file, SaveLoad.savedGames);
-    //file.Close();
-    //}
+    public float playerPositionX;
+    public float playerPositionY;
+    public float playerPositionZ;
+    public int sceneNumber;
+
+    void Awake()
+    {
+       if (saveLoad == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            saveLoad = this;
+        } 
+       else if (saveLoad != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
+    public void Save()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+
+        PlayData data = new PlayData();
+        data.playerPosX = playerPositionX;
+        data.playerPosY = playerPositionY;
+        data.playerPosZ = playerPositionZ;
+        data.SceneNr = sceneNumber;
+
+        bf.Serialize(file, data);
+        file.Close();
+    }
+
+    public void Load()
+    {
+        if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+
+            PlayData data = (PlayData)bf.Deserialize(file);
+            file.Close();
+
+            playerPositionX = data.playerPosX;
+            playerPositionY = data.playerPosY;
+            playerPositionZ = data.playerPosZ;
+            sceneNumber = data.SceneNr;
+        }
+    }
+
+    public void Delete()
+    {
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/playerInfo.dat");
+        }
+    }
+
+
+}
+
+[Serializable]
+class PlayData
+{
+    public float playerPosX;
+    public float playerPosY;
+    public float playerPosZ;
+    public int SceneNr;
 }
