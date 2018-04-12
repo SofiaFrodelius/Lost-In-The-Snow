@@ -397,7 +397,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.6666667
+  - time: 0.38333333
     functionName: LockCameraToObjectInstant
     data: Testing Tag
     objectReferenceParameter: {fileID: 0}
@@ -405,7 +405,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.5
-    functionName: UnlockCamera
+    functionName: UnlockCameraInstant
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
