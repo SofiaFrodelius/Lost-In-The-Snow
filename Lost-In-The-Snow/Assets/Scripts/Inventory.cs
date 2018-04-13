@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     public delegate void InventoryChanged();
     public InventoryChanged inventoryChangedCallback;
     public delegate void HoldableItemsChanged();
-    public HoldableItemsChanged holdaBleItemsChangedCallback;
+    public HoldableItemsChanged holdableItemsChangedCallback;
 
 
     InventoryHUD inventoryHUD;
@@ -72,6 +72,11 @@ public class Inventory : MonoBehaviour
         return inventorySlots[slot].getItem();
     }
 
+    public Item getItemFromHoldableSlot(int slot)
+    {
+        return holdableSlots[slot].getItem();
+    }
+
     public int getNumOfItemsInSlot(int slot)
     {
         return inventorySlots[slot].getItemsInSlot();
@@ -116,7 +121,7 @@ public class Inventory : MonoBehaviour
             holdableSlots[numOfUsedHoldableSlots].incrementItemsInSlot();
             //holdaBleItemsChangedCallback.Invoke();
             numOfUsedHoldableSlots++;
-            if(numOfUsedHoldableSlots == 1) holdaBleItemsChangedCallback.Invoke();
+            if(numOfUsedHoldableSlots == 1) holdableItemsChangedCallback.Invoke();
         }
 
 

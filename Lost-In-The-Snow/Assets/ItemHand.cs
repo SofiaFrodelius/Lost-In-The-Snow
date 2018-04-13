@@ -13,7 +13,8 @@ public class ItemHand : MonoBehaviour
     public void Start()
     {
         inventory = Inventory.instance;
-        inventory.holdaBleItemsChangedCallback += updateItemInHand;
+        if(inventory != null)
+            inventory.holdableItemsChangedCallback += updateItemInHand;
     }
 
     public void Update()
@@ -22,13 +23,12 @@ public class ItemHand : MonoBehaviour
         else if (Input.GetAxis("Scroll") < -0.1) scroll = -1;
         else scroll = 0;
 
-        if (scroll != 0 && inventory.getNumOfUsedHoldableSlots() > 1)
+        if (scroll != 0 && inventory != null && inventory.getNumOfUsedHoldableSlots() > 1)
         {
             selectedItem += scroll;
             if (selectedItem >= inventory.getNumOfUsedHoldableSlots()) selectedItem = 0;
             else if (selectedItem < 0) selectedItem = inventory.getNumOfUsedHoldableSlots() - 1;
             updateItemInHand();
-            Debug.Log(selectedItem);
         }
     }
 
@@ -38,6 +38,7 @@ public class ItemHand : MonoBehaviour
         Debug.Log("Item destroyed.");
 
         activeItem = Instantiate(inventory.getObjectFromHoldableSlot(selectedItem),transform);
+        inventory.holdableItemsChangedCallback.Invoke();
     }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class InventorySlotHUD : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IDragHandler
+public class InventorySlotHUD : MonoBehaviour
 {
     [SerializeField]
     private Image itemImage;
@@ -45,37 +45,6 @@ public class InventorySlotHUD : MonoBehaviour, IPointerEnterHandler, IPointerDow
 
         currentCoroutine = previewSlot(0.5f);
         StartCoroutine(currentCoroutine);
-    }
-
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        itemDescription.enabled = true;
-        itemName.enabled = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        itemDescription.enabled = false;
-        itemName.enabled = false;
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        previousPosition = itemImage.rectTransform.position;
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        itemImage.rectTransform.position = previousPosition;
-        //tempkod
-        if (eventData.pointerCurrentRaycast.gameObject == eventData.pointerPressRaycast.gameObject) Debug.Log("Same inventory slot");
-        else Debug.Log("Different inventory slot");
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        itemImage.rectTransform.position = eventData.position;
     }
 
 
