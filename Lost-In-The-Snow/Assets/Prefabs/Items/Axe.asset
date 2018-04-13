@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Axe
   itemDescription: 
   image: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  associatedGameobject: {fileID: 1047168072381976, guid: 356f17f87ed1523409d65a09166c4093,
+  associatedGameobject: {fileID: 1124715961825982, guid: acc4e760111f65448a43629c52e73fac,
     type: 2}
   holdableItem: 1
