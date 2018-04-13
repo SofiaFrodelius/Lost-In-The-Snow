@@ -38,7 +38,6 @@ public class ItemHand : MonoBehaviour
         Debug.Log("Item destroyed.");
 
         activeItem = Instantiate(inventory.getObjectFromHoldableSlot(selectedItem),transform);
-        inventory.holdableItemsChangedCallback.Invoke();
     }
 
 }
