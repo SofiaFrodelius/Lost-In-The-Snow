@@ -14,7 +14,7 @@ public class ItemHand : MonoBehaviour
     {
         inventory = Inventory.instance;
         if(inventory != null)
-            inventory.holdableItemsChangedCallback += updateItemInHand;
+            inventory.updateItemInHandCallback += updateItemInHand;
     }
 
     public void Update()
@@ -28,16 +28,20 @@ public class ItemHand : MonoBehaviour
             selectedItem += scroll;
             if (selectedItem >= inventory.getNumOfUsedHoldableSlots()) selectedItem = 0;
             else if (selectedItem < 0) selectedItem = inventory.getNumOfUsedHoldableSlots() - 1;
-            updateItemInHand();
+            inventory.updateItemInHandCallback.Invoke();
         }
     }
 
     public void updateItemInHand()
     {
-        if (activeItem != null) Destroy(activeItem);
-        Debug.Log("Item destroyed.");
+        GameObject itemToInstansiate = inventory.getObjectFromHoldableSlot(selectedItem);
+        if (activeItem != itemToInstansiate)
+        {
+            if (activeItem != null) Destroy(activeItem);
 
-        activeItem = Instantiate(inventory.getObjectFromHoldableSlot(selectedItem),transform);
+            activeItem = Instantiate(itemToInstansiate, transform);
+        }
+        inventory.holdableItemsChangedCallback.Invoke(selectedItem);
     }
 
 }
