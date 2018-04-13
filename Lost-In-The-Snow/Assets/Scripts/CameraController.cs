@@ -37,4 +37,15 @@ public class CameraController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
 
     }
+
+    public Vector2 getLook()
+    {
+        return look;
+    }
+
+    public void setLook(Vector2 l)
+    {
+        look = l;
+    }
+
 }

@@ -13,7 +13,15 @@ public class SaveLoad : MonoBehaviour {
     public float playerPositionX;
     public float playerPositionY;
     public float playerPositionZ;
+    public float playerRotationX;
+    public float playerRotationY;
+    public float playerRotationZ;
+    public float playerRotationW;
+    public float lookX;
+    public float lookY;
     public int sceneNumber;
+    public bool newGame = true;
+    CameraController cameraController;
 
     void Awake()
     {
@@ -37,6 +45,8 @@ public class SaveLoad : MonoBehaviour {
         data.playerPosX = playerPositionX;
         data.playerPosY = playerPositionY;
         data.playerPosZ = playerPositionZ;
+        data.lkX = lookX;
+        data.lkY = lookY;
         data.SceneNr = sceneNumber;
 
         bf.Serialize(file, data);
@@ -56,7 +66,10 @@ public class SaveLoad : MonoBehaviour {
             playerPositionX = data.playerPosX;
             playerPositionY = data.playerPosY;
             playerPositionZ = data.playerPosZ;
+            lookX = data.lkX;
+            lookY = data.lkY;
             sceneNumber = data.SceneNr;
+            newGame = false;
         }
     }
 
@@ -68,7 +81,12 @@ public class SaveLoad : MonoBehaviour {
         }
     }
 
-
+    public void Pause()
+    {
+        cameraController = GetComponent<CameraController>();
+        Time.timeScale = 0;
+        cameraController.enabled = false;
+    }
 }
 
 [Serializable]
@@ -77,5 +95,7 @@ class PlayData
     public float playerPosX;
     public float playerPosY;
     public float playerPosZ;
+    public float lkX;
+    public float lkY;
     public int SceneNr;
 }

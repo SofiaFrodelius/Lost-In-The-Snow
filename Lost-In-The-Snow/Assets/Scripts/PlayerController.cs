@@ -28,15 +28,34 @@ public class PlayerController : MonoBehaviour
     private float JumpVelocity;
     private bool isCrouching = false;
     private bool isRunning = false;
+    private bool isPaused = false;
 
     Vector3 movingVelocity;
     Vector3 movingVelocityController;
+
+    CameraController cameraController;
+    PauseMenu pauseMenu;
     private void Awake()
     {
+        cameraController = GetComponentInChildren<CameraController>();
         characterController = GetComponent<CharacterController>();
+        pauseMenu = GetComponentInChildren<PauseMenu>();
         JumpVelocity = Mathf.Sqrt(2 * JumpHeight / -Physics.gravity.y) * -Physics.gravity.y;
     }
 
+    void Start()
+    {
+        if (SaveLoad.saveLoad.newGame == false)
+        { 
+        cameraController.setLook(new Vector2(SaveLoad.saveLoad.lookX, SaveLoad.saveLoad.lookY));
+        transform.position = new Vector3
+         (
+              SaveLoad.saveLoad.playerPositionX,
+        SaveLoad.saveLoad.playerPositionY,
+        SaveLoad.saveLoad.playerPositionZ
+        );
+        }
+    }
     void Update()
     {
         CalculateSpeed();
@@ -77,13 +96,36 @@ public class PlayerController : MonoBehaviour
             SaveLoad.saveLoad.playerPositionX = transform.position.x;
             SaveLoad.saveLoad.playerPositionY = transform.position.y;
             SaveLoad.saveLoad.playerPositionZ = transform.position.z;
+            SaveLoad.saveLoad.lookX = cameraController.getLook().x;
+            SaveLoad.saveLoad.lookY = cameraController.getLook().y;
             SaveLoad.saveLoad.sceneNumber = SceneManager.GetActiveScene().buildIndex;
             SaveLoad.saveLoad.Save();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (isPaused == false)
+            {
+                Time.timeScale = 0;
+                cameraController.enabled = false;
+                isPaused = true;
+            }
+
+            else if (isPaused == true)
+            {
+                Time.timeScale = 1;
+                cameraController.enabled = true;
+                isPaused = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
             SaveLoad.saveLoad.Load();
+            if (SceneManager.GetActiveScene().buildIndex != SaveLoad.saveLoad.sceneNumber)
+            {
+                SceneHandler.ChangeScene(SaveLoad.saveLoad.sceneNumber);
+            }
             transform.position = new Vector3
             (
                 SaveLoad.saveLoad.playerPositionX,
@@ -91,9 +133,7 @@ public class PlayerController : MonoBehaviour
                 SaveLoad.saveLoad.playerPositionZ
             );
 
-
-
-            //SceneHandler.ChangeScene(SaveLoad.saveLoad.sceneNumber);
+            cameraController.setLook(new Vector2(SaveLoad.saveLoad.lookX, SaveLoad.saveLoad.lookY));
         }
     }
     //Shit name 
