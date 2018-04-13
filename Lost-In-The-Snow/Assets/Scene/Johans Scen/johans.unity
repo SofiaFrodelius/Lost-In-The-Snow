@@ -5452,7 +5452,7 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1
+      time: 0.2166748
       value: 1
       inSlope: 0
       outSlope: 0
@@ -5464,6 +5464,7 @@ MonoBehaviour:
   sprintMultiplier: 2
   jumpStartSpeed: 6
   fallMultiplier: 2.5
+  canJump: 1
 --- !u!143 &1536951864
 CharacterController:
   m_ObjectHideFlags: 0

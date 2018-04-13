@@ -12,6 +12,7 @@ public class CharacterMovement : MonoBehaviour {
     [SerializeField] private float jumpStartSpeed;
     [Range(0, 3)]
     [SerializeField] private float fallMultiplier;
+    [SerializeField] private bool canJump;
 
     private float inputH, inputV;
     private bool inputSprint, inputJump, allowedToJump;
@@ -19,11 +20,14 @@ public class CharacterMovement : MonoBehaviour {
     private Vector3 moveDirection;
     private Vector3 lastMoveDirection;
 
+    private bool moving = false;
+    private bool toggledMoving = false;
+    private Timer tajmer;
     // Use this for initialization
     void Start () {
         cc = GetComponent<CharacterController>();
+        tajmer = new Timer();
         
-
     }
 	
 	// Update is called once per frame
@@ -34,7 +38,7 @@ public class CharacterMovement : MonoBehaviour {
         CalculateJump();
         CalculateAirTime();
         ApplyMovement();
-
+        Debug.Log(getAcceleration());
     }
     void CalculateAirTime()
     {
@@ -60,6 +64,7 @@ public class CharacterMovement : MonoBehaviour {
     
     void CalculateMovement()
     {
+        
         Vector3 lookDir = Camera.main.transform.forward;
         moveDirection = new Vector3(inputH, lastMoveDirection.y, inputV);   
 
@@ -74,23 +79,35 @@ public class CharacterMovement : MonoBehaviour {
 
     private void CalculateCurrentSpeed()
     {
-        //float dt = Time.deltaTime;
-        moveDirection.x *= movementSpeed;
-        moveDirection.z *= movementSpeed;
+
+        moveDirection.x *= movementSpeed * getAcceleration();
+        moveDirection.z *= movementSpeed * getAcceleration();
         moveDirection.x *= inputSprint ? sprintMultiplier : 1.0f;
         moveDirection.z *= inputSprint ? sprintMultiplier : 1.0f;
     }
     private void CheckInputs()
     {
-        inputH = Input.GetAxis("Horizontal");
-        inputV = Input.GetAxis("Vertical");
+        moving = Input.GetButton("Horizontal") == true || Input.GetButton("Vertical") == true ? true : false;
+        inputH = Input.GetAxisRaw("Horizontal");
+        inputV = Input.GetAxisRaw("Vertical");       
         inputSprint = Input.GetButton("Sprint") ? true : false;
-        inputJump = Input.GetButtonDown("Jump") ? true : false;
-
+        if(canJump) inputJump = Input.GetButtonDown("Jump") ? true : false;
+        
     }
     public bool getSprint()
     {
         return inputSprint;
     }
-
+    private float getAcceleration()
+    {
+        float tmp = 0;
+        TakeTame();
+        tmp =  moveAccelaration.Evaluate(tajmer.Time);
+        return tmp > 1 ? 1 : tmp;
+    }
+    void TakeTame()
+    {
+        if (moving) tajmer.addTime(Time.deltaTime);
+        else tajmer.resetTimer();
+    }
 }
