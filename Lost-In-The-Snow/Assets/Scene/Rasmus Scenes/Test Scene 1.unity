@@ -2271,7 +2271,7 @@ GameObject:
   - component: {fileID: 777246623}
   m_Layer: 0
   m_Name: Scene Switcher
-  m_TagString: Untagged
+  m_TagString: Scene Switcher
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2287,7 +2287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b37f79d67879614484385119e541ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneTarget: 0
+  sceneTarget: 1
 --- !u!4 &777246624
 Transform:
   m_ObjectHideFlags: 0

@@ -21,6 +21,11 @@ public class Item : ScriptableObject
     {
         return image;
     }
+    
+    public bool getHoldable()
+    {
+        return holdableItem;
+    }
 
     public int getId()
     {
@@ -46,7 +51,4 @@ public class Item : ScriptableObject
     {
         return associatedGameobject;
     }
-
-
-
 }

@@ -12,7 +12,7 @@ public class TreeController : MonoBehaviour, IAttackeble {
 
     void Awake()
     {
-        NavMeshObstacle nMO = gameObject.AddComponent<NavMeshObstacle>();
+        gameObject.AddComponent<NavMeshObstacle>();
     }
     public void onAttack()
     {

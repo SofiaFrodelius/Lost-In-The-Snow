@@ -4,19 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scene/OptionsMenu.unity
-    guid: 05f9aef8c99e9c6459abc20d04b4749c
-  - enabled: 1
-    path: Assets/Scene/MainMenu.unity
-    guid: ffd198116886841458246eef3b504acf
-  - enabled: 1
-    path: Assets/Scene/Emils/Main.unity
-    guid: 290f175a86355cf488498ed32aae13d4
-  - enabled: 1
-    path: Assets/Scene/Rasmus Scenes/Test Scene 1.unity
-    guid: ac34934ee878e1041b249bda9fd3f501
-  - enabled: 1
-    path: Assets/Scene/Rasmus Scenes/Test Scene 2.unity
-    guid: f08ab7e9a3a0ae84a9b8e46ea6c2200c
+  m_Scenes: []

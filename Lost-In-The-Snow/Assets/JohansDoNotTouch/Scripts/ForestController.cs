@@ -31,19 +31,24 @@ public class ForestController : MonoBehaviour
             TreeInstance ti = td.treeInstances[i];
             TreePrototype tp = td.treePrototypes[ti.prototypeIndex];
             Vector3 treePos = new Vector3(td.treeInstances[i].position.x * td.size.x + transform.position.x, td.treeInstances[i].position.y * td.size.y + transform.position.y, td.treeInstances[i].position.z * td.size.z + transform.position.z);
+           
+            
             GameObject gO = new GameObject();
             TreeController tc = gO.AddComponent<TreeController>();
             gO.transform.position = treePos;
+
             copyCapsuleCollider(gO.AddComponent<CapsuleCollider>(), tp.prefab.GetComponent<CapsuleCollider>());
+            
 
             gO.transform.parent = gameObject.transform;
             tc.Index = i;
             tc.IsChoppeble = choppeble[td.treeInstances[i].prototypeIndex];
             tc.TreeInstance = ti;
             treeControllers.Add(gO.GetComponent<TreeController>());
-
+            
             gO.name = "tree";
         }
+        
     }
 
 

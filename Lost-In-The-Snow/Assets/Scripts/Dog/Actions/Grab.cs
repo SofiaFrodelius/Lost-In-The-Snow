@@ -15,7 +15,7 @@ public class Grab : DogAction{
         isDone = true;
     }
     public void GrabEvent(IGrabable handler, BaseEventData baseEvent){
-        handler.pickUp(out item);
+        handler.getItemOnPickup(out item);
         dog.GrabbedItem = item;
     }
 }

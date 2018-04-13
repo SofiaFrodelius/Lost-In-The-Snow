@@ -35,10 +35,11 @@ public class ScreenFadeScript : MonoBehaviour
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeTexture);
     }
 
-    public void BeginFade(int direction)
+    public int BeginFade(int direction)
     {
         fadeDirection = direction;
         ResetFadeInOut();
+        return fadeTime;
     }
 
     public void InvertFade()
