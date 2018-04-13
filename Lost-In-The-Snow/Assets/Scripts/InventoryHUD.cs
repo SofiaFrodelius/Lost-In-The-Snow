@@ -7,6 +7,7 @@ public class InventoryHUD : MonoBehaviour
     public static InventoryHUD instance;
     Inventory inventory;
     private InventorySlotHUD[] inventorySlots;
+    private HoldableInventorySlotHUD[] holdableInventorySlots;
 
 
     public InventoryHUD()
@@ -24,25 +25,26 @@ public class InventoryHUD : MonoBehaviour
     public void Start()
     {
         inventorySlots = GetComponentsInChildren<InventorySlotHUD>();
+        holdableInventorySlots = GetComponentsInChildren<HoldableInventorySlotHUD>();
         inventory = Inventory.instance;
-        inventory.inventoryChangedCallback += updateHUD;
+        if(inventory != null)
+            inventory.inventoryChangedCallback += updateInventoryHUD;
     }
 
 
 
-
-
-    public void updateHUD()
+    public void updateInventoryHUD()
     {
         for(int i = 0; i < inventorySlots.Length; i++)
         {
             Item current = inventory.getItemFromSlot(i);
-            if(current != null)
+            if (current != null)
             {
                 inventorySlots[i].updateSlot(current, inventory.getNumOfItemsInSlot(i));
             }
         }
     }
+
 
     public void showInventory()
     {
