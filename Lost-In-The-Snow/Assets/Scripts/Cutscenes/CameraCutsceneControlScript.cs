@@ -6,65 +6,65 @@ using UnityEngine;
 public class CameraCutsceneControlScript : MonoBehaviour
 {
     private GameObject cameraTarget;
-    private bool cameraLock = false, cameraSmoothing = false;
-    private Vector3 oldPosition;
-    private Quaternion oldRotation;
     private float smoothSpeed = 0.0f;
     private float t = 0.0f;
+    private float xLock = 0, yLock = 0;
+    private Vector3 lockPosition;
+    private Quaternion lockRotation;
+    private Camera cam;
 
-    public void LockCameraToObjectInstant(string tagToTarget)
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
+
+    public void LockCameraToObject(string tagToTarget)
     {
         cameraTarget = GameObject.FindGameObjectWithTag(tagToTarget);
-        cameraLock = true;
-        cameraSmoothing = false;
     }
 
-    public void LockCameraToObjectSmooth(string tagToTarget, float smoothingSpeed)
+    public void UnlockCamera()
+    {
+        cameraTarget = null;
+    }
+
+    public void SetSmoothSpeed(float smoothingSpeed)
     {
         smoothSpeed = smoothingSpeed;
-        cameraTarget = GameObject.FindGameObjectWithTag(tagToTarget);
-        cameraLock = true;
-        cameraSmoothing = true;
     }
 
-    public void UnlockCameraInstant()
+    public void SetDeadZoneX(float deadX)
     {
-        cameraSmoothing = false;
-        cameraLock = false;
+        xLock = deadX;
     }
 
-    public void UnlockCameraSmooth(float smoothingSpeed)
+    public void SetDeadZoneY(float deadY)
     {
-        smoothSpeed = smoothingSpeed;
-        cameraSmoothing = true;
-        cameraLock = false;
+        yLock = deadY;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (cameraTarget != null)
+        {
+            Vector3 targetScreenPos = cam.WorldToScreenPoint(cameraTarget.transform.position);
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(targetScreenPos, 0.1f);
+            Debug.Log(targetScreenPos);
+        }
     }
 
     private void LateUpdate()
     {
-        Vector3 vectorToTarget = new Vector3(0, 0, 0);
+        //float xDif = 0, yDif = 0, zDif = 0, wDif = 0;
         if (cameraTarget != null)
         {
-            vectorToTarget = cameraTarget.transform.position - transform.position;
+            Vector3 targetScreenPos = cam.WorldToScreenPoint(cameraTarget.transform.position);
+            //cam.transform.LookAt(cameraTarget.transform);
         }
-        if (cameraSmoothing)
+        else
         {
-            Vector2 animationRotation = new Vector2(transform.rotation.x, transform.rotation.y);
-            if (cameraLock)
-            {
 
-            }
-            else
-            {
-                
-            }
-        }
-        else if (cameraLock)
-        {
-            if (cameraTarget != null)
-            {
-                Camera.main.transform.LookAt(cameraTarget.transform);
-            }
         }
     }
 }
