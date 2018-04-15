@@ -48,6 +48,10 @@ public class CharacterMovement : MonoBehaviour {
         {
             moveDirection.y += dt * fallMultiplier * Physics.gravity.y;
         }
+        else if (cc.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            moveDirection.y += dt * fallMultiplier * Physics.gravity.y;
+        }
         else
         {
             moveDirection.y += dt * Physics.gravity.y;
