@@ -11,6 +11,7 @@ public class Grab : DogAction{
         this.itemObject = itemObject;
     }
     public override void StartAction(){
+		isDone = false;
         ExecuteEvents.Execute<IGrabable>(itemObject, null, GrabEvent);
         isDone = true;
     }

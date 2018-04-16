@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public float sensitivity = 1.0f;
     private Vector2 look = Vector2.zero;
-
+    [SerializeField] private Transform playerTransform;
 
     private void Start()
     {
@@ -25,9 +25,9 @@ public class CameraController : MonoBehaviour
         look.y = Mathf.Clamp(look.y, -90, 90);
 
         transform.localRotation = Quaternion.AngleAxis(-look.y, Vector3.right);
-        transform.parent.transform.localRotation = Quaternion.AngleAxis(look.x, transform.parent.transform.up);
+        playerTransform.localRotation = Quaternion.AngleAxis(look.x, playerTransform.up);
 
-
+        
 
         //Temp
         if (Input.GetKeyDown(KeyCode.Escape))
