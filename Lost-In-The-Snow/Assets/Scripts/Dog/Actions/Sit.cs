@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Sit : DogAction {
-	Timer timer;
+	DogTimer timer;
 	public Sit(Dog d, float time): base(d){
 		moodState.ChangeMood (50f, 0f, 0f, 0f);
 		moodEffect.ChangeMood (5f, 5f, 5f, 0f);
-		timer = new Timer (time);
+		timer = new DogTimer (time);
 	}
 	public override void StartAction(){	
 		actionTimer = actionDelay;

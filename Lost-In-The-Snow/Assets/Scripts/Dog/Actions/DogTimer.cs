@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer {
+public class DogTimer {
 	private float time;
 	private float currentTime;
 	private bool isDone = false;
-	public Timer(float time){
+	public DogTimer(float time){
 		this.time = time;
 		this.currentTime = currentTime;
 	}

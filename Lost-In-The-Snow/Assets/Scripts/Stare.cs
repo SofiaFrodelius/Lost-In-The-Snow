@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Stare : DogAction {
-	Timer timer;
+	DogTimer timer;
 	public Stare(Dog d, float time): base(d){
-		timer = new Timer (time);
+		timer = new DogTimer (time);
 	}
 	public override void StartAction(){	
 		isDone = false;

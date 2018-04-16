@@ -7,10 +7,10 @@ using UnityEngine.EventSystems;
 public class FollowPlayer : DogAction{
     Transform player;
     FollowTarget followTarget;
-	Timer timer;
+	DogTimer timer;
     public FollowPlayer(Dog d, Transform player) : base(d){
     	this.player = player;
-		timer = new Timer (5f);
+		timer = new DogTimer (5f);
 		moodState.ChangeMood (80f,50f,50f,50f);
 		moodEffect.ChangeMood (10f,0f,0f,-20f);
     }
