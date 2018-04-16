@@ -22,12 +22,12 @@ public class CharacterMovement : MonoBehaviour {
 
     private bool moving = false;
     private bool toggledMoving = false;
-    private Timer tajmer;
+    private Timer accTajmer;
+
     // Use this for initialization
     void Start () {
         cc = GetComponent<CharacterController>();
-        tajmer = new Timer();
-        
+        accTajmer = new Timer(0f);
     }
 	
 	// Update is called once per frame
@@ -38,7 +38,7 @@ public class CharacterMovement : MonoBehaviour {
         CalculateJump();
         CalculateAirTime();
         ApplyMovement();
-        Debug.Log(getAcceleration());
+
     }
     void CalculateAirTime()
     {
@@ -83,7 +83,6 @@ public class CharacterMovement : MonoBehaviour {
 
     private void CalculateCurrentSpeed()
     {
-
         moveDirection.x *= movementSpeed * getAcceleration();
         moveDirection.z *= movementSpeed * getAcceleration();
         moveDirection.x *= inputSprint ? sprintMultiplier : 1.0f;
@@ -105,13 +104,15 @@ public class CharacterMovement : MonoBehaviour {
     private float getAcceleration()
     {
         float tmp = 0;
-        TakeTame();
-        tmp =  moveAccelaration.Evaluate(tajmer.Time);
+        AddTakeTame();
+        tmp =  moveAccelaration.Evaluate(accTajmer.Time);
         return tmp > 1 ? 1 : tmp;
     }
-    void TakeTame()
+
+    void AddTakeTame()
     {
-        if (moving) tajmer.addTime(Time.deltaTime);
-        else tajmer.resetTimer();
+        if (moving) accTajmer.AddTime(Time.deltaTime);
+        else accTajmer.ResetTimer();
     }
+
 }

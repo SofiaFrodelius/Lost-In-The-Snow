@@ -1,7 +1,11 @@
 ﻿public class Timer  {
     float time;
-
-
+    float startTime;
+    public Timer(float StartTime)
+    {
+        startTime = StartTime;
+        time = startTime;
+    }
     public float Time
     {
         get
@@ -13,17 +17,17 @@
             time = value;
         }
     }
-    public void addTime(float dt)
+    public void AddTime(float dt)
     {
         time += dt;
     }
-    public void subtractTime(float dt)
+    public void SubtractTime(float dt)
     {
         time -= dt;
     }
-    public void resetTimer()
+    public void ResetTimer()
     {
-        time = 0;
+        time = startTime;
     }
 
 }
