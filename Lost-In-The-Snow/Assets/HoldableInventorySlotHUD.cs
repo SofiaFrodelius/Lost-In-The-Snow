@@ -15,11 +15,12 @@ public class HoldableInventorySlotHUD : MonoBehaviour
     }
 
 
-    public void updateSlot(Item item)
+    public void updateSlot(Item item, bool selected)
     {
         Debug.Log(item);
         currentItem = item;
-        itemImage.sprite = item.getImage();
+        if (selected) itemImage.sprite = item.getSelectedImage();
+        else itemImage.sprite = item.getNeutralImage();
         itemImage.color = new Color(itemImage.color.r, itemImage.color.g, itemImage.color.b, 1);
     }
 }

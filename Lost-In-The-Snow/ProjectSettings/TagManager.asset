@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Scene Switcher
   - Testing Tag
+  - HoldableInventorySlot
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - CurrentItemInHand
   - 
   - 
   - 

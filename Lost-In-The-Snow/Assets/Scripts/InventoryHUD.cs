@@ -50,20 +50,20 @@ public class InventoryHUD : MonoBehaviour
 
     public void updateHoldableItemsHUD(int sItem)
     {
-        sItem -= 1;
-        if (sItem < 0) sItem = inventory.getNumOfUsedHoldableSlots()-1;
+        int temp = sItem;
+        temp -= 1;
+        if (temp < 0) temp = inventory.getNumOfUsedHoldableSlots()-1;
         for(int i = 0; i < holdableInventorySlots.Length; i++)
         {
-
-            Item current = inventory.getItemFromHoldableSlot(sItem);
+            Item current = inventory.getItemFromHoldableSlot(temp);
             if(current  != null)
             {
-                holdableInventorySlots[i].updateSlot(current);
+                holdableInventorySlots[i].updateSlot(current, temp == sItem);
             }
 
 
-            sItem++;
-            if (sItem >= inventory.getNumOfUsedHoldableSlots()) sItem = 0;
+            temp++;
+            if (temp >= inventory.getNumOfUsedHoldableSlots()) temp = 0;
         }
     }
 

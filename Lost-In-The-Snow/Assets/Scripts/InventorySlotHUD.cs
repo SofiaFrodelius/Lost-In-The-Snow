@@ -31,7 +31,7 @@ public class InventorySlotHUD : MonoBehaviour
     {
         itemImage.enabled = true;
         currentItem = item;
-        itemImage.sprite = item.getImage();
+        itemImage.sprite = item.getNeutralImage();
         itemDescription.text = item.getDescription();
         itemName.text = item.getName();
         numOfItemsInSlot.text = "x " + test.ToString();

@@ -9,6 +9,8 @@ public class ItemHand : MonoBehaviour
     private int scroll = 0;
     private GameObject activeItem = null;
     Inventory inventory;
+    [SerializeField]
+    private int currentItemLayerValue;
 
     public void Start()
     {
@@ -40,8 +42,23 @@ public class ItemHand : MonoBehaviour
             if (activeItem != null) Destroy(activeItem);
 
             activeItem = Instantiate(itemToInstansiate, transform);
+            activeItem.layer = currentItemLayerValue;
+            updateAllChildLayers(activeItem.gameObject);
+
         }
         inventory.holdableItemsChangedCallback.Invoke(selectedItem);
+    }
+
+
+    private void updateAllChildLayers(GameObject go)
+    {
+        go.layer = currentItemLayerValue;
+
+        foreach (Transform child in go.transform)
+        {
+            updateAllChildLayers(child.gameObject);
+        }
+        
     }
 
 }
