@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Dog : MonoBehaviour, IInteractible {
+	public LayerMask dogLayerMask;
 	public Transform player;
-	public Transform target;
-    public Transform bone;
-    public GameObject TESTBONE;
+	public Transform itemBone;
+	[Header("Debug Tools")]
 	public Transform TestWaypoint;
-
     public Item grabbedItem;
     public GameObject itemObject;
 
@@ -17,40 +16,47 @@ public class Dog : MonoBehaviour, IInteractible {
 	private Animator animator;
 
     public DogAction currentAction;
-    public List<DogAction> dogActions = new List<DogAction>();
+
+	public Mood currentMood;
 	void Start () {
         navAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        //navAgent.updatePosition = false;
-		//navAgent.updateRotation = false;
-        dogActions.Add(new FollowPlayer(this, player));
-        //currentAction = dogActions[0];
-        //currentAction = new Fetch(this, TESTBONE.transform, player);
-		currentAction = new LeadPlayer(this, player, TestWaypoint, 10f); 
-		currentAction.StartAction ();
+		currentMood.ChangeMood (50f, 0f, 30f, 0f);
     }
 	void Update(){
         if (currentAction != null)
             currentAction.UpdateAction();
     }
+	public void Print(int test){
+		print (test);
+	}
 	public void Interact(){}
+	public void AddEffectToMood(Mood effect){
+		currentMood = currentMood + effect;
+	}
     public Item GrabbedItem{
         get{ return grabbedItem; }
         set{
             if (value != null) { 
+				DropGrabbedItem();
                 grabbedItem = value;
-                DropGrabbedItem();
-                itemObject = Instantiate(grabbedItem.getAssociatedGameobject(), bone) as GameObject;
+				itemObject = Instantiate(grabbedItem.getAssociatedGameobject(), itemBone) as GameObject;
+				itemObject.transform.parent = itemBone;
                 itemObject.GetComponent<Rigidbody>().isKinematic = true;
                 itemObject.transform.localPosition = Vector3.zero;
                 itemObject.transform.localRotation = Quaternion.identity;
-            }
+			}
         }
     }
     public void DropGrabbedItem(){
         if(itemObject != null){
+			itemObject.transform.parent = null;
             itemObject.GetComponent<Rigidbody>().isKinematic = false;
-            itemObject.transform.parent = null;
+			grabbedItem = null;
+			itemObject = null;
         }
     }
+	public void gprint(string test){
+		print (test);
+	}
 }
