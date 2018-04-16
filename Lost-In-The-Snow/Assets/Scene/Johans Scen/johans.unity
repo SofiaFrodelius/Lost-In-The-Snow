@@ -121,7 +121,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 43a32d83f4060444aa0ca53e6ecd59ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.27
+      value: 28.49
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 43a32d83f4060444aa0ca53e6ecd59ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4041,7 +4041,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 621955914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 230.5, y: 304.5, z: 0}
+  m_LocalPosition: {x: 474, y: 312.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 976338906}
@@ -5371,7 +5371,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1502114241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.5, y: 152.5, z: 0}
+  m_LocalPosition: {x: -224, y: 160.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 609203684}
@@ -5452,7 +5452,7 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.2166748
+      time: 0.20080566
       value: 1
       inSlope: 0
       outSlope: 0
@@ -5462,7 +5462,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   movementSpeed: 4
   sprintMultiplier: 2
-  jumpStartSpeed: 6
+  jumpStartSpeed: 4
   fallMultiplier: 2.5
   canJump: 1
 --- !u!143 &1536951864
@@ -5607,7 +5607,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1669682120}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.5, y: -129.5, z: 0}
+  m_LocalPosition: {x: -224, y: -137.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1024477387}
