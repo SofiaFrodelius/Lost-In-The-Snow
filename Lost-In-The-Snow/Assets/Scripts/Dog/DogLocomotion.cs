@@ -68,6 +68,6 @@ public class DogLocomotion : MonoBehaviour {
 		animator.SetFloat(directionId, direction, directionDampTime, Time.deltaTime);
 	}
 	bool NavAgentDone(){
-		return !navAgent.pathPending && (navAgent.remainingDistance <= navAgent.stoppingDistance);
+		return false;//!navAgent.pathPending && (navAgent.remainingDistance <= navAgent.stoppingDistance);
 	}
 }
