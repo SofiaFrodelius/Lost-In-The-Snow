@@ -70,7 +70,8 @@ public class CharacterMovement : MonoBehaviour {
     {
         
         Vector3 lookDir = Camera.main.transform.forward;
-        moveDirection = new Vector3(inputH, lastMoveDirection.y, inputV);   
+        Vector2 dir = new Vector2(inputH, inputV).normalized;
+        moveDirection = new Vector3(dir.x, lastMoveDirection.y, dir.y);
 
     }
     void ApplyMovement()

@@ -46,14 +46,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         if (SaveLoad.saveLoad.newGame == false)
-        { 
-        cameraController.setLook(new Vector2(SaveLoad.saveLoad.lookX, SaveLoad.saveLoad.lookY));
-        transform.position = new Vector3
-         (
-              SaveLoad.saveLoad.playerPositionX,
-        SaveLoad.saveLoad.playerPositionY,
-        SaveLoad.saveLoad.playerPositionZ
-        );
+        {
+            cameraController.setLook(new Vector2(SaveLoad.saveLoad.lookX, SaveLoad.saveLoad.lookY));
+            transform.position = new Vector3
+             (
+                  SaveLoad.saveLoad.playerPositionX,
+            SaveLoad.saveLoad.playerPositionY,
+            SaveLoad.saveLoad.playerPositionZ
+            );
         }
     }
     void Update()
