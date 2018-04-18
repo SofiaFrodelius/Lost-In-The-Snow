@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 95248233648011022}
   - component: {fileID: 195993213010155288}
   - component: {fileID: 114502533327822828}
+  - component: {fileID: 114114273529156968}
+  - component: {fileID: 114518678962466912}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1954950743624112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0.35, z: 0}
+  m_LocalPosition: {x: 1.7183819, y: 1.346828, z: 12.238329}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 1954950743624112}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 37ad031672235444cbca6bdca2858302, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6f0c920475e774d7f83819a407bce763, type: 2}
+  m_Controller: {fileID: 9100000, guid: e516f1ab38c2a2b4bab24949af88bd57, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -102,6 +104,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114114273529156968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1954950743624112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea514d0ec617242a681ede91ee705ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  test: {fileID: 0}
 --- !u!114 &114502533327822828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,10 +127,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09037e63dce22476d989e7bfd990cb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dogLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   player: {fileID: 0}
-  target: {fileID: 0}
-  grabbedObject: {fileID: 0}
-  TESTBONE: {fileID: 0}
+  itemBone: {fileID: 0}
+  TestWaypoint: {fileID: 0}
+  grabbedItem: {fileID: 0}
+  itemObject: {fileID: 0}
+  currentAction: {fileID: 0}
+  currentMood:
+    happy: 0
+    inspired: 0
+    playful: 0
+    scared: 0
+--- !u!114 &114518678962466912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1954950743624112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b94f5b8ad2be5478b56d033a8780d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionResponseTime: 0.2
+  speedDampTime: 0.1
+  angularSpeedDampTime: 0.25
 --- !u!195 &195993213010155288
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -124,7 +162,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1954950743624112}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.53278255
   m_Speed: 3.5
   m_Acceleration: 8
