@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 public class LeadPlayer : DogAction{
     Transform player;
     Transform target;
@@ -13,23 +12,30 @@ public class LeadPlayer : DogAction{
         this.player = player;
 		this.target = target;
 		this.maxDistance = maxDistance;
+		importance = Importance.HIGH;
+		actionDelay = 1;
+		moodState.ChangeMood (50f, 100f, 0f, 50f);
+		moodEffect.ChangeMood (5f, 10f, 10f, -5f);
     }
 	public override void StartAction(){
-		currentAction = new FollowTarget (dog, target, true);
+		actionTimer = actionDelay;
+		currentAction = new GotoPosition (dog, target.position);
 		isWaiting = false;
 	}
-	//Måste även kolla om spelaren är närmare target etc..
     public override void UpdateAction(){
 		currentAction.UpdateAction ();
-		if (Vector3.Distance (player.position, dog.transform.position) < maxDistance || Vector3.Distance (player.position, target.position) < Vector3.Distance (dog.transform.position, target.position)) {
+		Vector2 playerPos = new Vector2 (player.position.x, player.position.z);
+		Vector2 targetPos = new Vector2 (target.position.x, target.position.z);
+		Vector2 dogPos = new Vector2 (dog.transform.position.x, dog.transform.position.z);
+		if (Vector2.Distance (playerPos, dogPos) < maxDistance || Vector2.Distance (playerPos, targetPos) < Vector2.Distance (dogPos, targetPos)) {
 			if (isWaiting) {
 				if (currentAction.IsDone ()) {
-					currentAction = new FollowTarget (dog, target, true);
+					currentAction = new GotoPosition (dog, target.position);
 					isWaiting = false;
 				}
 			}
 		} else {
-			if (Vector3.Distance (player.position, target.position) > Vector3.Distance (dog.transform.position, target.position)) {
+			if (Vector2.Distance (playerPos, targetPos) > Vector2.Distance (dogPos, targetPos)) {
 				if (!isWaiting) {
 					currentAction.EndAction ();
 					currentAction = new WaitForPlayer (dog, player,target, maxDistance);
@@ -39,4 +45,8 @@ public class LeadPlayer : DogAction{
 			}
 		}
     }
+	public override void EndAction(){
+		dog.AddEffectToMood (moodEffect);
+		isDone = true;
+	}
 }

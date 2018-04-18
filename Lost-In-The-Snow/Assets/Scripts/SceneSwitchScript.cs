@@ -13,10 +13,18 @@ public class SceneSwitchScript : MonoBehaviour
 
     public void ActivateSceneSwitch()
     {
-        GameObject SceneSwitcher = GameObject.Find("Scene Switcher");
-        if (SceneSwitcher != null)
-            fadeTime = SceneSwitcher.GetComponent<SceneFade>().BeginFade(1);
+        GameObject ScreenFader = transform.GetChild(0).gameObject;
+        if (ScreenFader != null)
+            fadeTime = ScreenFader.GetComponent<ScreenFadeScript>().BeginFade(1);
+        else
+            Debug.LogWarning("Object does not have a Screen Fader", this);
         active = true;
+    }
+
+    public void ActivateSceneSwitch(int index)
+    {
+        sceneTarget = index;
+        ActivateSceneSwitch();
     }
 
     private void Update()
@@ -31,6 +39,7 @@ public class SceneSwitchScript : MonoBehaviour
             {
                 active = false;
                 wait = 0.0f;
+                fadeTime = 0;
                 SceneHandler.ChangeScene(sceneTarget);
             }
         }

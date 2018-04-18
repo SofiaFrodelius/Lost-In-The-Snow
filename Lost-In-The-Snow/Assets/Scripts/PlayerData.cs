@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
-public static class PlayerData
+public class PlayerData : MonoBehaviour
 {
-    private static Transform playerTransform;
+
 }
+

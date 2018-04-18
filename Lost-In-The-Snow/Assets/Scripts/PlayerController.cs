@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -27,13 +28,33 @@ public class PlayerController : MonoBehaviour
     private float JumpVelocity;
     private bool isCrouching = false;
     private bool isRunning = false;
+    private bool isPaused = false;
 
     Vector3 movingVelocity;
     Vector3 movingVelocityController;
+
+    CameraController cameraController;
+    PauseMenu pauseMenu;
     private void Awake()
     {
+        cameraController = GetComponentInChildren<CameraController>();
         characterController = GetComponent<CharacterController>();
+        pauseMenu = GetComponentInChildren<PauseMenu>();
         JumpVelocity = Mathf.Sqrt(2 * JumpHeight / -Physics.gravity.y) * -Physics.gravity.y;
+    }
+
+    void Start()
+    {
+        if (SaveLoad.saveLoad.newGame == false)
+        { 
+        cameraController.setLook(new Vector2(SaveLoad.saveLoad.lookX, SaveLoad.saveLoad.lookY));
+        transform.position = new Vector3
+         (
+              SaveLoad.saveLoad.playerPositionX,
+        SaveLoad.saveLoad.playerPositionY,
+        SaveLoad.saveLoad.playerPositionZ
+        );
+        }
     }
     void Update()
     {
@@ -63,6 +84,57 @@ public class PlayerController : MonoBehaviour
         movingVelocity.z *= speedModifier;
         characterController.Move(movingVelocity * Time.deltaTime);
         //characterController.Move(speed * movingVelocityController * Time.deltaTime);
+
+        //temporary stuff to deal with saves
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            SaveLoad.saveLoad.Delete();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SaveLoad.saveLoad.playerPositionX = transform.position.x;
+            SaveLoad.saveLoad.playerPositionY = transform.position.y;
+            SaveLoad.saveLoad.playerPositionZ = transform.position.z;
+            SaveLoad.saveLoad.lookX = cameraController.getLook().x;
+            SaveLoad.saveLoad.lookY = cameraController.getLook().y;
+            SaveLoad.saveLoad.sceneNumber = SceneManager.GetActiveScene().buildIndex;
+            SaveLoad.saveLoad.Save();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (isPaused == false)
+            {
+                Time.timeScale = 0;
+                cameraController.enabled = false;
+                isPaused = true;
+            }
+
+            else if (isPaused == true)
+            {
+                Time.timeScale = 1;
+                cameraController.enabled = true;
+                isPaused = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SaveLoad.saveLoad.Load();
+            if (SceneManager.GetActiveScene().buildIndex != SaveLoad.saveLoad.sceneNumber)
+            {
+                SceneHandler.ChangeScene(SaveLoad.saveLoad.sceneNumber);
+            }
+            transform.position = new Vector3
+            (
+                SaveLoad.saveLoad.playerPositionX,
+                SaveLoad.saveLoad.playerPositionY,
+                SaveLoad.saveLoad.playerPositionZ
+            );
+
+            cameraController.setLook(new Vector2(SaveLoad.saveLoad.lookX, SaveLoad.saveLoad.lookY));
+        }
     }
     //Shit name 
     void CalculateSpeed()
@@ -101,7 +173,7 @@ public class PlayerController : MonoBehaviour
         Inventory inventory;
         inventory = Inventory.instance;
         Item item;
-        handler.pickUp(out item);
+        handler.getItemOnPickup(out item);
         if(inventory != null)
             inventory.addItem(item);
     }

@@ -11,11 +11,12 @@ public class Grab : DogAction{
         this.itemObject = itemObject;
     }
     public override void StartAction(){
+		isDone = false;
         ExecuteEvents.Execute<IGrabable>(itemObject, null, GrabEvent);
         isDone = true;
     }
     public void GrabEvent(IGrabable handler, BaseEventData baseEvent){
-        handler.pickUp(out item);
+        handler.getItemOnPickup(out item);
         dog.GrabbedItem = item;
     }
 }

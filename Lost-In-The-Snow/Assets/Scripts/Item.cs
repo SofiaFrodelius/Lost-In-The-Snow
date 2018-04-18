@@ -9,7 +9,9 @@ public class Item : ScriptableObject
     [SerializeField]
     private string itemName, itemDescription;
     [SerializeField]
-    private Sprite image;
+    private Sprite neutralImage;
+    [SerializeField]
+    private Sprite selectedImage;
     [SerializeField]
     private GameObject associatedGameobject;
     [SerializeField]
@@ -17,9 +19,19 @@ public class Item : ScriptableObject
 
 
 
-    public Sprite getImage()
+    public Sprite getNeutralImage()
     {
-        return image;
+        return neutralImage;
+    }
+
+    public Sprite getSelectedImage()
+    {
+        return selectedImage;
+    }
+    
+    public bool getHoldable()
+    {
+        return holdableItem;
     }
 
     public int getId()
@@ -46,7 +58,4 @@ public class Item : ScriptableObject
     {
         return associatedGameobject;
     }
-
-
-
 }
