@@ -35,6 +35,7 @@ public class SniffForTree : DogAction {
 	}
 	public override void EndAction(){
 		dog.AddEffectToMood (moodEffect);
+		currentAction.EndAction ();
 	}
 	void NextAction(){
 		if (actionCount < actions.Count){

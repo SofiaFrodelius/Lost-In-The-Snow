@@ -244,12 +244,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 511863677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b94f5b8ad2be5478b56d033a8780d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 09037e63dce22476d989e7bfd990cb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionResponseTime: 0.2
-  speedDampTime: 1
-  angularSpeedDampTime: 0.25
+  dogLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  player: {fileID: 1020930678}
+  itemBone: {fileID: 511863683}
+  terrain: {fileID: 0}
+  currentMood:
+    happy: 0
+    inspired: 0
+    playful: 0
+    scared: 0
+  TestWaypoint: {fileID: 0}
+  grabbedItem: {fileID: 0}
+  itemObject: {fileID: 0}
+  currentAction: {fileID: 0}
 --- !u!114 &511863679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,31 +274,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: {fileID: 0}
---- !u!114 &511863680
-MonoBehaviour:
+--- !u!65 &511863680
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 511863677}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09037e63dce22476d989e7bfd990cb59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dogLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  player: {fileID: 1020930678}
-  itemBone: {fileID: 511863683}
-  TestWaypoint: {fileID: 0}
-  grabbedItem: {fileID: 0}
-  itemObject: {fileID: 0}
-  currentAction: {fileID: 0}
-  currentMood:
-    happy: 0
-    inspired: 0
-    playful: 0
-    scared: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!195 &511863681
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -308,6 +307,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &511863682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 511863677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b94f5b8ad2be5478b56d033a8780d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionResponseTime: 0.2
+  speedDampTime: 0.1
+  angularSpeedDampTime: 0.25
 --- !u!4 &511863683 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400046, guid: c3203ce71b4ca0d448140e825c860167, type: 3}
