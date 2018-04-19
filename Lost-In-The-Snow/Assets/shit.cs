@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public class trigger : MonoBehaviour {
-    public coll trigger.collider();
+    //public coll trigger.collider();
 
     void OnTriggerEnter(Collider other)
     {
