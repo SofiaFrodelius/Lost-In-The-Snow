@@ -17,6 +17,6 @@ MonoBehaviour:
   itemDescription: Throweble Snow Ball
   neutralImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   selectedImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  associatedGameobject: {fileID: 1973034880197296, guid: 2ae1c15b67f53da40a1da6abafcdf7d9,
+  associatedGameobject: {fileID: 1973034880197296, guid: 012ff040b6530fa4c91bf90850265ae2,
     type: 2}
   holdableItem: 1

@@ -14,7 +14,7 @@ public class TutorialDisabler : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             RaycastHit hit = new RaycastHit();
-            Ray ray = new Ray(transform.GetChild(0).transform.position, transform.GetChild(0).transform.forward);
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
             
             if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
