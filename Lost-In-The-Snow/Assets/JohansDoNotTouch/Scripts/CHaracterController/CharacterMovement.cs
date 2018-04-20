@@ -24,33 +24,12 @@ public class CharacterMovement : MonoBehaviour {
     private bool toggledMoving = false;
     private Timer accTajmer;
 
-    CharacterController characterController;
-    CameraController cameraController;
-
-    //Needed to load saved position when switching scenes, WILL BE REMOVED LATER
-    private void Awake()
-    {
-        cameraController = GetComponentInChildren<CameraController>();
-        characterController = GetComponent<CharacterController>();
-    }
-
     // Use this for initialization
-    void Start()
-    {
+    void Start () {
         cc = GetComponent<CharacterController>();
         accTajmer = new Timer(0f);
-        if (SaveLoad.saveLoad.newGame == false) // WILL ALSO BE REMOVED LATER
-        {
-            cameraController.setLook(new Vector2(SaveLoad.saveLoad.lookX, SaveLoad.saveLoad.lookY));
-            transform.position = new Vector3
-             (
-            SaveLoad.saveLoad.playerPositionX,
-            SaveLoad.saveLoad.playerPositionY,
-            SaveLoad.saveLoad.playerPositionZ
-            );
-        }
     }
-
+	
 	// Update is called once per frame
 	void Update (){
         CheckInputs();

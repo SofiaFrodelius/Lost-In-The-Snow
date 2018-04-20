@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor.SceneManagement;
 using System;
 using System.IO;
-using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveLoad : MonoBehaviour {
@@ -22,9 +21,7 @@ public class SaveLoad : MonoBehaviour {
     public float lookY;
     public int sceneNumber;
     public bool newGame = true;
-    private bool isPaused = false;
     CameraController cameraController;
-    CharacterController characterController;
 
     void Awake()
     {
@@ -37,45 +34,10 @@ public class SaveLoad : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-
-        characterController = FindObjectOfType<CharacterController>();
-        cameraController = FindObjectOfType<CameraController>();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Save();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Load();
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Delete();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Pause();
-        }
-    }
-
+    
     public void Save()
     {
-        saveLoad.playerPositionX = characterController.transform.position.x;
-        saveLoad.playerPositionY = characterController.transform.position.y;
-        saveLoad.playerPositionZ = characterController.transform.position.z;
-        saveLoad.lookX = cameraController.getLook().x;
-        saveLoad.lookY = cameraController.getLook().y;
-        saveLoad.sceneNumber = SceneManager.GetActiveScene().buildIndex;
-
-
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
 
@@ -95,8 +57,6 @@ public class SaveLoad : MonoBehaviour {
     {
         if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
-
-
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
 
@@ -110,20 +70,6 @@ public class SaveLoad : MonoBehaviour {
             lookY = data.lkY;
             sceneNumber = data.SceneNr;
             newGame = false;
-
-            if (SceneManager.GetActiveScene().buildIndex != saveLoad.sceneNumber)
-            {
-                SceneHandler.ChangeScene(SaveLoad.saveLoad.sceneNumber);
-            }
-            else { 
-                characterController.transform.position = new Vector3
-                (
-                    saveLoad.playerPositionX,
-                    saveLoad.playerPositionY,
-                    saveLoad.playerPositionZ
-                );
-                cameraController.setLook(new Vector2(saveLoad.lookX, saveLoad.lookY));
-            }
         }
     }
 
@@ -137,18 +83,9 @@ public class SaveLoad : MonoBehaviour {
 
     public void Pause()
     {
-        if (isPaused == false)
-        { 
-            Time.timeScale = 0;
-            cameraController.enabled = false;
-            isPaused = true;
-        }
-        else if (isPaused == true)
-        {
-            Time.timeScale = 1;
-            cameraController.enabled = true;
-            isPaused = false;
-        }
+        cameraController = GetComponent<CameraController>();
+        Time.timeScale = 0;
+        cameraController.enabled = false;
     }
 }
 

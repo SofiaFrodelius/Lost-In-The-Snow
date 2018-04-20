@@ -37,6 +37,7 @@ public class DogLocomotion : MonoBehaviour {
 		}else{
 			//Hämtar hastigheten med navagentens desirededVelocitys längd.
 			float speed = navAgent.desiredVelocity.magnitude;
+			print (speed);
 			//Hämtar inversen av rotationen mutliplicerat av desiredVelocity
 			Vector3 velocity = Quaternion.Inverse(transform.rotation) * navAgent.desiredVelocity;
 			//Beräknar vinkeln mot velocityn i grader.
@@ -55,7 +56,7 @@ public class DogLocomotion : MonoBehaviour {
 
 		bool inTransition = animator.IsInTransition(0);
 		bool inIdle = state.IsName("Locomotion.Idle");
-		bool inBasicWalk = state.IsName("Locomotion.BasicWalk");
+		bool inBasicWalk = state.IsName("Locomotion.WalkRun");
 
 		//float speedDampTime = inIdle ? 0 : speedDampTime;
 		//float angularSpeedDampTime = inBasicWalk || inTransition ? angularSpeedDampTime : 0;
@@ -63,11 +64,11 @@ public class DogLocomotion : MonoBehaviour {
 
 		float angularSpeed = direction / directionResponseTime;
 
-		animator.SetFloat(speedId, speed, inIdle ? 0 : speedDampTime, Time.deltaTime);
+		animator.SetFloat(speedId, speed, inIdle ? speedDampTime : speedDampTime, Time.deltaTime);
 		animator.SetFloat(angularSpeedId, angularSpeed, inBasicWalk || inTransition ? angularSpeedDampTime : 0, Time.deltaTime);
 		animator.SetFloat(directionId, direction, directionDampTime, Time.deltaTime);
 	}
 	bool NavAgentDone(){
-		return false;//!navAgent.pathPending && (navAgent.remainingDistance <= navAgent.stoppingDistance);
+		return !navAgent.pathPending && (navAgent.remainingDistance <= navAgent.stoppingDistance);
 	}
 }
