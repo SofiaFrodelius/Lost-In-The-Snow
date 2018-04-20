@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4842214411890914}
-  - component: {fileID: 114022937618932016}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -61,7 +60,6 @@ GameObject:
   - component: {fileID: 114334349074870500}
   - component: {fileID: 114414563427012040}
   - component: {fileID: 114218086237240180}
-  - component: {fileID: 114952659529243708}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -120,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1330890236756302}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.358, y: -0.214, z: 0.665}
+  m_LocalPosition: {x: 0.11899996, y: -0.44499993, z: 0.55400026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4393301412514220}
@@ -133,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1505270594914464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 4.5, y: 1.4, z: -12.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4298512286786366}
@@ -223,18 +221,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1347977700862352}
   m_Enabled: 1
---- !u!114 &114022937618932016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330890236756302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a436598b84f29e74cbd949a4446b3566, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentItemLayerValue: 9
 --- !u!114 &114171834318212094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 1
+  playerTransform: {fileID: 4850742869615414}
 --- !u!114 &114218086237240180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,21 +305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7aaf86f5ebf994449e641b8fa8bdd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ih: {fileID: 114022937618932016}
---- !u!114 &114952659529243708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1505270594914464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 346a495095d672743a18a7feceaa91b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfSlots: 5
-  numOfHoldableSlots: 3
-  testItem: {fileID: 0}
 --- !u!124 &124971284006121116
 Behaviour:
   m_ObjectHideFlags: 1
@@ -348,7 +320,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1505270594914464}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1

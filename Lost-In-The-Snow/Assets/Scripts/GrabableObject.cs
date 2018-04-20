@@ -10,9 +10,7 @@ public class GrabableObject : MonoBehaviour, IGrabable {
     {
         //all i want from c# is pointers :(
         item = itemType;
-
         Destroy(gameObject);
-
     }
 
     public void Drop()

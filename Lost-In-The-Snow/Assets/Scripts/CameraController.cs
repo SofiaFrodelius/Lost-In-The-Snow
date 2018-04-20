@@ -6,12 +6,11 @@ public class CameraController : MonoBehaviour
 {
     public float sensitivity = 1.0f;
     private Vector2 look = Vector2.zero;
-    private Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        playerTransform = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

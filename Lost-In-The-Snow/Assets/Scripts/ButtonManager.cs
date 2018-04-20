@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour {
-
+    
     public void StartBtn(string SceneName)
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoadBtn(string SceneName)
     {
         SceneManager.LoadScene(1);
     }
