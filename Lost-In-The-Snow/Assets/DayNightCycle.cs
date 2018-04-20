@@ -54,7 +54,7 @@ public class DayNightCycle : MonoBehaviour
         {
             updateBlend();
             rotate(sun.gameObject);
-            RenderSettings.sun.intensity = sunIntensityCurve.Evaluate(blend);
+            sun.intensity = sunIntensityCurve.Evaluate(blend);
             setColors();
             nightTime = true;
             elapsedTime += Time.deltaTime;
