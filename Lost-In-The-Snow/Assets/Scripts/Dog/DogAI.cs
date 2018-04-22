@@ -11,7 +11,6 @@ public class DogAI : MonoBehaviour {
 	private List<DogAction> interactActions = new List<DogAction>();
 	private enum ActionType{ IDLE, ACTIVE};
 	private Mood bestMood;
-	public MonoScript test;
 
 	private Dog dog;
 	void Start(){

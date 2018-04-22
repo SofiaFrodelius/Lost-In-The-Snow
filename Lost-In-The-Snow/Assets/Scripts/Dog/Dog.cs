@@ -13,6 +13,7 @@ public class Dog : MonoBehaviour, IInteractible {
 	public Transform itemBone;
 	public Terrain terrain;
 	public Mood currentMood;
+
 	[Header("Debug Tools")]
 	public Transform TestWaypoint;
     public Item grabbedItem;
@@ -25,6 +26,10 @@ public class Dog : MonoBehaviour, IInteractible {
 	private const float defaultSpeed = 8f;
 
 	void Start () {
+		if (player == null)player = GameObject.FindGameObjectWithTag ("Player").transform;
+		if (itemBone == null)itemBone = transform;
+		if(terrain == null) terrain = Terrain.activeTerrain;
+
 		ai = GetComponent<DogAI>();
 		animator = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();

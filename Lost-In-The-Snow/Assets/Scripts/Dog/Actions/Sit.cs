@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Sit : DogAction {
 	DogTimer timer;
 	public Sit(Dog d, float time): base(d){
