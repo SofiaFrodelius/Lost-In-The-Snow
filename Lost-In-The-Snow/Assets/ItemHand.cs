@@ -18,6 +18,8 @@ public class ItemHand : MonoBehaviour
         if(inventory != null)
             inventory.updateItemInHandCallback += updateItemInHand;
     }
+    
+    
 
     public void Update()
     {
@@ -46,7 +48,8 @@ public class ItemHand : MonoBehaviour
             updateAllChildLayers(activeItem.gameObject);
 
         }
-        inventory.holdableItemsChangedCallback.Invoke(selectedItem);
+        if(inventory.holdableItemsChangedCallback != null) //if hud exists
+            inventory.holdableItemsChangedCallback.Invoke(selectedItem);
     }
 
 
@@ -59,6 +62,20 @@ public class ItemHand : MonoBehaviour
             updateAllChildLayers(child.gameObject);
         }
         
+    }
+    public GameObject ActiveItem
+    {
+        get
+        {
+            return activeItem;
+        }
+        set
+        {
+            activeItem = value;
+            
+            if (inventory.holdableItemsChangedCallback != null) //if hud exists
+                inventory.holdableItemsChangedCallback.Invoke(selectedItem); 
+        }
     }
 
 }
