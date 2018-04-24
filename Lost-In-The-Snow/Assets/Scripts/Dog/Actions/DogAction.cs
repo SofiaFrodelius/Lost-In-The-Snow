@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class DogAction {
+using UnityEngine.Events;
+
+public class DogAction{
 	public string name;
 	protected int actionDelay;
 	protected int actionTimer;
