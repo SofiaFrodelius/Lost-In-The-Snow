@@ -2,35 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+[RequireComponent(typeof(DogAI))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(DogLocomotion))]
 public class Dog : MonoBehaviour, IInteractible {
 	public LayerMask dogLayerMask;
 	public Transform player;
 	public Transform itemBone;
+	public Terrain terrain;
+	public Mood currentMood;
+
 	[Header("Debug Tools")]
 	public Transform TestWaypoint;
     public Item grabbedItem;
     public GameObject itemObject;
+	public DogAction currentAction;
 
-    private NavMeshAgent navAgent;
+	private DogAI ai;
 	private Animator animator;
+	private NavMeshAgent navAgent;
+	private const float defaultSpeed = 8f;
 
-    public DogAction currentAction;
-
-	public Mood currentMood;
 	void Start () {
+		if (player == null)player = GameObject.FindGameObjectWithTag ("Player").transform;
+		if (itemBone == null)itemBone = transform;
+		if(terrain == null) terrain = Terrain.activeTerrain;
+
+		ai = GetComponent<DogAI>();
+		animator = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
 		currentMood.ChangeMood (50f, 0f, 30f, 0f);
     }
 	void Update(){
         if (currentAction != null)
             currentAction.UpdateAction();
     }
-	public void Print(int test){
-		print (test);
+	public void Interact(){
+		ai.StartAction (new Sit (this, 5f));
 	}
-	public void Interact(){}
 	public void AddEffectToMood(Mood effect){
 		currentMood = currentMood + effect;
 	}
@@ -56,7 +67,10 @@ public class Dog : MonoBehaviour, IInteractible {
 			itemObject = null;
         }
     }
-	public void gprint(string test){
+	public float GetDefaultSpeed(){
+		return defaultSpeed;
+	}
+	public void Print(string test){
 		print (test);
 	}
 }

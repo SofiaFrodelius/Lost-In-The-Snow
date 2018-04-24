@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class DogAction : ScriptableObject{
+using UnityEngine.Events;
+
+public class DogAction{
+	public string name;
 	protected int actionDelay;
 	protected int actionTimer;
 	protected Mood moodState;

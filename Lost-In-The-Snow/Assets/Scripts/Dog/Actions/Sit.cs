@@ -11,6 +11,7 @@ public class Sit : DogAction {
 	}
 	public override void StartAction(){	
 		actionTimer = actionDelay;
+		timer.ResetTimer ();
 		isDone = false;
 		//actions.add(PlaySitAnimation);
 	}
@@ -25,3 +26,5 @@ public class Sit : DogAction {
 		dog.AddEffectToMood (moodEffect);
 	}
 }
+
+

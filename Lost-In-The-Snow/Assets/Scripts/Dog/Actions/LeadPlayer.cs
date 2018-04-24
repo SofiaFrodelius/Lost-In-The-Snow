@@ -47,6 +47,7 @@ public class LeadPlayer : DogAction{
     }
 	public override void EndAction(){
 		dog.AddEffectToMood (moodEffect);
+		currentAction.EndAction ();
 		isDone = true;
 	}
 }
