@@ -8,17 +8,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 6c6e44f78bcd0e7418a8a33c9979ccaf, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: 7d537d74d9a907e459a74ca1f606274e, type: 3}
+>>>>>>> 6da028db2cb12b0c3ccefdd707a7cf6ccd34ec35
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
+<<<<<<< HEAD
   sourceProjectPath: \\hsnas6\StudentHome\2016\d16carso\Downloads\Lost In The Snow
     FMOD\Lost In The Snow.fspro
   SourceProjectPathUnformatted: \\hsnas6\StudentHome\2016\d16carso\Downloads\Lost
     In The Snow FMOD\Lost In The Snow.fspro
   SourceBankPathUnformatted: \\hsnas6\StudentHome\2016\d16carso\Downloads\Lost In
     The Snow FMOD\Build
+=======
+  sourceProjectPath: 
+  SourceProjectPathUnformatted: 
+  SourceBankPathUnformatted: 
+>>>>>>> 6da028db2cb12b0c3ccefdd707a7cf6ccd34ec35
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0
@@ -44,9 +54,7 @@ MonoBehaviour:
     Value: 1
   - Platform: 2
     Value: 0
-  BankDirectorySettings:
-  - Platform: 2
-    Value: Desktop
+  BankDirectorySettings: []
   VirtualChannelSettings:
   - Platform: 1
     Value: 1024
@@ -58,5 +66,5 @@ MonoBehaviour:
   - Platform: 2
     Value: 32
   Plugins: []
-  MasterBank: Master Bank
+  MasterBank: 
   Banks: []
