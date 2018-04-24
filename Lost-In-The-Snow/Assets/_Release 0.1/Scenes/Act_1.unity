@@ -39,6 +39,20 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1040827643}
   m_IndirectSpecularColor: {r: 0.5756412, g: 1.7628362, b: 3.42203, a: 1}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  m_Sun: {fileID: 0}
+<<<<<<< HEAD
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+>>>>>>> b3599e23427ccee1733a1aff29ac5cda8fd4866f
+>>>>>>> e8ed77d76916d2f44a75413dc903da63900025df
+=======
+>>>>>>> parent of e1b6dfe... Merge
+>>>>>>> 90ed1c1430be697f9425982267197b61e30db06a
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -149,6 +163,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8114afb10b595324eb5290c5fd62d88d, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
+=======
+      objectReference: {fileID: 0}
+>>>>>>> 90ed1c1430be697f9425982267197b61e30db06a
       value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
