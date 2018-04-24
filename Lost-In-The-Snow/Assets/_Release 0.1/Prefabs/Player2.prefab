@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4808309561462426}
   - component: {fileID: 95987831283696492}
-  - component: {fileID: 114367189004626724}
   - component: {fileID: 114561170369674352}
+  - component: {fileID: 114384728933130644}
   m_Layer: 0
   m_Name: HeadBobShell
   m_TagString: Untagged
@@ -356,7 +356,7 @@ MonoBehaviour:
   interactLayerMask:
     serializedVersion: 2
     m_Bits: 4294967039
---- !u!114 &114367189004626724
+--- !u!114 &114384728933130644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -364,10 +364,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1700513790109156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Script: {fileID: 11500000, guid: 4038cc60b8badbf449a41fc3d9baaffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: "event:/Ljud/Avatar/Fotsteg/Fotsteg Sn\xF6"
+  Event: 
   PlayEvent: 0
   StopEvent: 0
   CollisionTag: 
@@ -376,8 +376,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!114 &114414563427012040
 MonoBehaviour:
   m_ObjectHideFlags: 1

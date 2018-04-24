@@ -25,8 +25,10 @@ public class ChracterInteract : MonoBehaviour
 
     void CallDog()
     {
+        print("hej");
         if (Input.GetButtonDown("CallDog"))
         {
+            print("hejdå");
             print("ROPAR ILAAAAA!");
         }
     }
