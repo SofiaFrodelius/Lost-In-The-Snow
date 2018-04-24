@@ -50,7 +50,7 @@ MonoBehaviour:
       ambientOnly: 0
       highPrecision: 0
   screenSpaceReflection:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       reflection:
         blendType: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   userLut:
     m_Enabled: 0
     m_Settings:
-      lut: {fileID: 0}
+      lut: {fileID: 2800000, guid: 273d51551ef36d64283f6493ebb289b7, type: 3}
       contribution: 1
   chromaticAberration:
     m_Enabled: 0
