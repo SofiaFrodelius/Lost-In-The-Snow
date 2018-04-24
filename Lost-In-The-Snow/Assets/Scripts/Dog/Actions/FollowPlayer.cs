@@ -16,7 +16,7 @@ public class FollowPlayer : DogAction{
     }
 	public override void StartAction(){
 		isDone = false;
-		followTarget = new FollowTarget(dog, player, player.forward, false, 1f);
+		followTarget = new FollowTarget(dog, player, Vector3.zero, false, 3f);
 		followTarget.StartAction ();
 	}
     public override void UpdateAction(){
