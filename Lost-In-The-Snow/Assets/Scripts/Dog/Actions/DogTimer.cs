@@ -11,9 +11,11 @@ public class DogTimer {
 		this.currentTime = currentTime;
 	}
 	public void AddTime(float t){
-		if (currentTime > time) {
+		if (time < 0)
+			return;
+		if (currentTime > time) 
 			isDone = true;
-		}else
+		else
 			currentTime += t;
 	}
 	public void ResetTimer(){

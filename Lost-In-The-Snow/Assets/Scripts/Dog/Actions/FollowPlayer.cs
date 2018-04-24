@@ -10,7 +10,7 @@ public class FollowPlayer : DogAction{
 	DogTimer timer;
     public FollowPlayer(Dog d, Transform player) : base(d){
     	this.player = player;
-		timer = new DogTimer (500f);
+		timer = new DogTimer (5F);
 		moodState.ChangeMood (80f,50f,50f,50f);
 		moodEffect.ChangeMood (10f,0f,0f,-20f);
     }
@@ -33,6 +33,7 @@ public class FollowPlayer : DogAction{
     }
 	public override void EndAction(){
 		dog.AddEffectToMood (moodEffect);
+		followTarget.EndAction ();
 		timer.ResetTimer ();
 		isDone = true;
 	}
