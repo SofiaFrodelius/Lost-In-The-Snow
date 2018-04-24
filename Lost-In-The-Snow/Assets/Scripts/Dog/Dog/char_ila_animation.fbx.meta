@@ -219,8 +219,6 @@ ModelImporter:
     7400012: Walk Right 12
     7400014: Idle
     7400016: 186
-    7400018: Sitting Idle
-    7400020: Pet
     9500000: //RootNode
     13700000: char_ila
   externalObjects:
@@ -228,7 +226,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_char_dog2
-    second: {fileID: 2100000, guid: acfb2f128a3544041948567fb679426b, type: 2}
+    second: {fileID: 2100000, guid: 3060f4e58ea9a4e9badf8569d5de7f0a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -454,71 +452,15 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle
       takeName: Take 001
-      firstFrame: 281
-      lastFrame: 320
+      firstFrame: 1
+      lastFrame: 2
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Sitting Idle
-      takeName: Take 001
-      firstFrame: 331
-      lastFrame: 370
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Pet
-      takeName: Take 001
-      firstFrame: 381
-      lastFrame: 564
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

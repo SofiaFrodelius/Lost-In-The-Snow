@@ -34,14 +34,13 @@ public class Dog : MonoBehaviour, IInteractible {
 		animator = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
 		currentMood.ChangeMood (50f, 0f, 30f, 0f);
-		//navAgent.SetDestination (player.position);
     }
 	void Update(){
         if (currentAction != null)
             currentAction.UpdateAction();
     }
 	public void Interact(){
-		animator.SetTrigger ("Pet");
+		ai.StartAction (new Sit (this, 5f));
 	}
 	public void AddEffectToMood(Mood effect){
 		currentMood = currentMood + effect;
