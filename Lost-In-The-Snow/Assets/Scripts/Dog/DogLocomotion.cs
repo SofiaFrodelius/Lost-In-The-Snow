@@ -37,7 +37,6 @@ public class DogLocomotion : MonoBehaviour {
 		}else{
 			//Hämtar hastigheten med navagentens desirededVelocitys längd.
 			float speed = navAgent.desiredVelocity.magnitude;
-			print (speed);
 			//Hämtar inversen av rotationen mutliplicerat av desiredVelocity
 			Vector3 velocity = Quaternion.Inverse(transform.rotation) * navAgent.desiredVelocity;
 			//Beräknar vinkeln mot velocityn i grader.
