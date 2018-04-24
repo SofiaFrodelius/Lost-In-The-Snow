@@ -18,7 +18,9 @@ public class ThrowableItem : MonoBehaviour, IUsable {
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("ColliderHit, Ha sönder snöboll och spawna partiklar");
-        rb.velocity = Vector3.zero;
-        rb.useGravity = false;
+		if (rb != null) {
+			rb.velocity = Vector3.zero;
+			rb.useGravity = false;
+		}
     }
 }
