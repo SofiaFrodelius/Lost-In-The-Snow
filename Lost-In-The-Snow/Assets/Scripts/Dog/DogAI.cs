@@ -41,7 +41,7 @@ public class DogAI : MonoBehaviour {
 		if (dog.currentAction != null) {
 			if (dog.currentAction.IsDone ()) {
 				EndAction ();
-			} else if (Input.GetKeyDown (KeyCode.LeftShift)) {//Player.getspeed > walking speed <-- me ny player controller.
+			} else if (!dog.player.GetComponent<CharacterMovement>().getSprint()) {//Player.getspeed > walking speed <-- me ny player controller.
 				if (dog.currentAction.GetImportance () != DogAction.Importance.HIGH) {
 					EndAction ();
 					dog.currentAction = activeActions [0];
