@@ -18,7 +18,17 @@ public class ChracterInteract : MonoBehaviour
     void Update()
     {
         Interact();
+        CallDog();
 
+    }
+
+
+    void CallDog()
+    {
+        if (Input.GetButtonDown("CallDog"))
+        {
+            print("ROPAR ILAAAAA!");
+        }
     }
     void Interact()
     {

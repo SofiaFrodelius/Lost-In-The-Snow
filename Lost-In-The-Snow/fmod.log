@@ -8,7 +8,7 @@
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000000049E30758 isAsync 1 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000000003DC64DC8 isAsync 1 updatePeriod 0.02
 [LOG] Thread::initThread                       : Init FMOD Studio update thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
@@ -26,14 +26,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_4', format=2, channels=2, frequency=48000, lengthbytes=26912, lengthpcm=28190, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.544586.
@@ -42,14 +42,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_3', format=2, channels=2, frequency=48000, lengthbytes=37408, lengthpcm=38382, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.438446.
@@ -58,14 +58,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_6', format=2, channels=2, frequency=48000, lengthbytes=31488, lengthpcm=31091, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.463867.
@@ -74,14 +74,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_1', format=2, channels=2, frequency=48000, lengthbytes=28128, lengthpcm=29754, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.982513.
@@ -90,14 +90,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_9', format=2, channels=2, frequency=48000, lengthbytes=26816, lengthpcm=26361, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.655426.
@@ -106,14 +106,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_8', format=2, channels=2, frequency=48000, lengthbytes=36416, lengthpcm=36250, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.572693.
@@ -122,14 +122,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_7', format=2, channels=2, frequency=48000, lengthbytes=26336, lengthpcm=26795, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.701385.
@@ -138,14 +138,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_2', format=2, channels=2, frequency=48000, lengthbytes=32832, lengthpcm=34647, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.656403.
@@ -154,39 +154,36 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 16317792
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 34208
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000000434CF5FC
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000000043AEF5FC
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDDC2E310
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDDC2E2E0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDDC2E3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDDC2E490
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000000049708918
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 000007FEDF93E310
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 000007FEDF93E2E0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 000007FEDF93E3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 000007FEDF93E490
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000000003D260D88
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='fotsteg_sno_10', format=2, channels=2, frequency=48000, lengthbytes=31168, lengthpcm=32422, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.730133.
-[WRN] EventInstance::update                    : Event {636022c6-bdcc-4158-bc02-f74aa07b0871} waited 170 milliseconds for sample data to load.  Preload sample data to avoid this delay.
-[WRN] EventInstance::update                    : Event {636022c6-bdcc-4158-bc02-f74aa07b0871} waited 151 milliseconds for sample data to load.  Preload sample data to avoid this delay.
-[LOG] SystemI::mixerSuspend                    : Suspending output.
-[LOG] SystemI::mixerResume                     : Resuming output.
-[LOG] SoundI::release                          :  (000000003D1D0AD8)
-[LOG] SoundI::release                          :     fotsteg_sno_1 (00000000119FF6E8)
-[LOG] SoundI::release                          :  (00000000599C0A68)
-[LOG] SoundI::release                          :     fotsteg_sno_10 (00000000599C00E8)
-[LOG] SoundI::release                          :  (000000003D1D1098)
-[LOG] SoundI::release                          :     fotsteg_sno_2 (00000000599BFF48)
-[LOG] SoundI::release                          :  (000000003D1D07F8)
-[LOG] SoundI::release                          :     fotsteg_sno_3 (00000000119FFD68)
-[LOG] SoundI::release                          :  (000000003D1D0968)
-[LOG] SoundI::release                          :     fotsteg_sno_4 (00000000119FF548)
-[LOG] SoundI::release                          :  (000000003D1D0F28)
-[LOG] SoundI::release                          :     fotsteg_sno_6 (00000000119FF888)
-[LOG] SoundI::release                          :  (000000003D1D0DB8)
-[LOG] SoundI::release                          :     fotsteg_sno_7 (00000000599BFDA8)
-[LOG] SoundI::release                          :  (000000003D1D0688)
-[LOG] SoundI::release                          :     fotsteg_sno_8 (00000000599BFC08)
-[LOG] SoundI::release                          :  (000000003D1D0C48)
-[LOG] SoundI::release                          :     fotsteg_sno_9 (00000000599BFA68)
+[WRN] EventInstance::update                    : Event {636022c6-bdcc-4158-bc02-f74aa07b0871} waited 339 milliseconds for sample data to load.  Preload sample data to avoid this delay.
+[LOG] SoundI::release                          :  (000000003DE19488)
+[LOG] SoundI::release                          :     fotsteg_sno_1 (000000003DFC3408)
+[LOG] SoundI::release                          :  (000000003DE19BB8)
+[LOG] SoundI::release                          :     fotsteg_sno_10 (000000003DFC3C28)
+[LOG] SoundI::release                          :  (000000003DE19A48)
+[LOG] SoundI::release                          :     fotsteg_sno_2 (000000003DFC3A88)
+[LOG] SoundI::release                          :  (000000003DE191A8)
+[LOG] SoundI::release                          :     fotsteg_sno_3 (000000003DFC30C8)
+[LOG] SoundI::release                          :  (000000003DE18EC8)
+[LOG] SoundI::release                          :     fotsteg_sno_4 (000000003DAE0658)
+[LOG] SoundI::release                          :  (000000003DE19318)
+[LOG] SoundI::release                          :     fotsteg_sno_6 (000000003DFC3268)
+[LOG] SoundI::release                          :  (000000003DE198D8)
+[LOG] SoundI::release                          :     fotsteg_sno_7 (000000003DFC38E8)
+[LOG] SoundI::release                          :  (000000003DE19768)
+[LOG] SoundI::release                          :     fotsteg_sno_8 (000000003DFC3748)
+[LOG] SoundI::release                          :  (000000003DE195F8)
+[LOG] SoundI::release                          :     fotsteg_sno_9 (000000003DFC35A8)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
