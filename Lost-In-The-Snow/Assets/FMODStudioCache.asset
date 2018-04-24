@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 114201949090501104}
+  - {fileID: 114250150173751592}
+  EditorEvents:
+  - {fileID: 114001995815005010}
+  - {fileID: 114410380256784838}
+  - {fileID: 114833415735804492}
+  - {fileID: 114761797548763948}
+  - {fileID: 114798192931186854}
+  MasterBankRef: {fileID: 114250150173751592}
+  StringsBankRef: {fileID: 114201949090501104}
+  stringsBankWriteTime: 636600941772763910
+  cacheVersion: 2
+--- !u!114 &114001995815005010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Ljud/H\xE4ndelser/Starta Eld & Loop"
+  guid: 96bcb8a5b19e55478cacc03608334b9f
+  Banks:
+  - {fileID: 114250150173751592}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 26500
+--- !u!114 &114201949090501104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: \\hsnas6\StudentHome\2015\d15johla\Downloads\lits fmod 0.1\Lost In The Snow
+    FMOD\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636600941772763910
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 984
+  Exists: 1
+--- !u!114 &114250150173751592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: \\hsnas6\StudentHome\2015\d15johla\Downloads\lits fmod 0.1\Lost In The Snow
+    FMOD\Build\Desktop\Master Bank.bank
+  lastModified: 636600941771650470
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 16352000
+  Exists: 1
+--- !u!114 &114410380256784838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ljud/Avatar/Fotsteg/Fotsteg Stuga
+  guid: ae9c7733ccd7e6459f700f6171befd6e
+  Banks:
+  - {fileID: 114250150173751592}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1070
+--- !u!114 &114761797548763948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Ljud/Avatar/Fotsteg/Fotsteg Sn\xF6"
+  guid: c6226063ccbd5841bc02f74aa07b0871
+  Banks:
+  - {fileID: 114250150173751592}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 700
+--- !u!114 &114798192931186854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Ljud/Utomhus Ambiance Lugn/Vind & F\xE5glar"
+  guid: d41d75ac5371f449aabbcaf1844439b1
+  Banks:
+  - {fileID: 114250150173751592}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 11000
+--- !u!114 &114833415735804492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ljud/Stuga Ambience/Stuga Vind
+  guid: b23744842c5c194ca6c954b317b607ea
+  Banks:
+  - {fileID: 114250150173751592}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 55946

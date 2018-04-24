@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour {
     [SerializeField] private AnimationCurve moveAccelaration;
-    [Range(0, 10f)]
+    [Range(0f, 10f)]
     [SerializeField] private float movementSpeed;
-    [Range(1, 3f)][Tooltip("1 is equal to movementSpeed")]
+    [Range(1f, 3f)][Tooltip("1 is equal to movementSpeed")]
     [SerializeField] private float sprintMultiplier;
-    [Range(0, 10f)]
+    [Range(0f, 10f)]
     [SerializeField] private float jumpStartSpeed;
-    [Range(0, 3)]
+    [Range(0f, 3f)]
     [SerializeField] private float fallMultiplier;
+
     [SerializeField] private bool canJump;
 
     private float inputH, inputV;
@@ -44,8 +45,14 @@ public class CharacterMovement : MonoBehaviour {
     {
         float dt = Time.deltaTime;
 
+        if (!cc.isGrounded)
+        {
+            moveDirection.x = lastMoveDirection.x;
+            moveDirection.z = lastMoveDirection.z;
+        }
         if (cc.velocity.y < 0)
         {
+
             moveDirection.y += dt * fallMultiplier * Physics.gravity.y;
         }
         else if (cc.velocity.y > 0 && !Input.GetButton("Jump"))
@@ -78,7 +85,9 @@ public class CharacterMovement : MonoBehaviour {
     {
         moveDirection = transform.TransformDirection(moveDirection);
         cc.Move(moveDirection * Time.deltaTime);
-        lastMoveDirection = moveDirection;
+        lastMoveDirection = transform.InverseTransformDirection(moveDirection);
+        
+        
     }
 
 
