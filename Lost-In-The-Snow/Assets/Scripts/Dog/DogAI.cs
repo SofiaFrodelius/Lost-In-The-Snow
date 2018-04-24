@@ -11,7 +11,6 @@ public class DogAI : MonoBehaviour {
 	private List<DogAction> interactActions = new List<DogAction>();
 	private enum ActionType{ IDLE, ACTIVE};
 	private Mood bestMood;
-	public MonoScript test;
 
 	private Dog dog;
 	void Start(){
@@ -24,7 +23,7 @@ public class DogAI : MonoBehaviour {
 		activeActions.Add(new Fetch (dog, dog.player));
 		activeActions.Add(new LeadPlayer(dog, dog.player, dog.TestWaypoint, 10f));
 		activeActions.Add(new SniffForTree (dog));
-		//activeActions.Add(new SniffOnGround (dog));
+		activeActions.Add(new Walk (dog, dog.player, 15f));
 
 		idleActions.Add(new Sit (dog, 1f));
 		idleActions.Add(new Stare (dog, 1f));
@@ -34,7 +33,7 @@ public class DogAI : MonoBehaviour {
 		bestMood.ChangeMood (100f, 50f, 75f, 0f);
 
 		//dog.currentAction = new RingARound (dog, dog.player, 5f);
-		dog.currentAction = activeActions[0];
+		dog.currentAction = new Walk(dog, dog.player, 15f);
 		dog.currentAction.StartAction ();
 		//StartAction (ActionType.ACTIVE);
 
@@ -57,6 +56,11 @@ public class DogAI : MonoBehaviour {
 		} else {
 			StartAction (ActionType.ACTIVE);
 		}
+	}
+	public void StartAction(DogAction action){
+		EndAction ();
+		dog.currentAction = action;
+		dog.currentAction.StartAction ();
 	}
 	private void StartAction(ActionType actionType){
 		switch (actionType) {
