@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/Eriks lekplats/Eriks Lekplats.unity
-    guid: d2957ddf2273b5f4b908d82693e778c6
+    path: Assets/_Release 0.1/Scenes/MainMenu.unity
+    guid: ffd198116886841458246eef3b504acf
+  - enabled: 1
+    path: Assets/_Release 0.1/Scenes/Act_1.unity
+    guid: be5b24eb7bcd9a74782acb5216af6ad9
