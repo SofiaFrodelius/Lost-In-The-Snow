@@ -13,7 +13,7 @@ public class Sit : DogAction {
 		actionTimer = actionDelay;
 		timer.ResetTimer ();
 		isDone = false;
-		//actions.add(PlaySitAnimation);
+		animator.SetTrigger ("Sit");
 	}
 	public override void UpdateAction(){
 		if (!isDone) 
