@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 518149519178e9d4e95ade1a1cd5b1cc, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
@@ -173,14 +172,3 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 11000
-=======
-  m_Script: {fileID: 11500000, guid: bebed1583b863ba498d8b93f6d8ede52, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
-  MasterBankRef: {fileID: 0}
-  StringsBankRef: {fileID: 0}
-  stringsBankWriteTime: 0
-  cacheVersion: 2
->>>>>>> 6da028db2cb12b0c3ccefdd707a7cf6ccd34ec35
