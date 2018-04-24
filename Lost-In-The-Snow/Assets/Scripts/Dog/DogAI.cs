@@ -18,7 +18,6 @@ public class DogAI : MonoBehaviour {
 		actions.Add (idleActions);
 		actions.Add (activeActions);
 		actions.Add (interactActions);
-
 		activeActions.Add(new FollowPlayer(dog, dog.player));
 		activeActions.Add(new Fetch (dog, dog.player));
 		activeActions.Add(new LeadPlayer(dog, dog.player, dog.TestWaypoint, 10f));
@@ -33,7 +32,7 @@ public class DogAI : MonoBehaviour {
 		bestMood.ChangeMood (100f, 50f, 75f, 0f);
 
 		//dog.currentAction = new RingARound (dog, dog.player, 5f);
-		dog.currentAction = new Walk(dog, dog.player, 15f);
+		dog.currentAction = new Sit(dog, 5f);
 		dog.currentAction.StartAction ();
 		//StartAction (ActionType.ACTIVE);
 
