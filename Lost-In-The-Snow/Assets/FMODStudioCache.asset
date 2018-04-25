@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65aefde241fd7b149b48fc05fc4d85ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 518149519178e9d4e95ade1a1cd5b1cc, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks: []
