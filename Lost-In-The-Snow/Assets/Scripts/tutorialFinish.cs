@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tutorialFinish : MonoBehaviour, ITutorialInteractable
+public class tutorialFinish : MonoBehaviour//, ITutorialInteractable
 {
     [SerializeField]
     private int tutorialToFinish;
     Tutorial tutorial;
+
 
     public void Start()
     {
@@ -14,9 +15,9 @@ public class tutorialFinish : MonoBehaviour, ITutorialInteractable
     }
 
 
-    public void onTutorialFinish()
+    public void onTutorialFinish(int id)
     {
-        tutorial.finishTutorial(tutorialToFinish);
+        tutorial.finishTutorial(id);
     }
 
 }

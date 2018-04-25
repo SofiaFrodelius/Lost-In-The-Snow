@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         playerTransform = GameObject.FindWithTag("Player").transform;
+        look = new Vector2(playerTransform.eulerAngles.y, transform.eulerAngles.x);
     }
 
     // Update is called once per frame

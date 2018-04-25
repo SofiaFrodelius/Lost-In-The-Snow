@@ -48,4 +48,11 @@ public class Headbob : MonoBehaviour
             }
         }
     }
+
+    public Animator getAnimator()
+    {
+        return anim;
+    }
+
+
 }

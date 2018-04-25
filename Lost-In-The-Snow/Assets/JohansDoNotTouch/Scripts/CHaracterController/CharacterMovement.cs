@@ -59,9 +59,9 @@ public class CharacterMovement : MonoBehaviour {
         {
             moveDirection.y += dt * fallMultiplier * Physics.gravity.y;
         }
-        else
+        else 
         {
-            moveDirection.y += dt * Physics.gravity.y;
+            moveDirection.y += dt *Physics.gravity.y;
         }
     }
     
