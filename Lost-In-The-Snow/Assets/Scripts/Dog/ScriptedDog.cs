@@ -24,14 +24,14 @@ public class ScriptedDog : MonoBehaviour {
 	void Update () {
 		if (dog.currentAction != null) {
 			if (dog.currentAction.IsDone ()) {
-				if (actionCount < wayPoints.Count+1)
+				if (actionCount < wayPoints.Count)
 					NextAction ();
 				else {
 					Destroy (this);
 				}
 			}
 		} else {
-			if (actionCount < wayPoints.Count+1)
+			if (actionCount < wayPoints.Count)
 				NextAction ();
 			else {
 				Destroy (this);

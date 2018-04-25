@@ -24,13 +24,15 @@ public class LeadPlayer : DogAction{
 		isDone = false;
 		currentAction = new GotoPosition (dog, target);
 		isWaiting = false;
+		dog.Print ("HEJ");
 	}
     public override void UpdateAction(){
 		currentAction.UpdateAction ();
 		Vector2 playerPos = new Vector2 (player.position.x, player.position.z);
 		Vector2 targetPos = new Vector2 (target.x, target.z);
 		Vector2 dogPos = new Vector2 (dog.transform.position.x, dog.transform.position.z);
-		dog.Print (Vector2.Distance (dogPos, targetPos).ToString());
+		dog.Print (currentAction.ToString ());
+		//dog.Print (Vector2.Distance (dogPos, targetPos).ToString());
 		if (Vector2.Distance (dogPos, targetPos) < 1f) {
 			if (waitForPlayerAtTarget) {
 				if (Vector2.Distance (playerPos, targetPos) < 5f)

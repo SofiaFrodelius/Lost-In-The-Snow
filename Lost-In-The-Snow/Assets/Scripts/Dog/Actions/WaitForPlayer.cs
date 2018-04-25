@@ -15,12 +15,16 @@ public class WaitForPlayer : DogAction{
 		isDone = false;
 	}
     public override void UpdateAction(){
-		if(Vector3.Distance(dog.transform.position, player.position) < distance || Vector3.Distance (player.position, target) < Vector3.Distance (dog.transform.position, target)){
+		if (!isDone) {
+			if (Vector3.Distance (dog.transform.position, player.position) < distance || Vector3.Distance (player.position, target) < Vector3.Distance (dog.transform.position, target)) {
 				//Wait for animation
 				isDone = true;
-        }
-        else{
-			//Look at player
-        }
+			} else {
+				//Look at player
+			}
+		}
     }
+	public override void EndAction(){
+		isDone = true;
+	}
 }
