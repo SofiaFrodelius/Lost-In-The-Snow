@@ -37,8 +37,10 @@ public class Dog : MonoBehaviour, IInteractible {
 		//navAgent.SetDestination (player.position);
     }
 	void Update(){
-        if (currentAction != null)
-            currentAction.UpdateAction();
+		if (currentAction != null) {
+			print (currentAction.ToString ());
+			currentAction.UpdateAction ();
+		}
     }
 	public void Interact(){
 		animator.SetTrigger ("Pet");

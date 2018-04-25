@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 public class WaitForPlayer : DogAction{
     Transform player;
-	Transform target;
+	Vector3 target;
     float distance;
-	public WaitForPlayer(Dog d, Transform player,Transform target, float distance): base(d){
+	public WaitForPlayer(Dog d, Transform player,Vector3 target, float distance): base(d){
         this.player = player;
 		this.target = target;
         this.distance = distance;
@@ -14,7 +14,7 @@ public class WaitForPlayer : DogAction{
 	public override void StartAction(){
 	}
     public override void UpdateAction(){
-		if(Vector3.Distance(dog.transform.position, player.position) < distance || Vector3.Distance (player.position, target.position) < Vector3.Distance (dog.transform.position, target.position)){
+		if(Vector3.Distance(dog.transform.position, player.position) < distance || Vector3.Distance (player.position, target) < Vector3.Distance (dog.transform.position, target)){
 				//Wait for animation
 				isDone = true;
         }

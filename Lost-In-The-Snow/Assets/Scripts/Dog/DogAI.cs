@@ -20,7 +20,7 @@ public class DogAI : MonoBehaviour {
 		actions.Add (interactActions);
 		activeActions.Add(new FollowPlayer(dog, dog.player));
 		activeActions.Add(new Fetch (dog, dog.player));
-		activeActions.Add(new LeadPlayer(dog, dog.player, dog.TestWaypoint, 10f));
+		//activeActions.Add(new LeadPlayer(dog, dog.player, dog.TestWaypoint.position, 10f));
 		activeActions.Add(new SniffForTree (dog));
 		activeActions.Add(new Walk (dog, dog.player, 15f));
 
@@ -32,8 +32,8 @@ public class DogAI : MonoBehaviour {
 		bestMood.ChangeMood (100f, 50f, 75f, 0f);
 
 		//dog.currentAction = new RingARound (dog, dog.player, 5f);
-		dog.currentAction = new Sit(dog, 5f);
-		dog.currentAction.StartAction ();
+		//dog.currentAction = new Sit(dog, 5f);
+		//dog.currentAction.StartAction ();
 		//StartAction (ActionType.ACTIVE);
 
 	}
@@ -41,19 +41,13 @@ public class DogAI : MonoBehaviour {
 		if (dog.currentAction != null) {
 			if (dog.currentAction.IsDone ()) {
 				EndAction ();
-			} else if (!dog.player.GetComponent<CharacterMovement>().getSprint()) {//Player.getspeed > walking speed <-- me ny player controller.
+			} /*else if (!dog.player.GetComponent<CharacterMovement> ().getSprint ()) {//Player.getspeed > walking speed <-- me ny player controller.
 				if (dog.currentAction.GetImportance () != DogAction.Importance.HIGH) {
 					EndAction ();
 					dog.currentAction = activeActions [0];
 					dog.currentAction.StartAction ();
 				}
-			} else if (Input.GetKeyDown (KeyCode.F)) {
-				EndAction ();
-				dog.currentAction = interactActions [0];
-				dog.currentAction.StartAction ();
-			}
-		} else {
-			StartAction (ActionType.ACTIVE);
+			}*/
 		}
 	}
 	public void StartAction(DogAction action){
