@@ -12,6 +12,7 @@ public class WaitForPlayer : DogAction{
         this.distance = distance;
     }
 	public override void StartAction(){
+		isDone = false;
 	}
     public override void UpdateAction(){
 		if(Vector3.Distance(dog.transform.position, player.position) < distance || Vector3.Distance (player.position, target) < Vector3.Distance (dog.transform.position, target)){

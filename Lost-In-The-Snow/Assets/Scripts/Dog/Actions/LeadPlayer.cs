@@ -8,10 +8,12 @@ public class LeadPlayer : DogAction{
 	float maxDistance;
 	DogAction currentAction;
 	bool isWaiting;
-	public LeadPlayer(Dog d, Transform player, Vector3 target, float maxDistance) : base(d){
+	bool waitForPlayerAtTarget;
+	public LeadPlayer(Dog d, Transform player, Vector3 target, float maxDistance, bool waitForPlayerAtTarget) : base(d){
         this.player = player;
 		this.target = target;
 		this.maxDistance = maxDistance;
+		this.waitForPlayerAtTarget = waitForPlayerAtTarget;
 		importance = Importance.LOW;
 		actionDelay = 1;
 		moodState.ChangeMood (50f, 100f, 0f, 50f);
@@ -19,6 +21,7 @@ public class LeadPlayer : DogAction{
     }
 	public override void StartAction(){
 		actionTimer = actionDelay;
+		isDone = false;
 		currentAction = new GotoPosition (dog, target);
 		isWaiting = false;
 	}
@@ -27,6 +30,16 @@ public class LeadPlayer : DogAction{
 		Vector2 playerPos = new Vector2 (player.position.x, player.position.z);
 		Vector2 targetPos = new Vector2 (target.x, target.z);
 		Vector2 dogPos = new Vector2 (dog.transform.position.x, dog.transform.position.z);
+		dog.Print (Vector2.Distance (dogPos, targetPos).ToString());
+		if (Vector2.Distance (dogPos, targetPos) < 1f) {
+			if (waitForPlayerAtTarget) {
+				if (Vector2.Distance (playerPos, targetPos) < 5f)
+					isDone = true;
+			} else {
+				isDone = true;
+			}
+		}
+
 		if (Vector2.Distance (playerPos, dogPos) < maxDistance || Vector2.Distance (playerPos, targetPos) < Vector2.Distance (dogPos, targetPos)) {
 			if (isWaiting) {
 				if (currentAction.IsDone ()) {

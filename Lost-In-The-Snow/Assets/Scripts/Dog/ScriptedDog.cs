@@ -17,18 +17,24 @@ public class ScriptedDog : MonoBehaviour {
 		for (int i = 0; i < wayPoints.Count; i++) {
 			Vector3 waypoint = new Vector3(wayPoints[i].transform.position.x, 0, wayPoints[i].transform.position.z);
 			waypoint.y = Terrain.activeTerrain.SampleHeight (new Vector2(waypoint.x, waypoint.z));
-			actions.Add (new LeadPlayer (dog, dog.player, waypoint, maxDistance));
+			actions.Add (new LeadPlayer (dog, dog.player, waypoint, maxDistance, false));
 		}
 		NextAction ();
 	}
 	void Update () {
 		if (dog.currentAction != null) {
 			if (dog.currentAction.IsDone ()) {
-				if (actionCount < wayPoints.Count)
+				if (actionCount < wayPoints.Count+1)
 					NextAction ();
 				else {
 					Destroy (this);
 				}
+			}
+		} else {
+			if (actionCount < wayPoints.Count+1)
+				NextAction ();
+			else {
+				Destroy (this);
 			}
 		}
 	}
