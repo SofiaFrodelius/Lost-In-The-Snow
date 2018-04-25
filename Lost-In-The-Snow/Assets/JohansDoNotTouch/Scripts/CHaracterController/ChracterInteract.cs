@@ -19,17 +19,29 @@ public class ChracterInteract : MonoBehaviour
     {
         Interact();
         CallDog();
-
+        InteractWithDog();
     }
 
 
     void CallDog()
     {
-        print("hej");
         if (Input.GetButtonDown("CallDog"))
         {
-            print("hejdå");
             print("ROPAR ILAAAAA!");
+        }
+    }
+    InteractWithDog()
+    {
+        RaycastHit hit = new RaycastHit();
+        Ray ray = new Ray(playerCam.transform.position, playerCam.transform.forward);
+        if (Input.GetButtonDown("PetDog"))
+        {
+
+            if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                //Lägg till klappahundmojängen emil :)
+            }
         }
     }
     void Interact()

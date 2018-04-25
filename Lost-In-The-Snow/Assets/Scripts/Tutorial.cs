@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject player;
     TutorialUI tutorialUI;
     [SerializeField]
     private string[] tutorialTexts;
+    private int activeTutorial = 99999;
 
     public static Tutorial instance;
 
@@ -35,16 +38,50 @@ public class Tutorial : MonoBehaviour
     public void triggerTutorial(int tutorialID)
     {
         tutorialUI.setTutorial(tutorialTexts[tutorialID]);
+        activeTutorial = tutorialID;
+        switch(tutorialID)
+        {
+            case 0:
+
+                //tutorial 2 starting
+                break;
+
+            case 1:
+                //tutorial 2 starting
+                break;
+            case 2:
+                //tutorial 2 starting
+
+
+                break;
+        }
+
+
     }
 
 
 
     public void finishTutorial(int tutorialID)
     {
-        if (!tutorialFinished[tutorialID])
+        if (!tutorialFinished[tutorialID] && activeTutorial == tutorialID)
         {
             tutorialFinished[tutorialID] = true;
             tutorialUI.setTutorial("");
+
+            switch(tutorialID)
+            {
+                case 0:
+                    //Tutorial 0 finished
+                    break;
+                case 1:
+                    //tutorial 1 finished
+                    break;
+                case 2:
+                    //tutorial 2 finished
+                    break;
+            }
+
+
         }
     }
 

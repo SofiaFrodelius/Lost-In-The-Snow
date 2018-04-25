@@ -7,6 +7,9 @@ TagManager:
   - Scene Switcher
   - Testing Tag
   - HoldableInventorySlot
+  - Axe
+  - Stick
+  - Dog
   layers:
   - Default
   - TransparentFX
