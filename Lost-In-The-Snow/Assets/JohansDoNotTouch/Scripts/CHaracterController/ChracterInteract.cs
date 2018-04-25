@@ -30,7 +30,7 @@ public class ChracterInteract : MonoBehaviour
             print("ROPAR ILAAAAA!");
         }
     }
-    InteractWithDog()
+    void InteractWithDog()
     {
         RaycastHit hit = new RaycastHit();
         Ray ray = new Ray(playerCam.transform.position, playerCam.transform.forward);
