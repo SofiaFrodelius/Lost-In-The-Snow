@@ -123,7 +123,8 @@ public class Inventory : MonoBehaviour
             holdableSlots[numOfUsedHoldableSlots].incrementItemsInSlot();
             //holdaBleItemsChangedCallback.Invoke();
             numOfUsedHoldableSlots++;
-            updateItemInHandCallback.Invoke();
+            if(updateItemInHandCallback != null)
+                updateItemInHandCallback.Invoke();
         }
 
 

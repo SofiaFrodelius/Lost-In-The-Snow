@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197263971290884}
   - component: {fileID: 95946733123523416}
-  - component: {fileID: 114797320448920942}
+  - component: {fileID: 114519542349160376}
   m_Layer: 0
   m_Name: axe_animated
   m_TagString: Untagged
@@ -270,7 +270,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114797320448920942
+--- !u!114 &114519542349160376
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1124715961825982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2404d6f3a3382d4f84f625e3e3d3161, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bf195ce2c7fbe742bbd99a2c3f6e7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particles:
