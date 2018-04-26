@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c111a6ed103a8d4ea45d51aa1737aa8, type: 3}
-  m_Name: CO3
+  m_Script: {fileID: 11500000, guid: 521fefa6a592c514382abbc240b77188, type: 3}
+  m_Name: CO4
   m_EditorClassIdentifier: 
    debugViews:
     m_Enabled: 1
