@@ -38,6 +38,8 @@ public class DogAI : MonoBehaviour {
 
 	}
 	void Update(){
+		if (Input.GetKeyDown (KeyCode.M))
+			StartAction (new Sit (dog, -1));
 		if (dog.currentAction != null) {
 			if (dog.currentAction.IsDone ()) {
 				EndAction ();
