@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 37ad031672235444cbca6bdca2858302
-timeCreated: 1522760819
+guid: adc4e5fd323be774185554eed80c9cd5
+timeCreated: 1524664436
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,14 +9,14 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: table
+    4300000: Pine_1
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert12
-    second: {fileID: 2100000, guid: 9c148169532fb55478762f9ecfae39aa, type: 2}
+      name: m_pine_main
+    second: {fileID: 2100000, guid: bf4b0d73ee7b7a94a9c4fb65ab0e75a8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

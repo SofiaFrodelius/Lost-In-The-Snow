@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f2cf2ab4939f5734db6217ddfd2ba47a
-timeCreated: 1522760823
+guid: 9c815924a720fbb40a3f6e970bb6db9f
+timeCreated: 1524664436
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,19 +9,14 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: conifer_2
+    4300000: conifer_medium
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: conifermain
-    second: {fileID: 2100000, guid: 650279783a966f5479e2d17fc7591d39, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: conifertrunk
-    second: {fileID: 2100000, guid: 4f683bb9dbc93f040a4ec133b3b691be, type: 2}
+      name: m_conifer
+    second: {fileID: 2100000, guid: 20d8ed2233326434e959d0951225bc28, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

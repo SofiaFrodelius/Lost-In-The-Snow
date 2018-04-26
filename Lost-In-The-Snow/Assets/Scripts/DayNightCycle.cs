@@ -29,7 +29,6 @@ public class DayNightCycle : MonoBehaviour
     private float currentFrameTime = 0;
     private Animator anim;
     private bool nightTime = false;
-    private float elapsedTime = 0.0f;
 
 
     [HideInInspector]
@@ -57,8 +56,6 @@ public class DayNightCycle : MonoBehaviour
             sun.intensity = sunIntensityCurve.Evaluate(blend);
             setColors();
             nightTime = true;
-            elapsedTime += Time.deltaTime;
-            Debug.Log(elapsedTime);
         }
 
         else if(nightTime && RenderSettings.skybox.GetFloat("_Blend") < targetBlend)
