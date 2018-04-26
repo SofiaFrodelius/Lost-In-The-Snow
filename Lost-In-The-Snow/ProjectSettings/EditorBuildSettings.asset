@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/_Release 0.1/Scenes/MainMenu.unity
+  - enabled: 0
+    path: Assets/Scene/MainMenu.unity
     guid: ffd198116886841458246eef3b504acf
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/_Release 0.1/Scenes/OskarRecord.unity
+    guid: df7414ce14cd0ea478fef7beb85552a8
   - enabled: 1
-    path: Assets/_Release 0.1/Scenes/Act_1.unity
-    guid: be5b24eb7bcd9a74782acb5216af6ad9
+    path: Assets/Scene/Oskars grejer/OskarsGrejsunset.unity
+    guid: 52ae9be8ba80d7948a051ace0fdee351
