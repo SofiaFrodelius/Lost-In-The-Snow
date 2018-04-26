@@ -15,6 +15,7 @@ public class WaitForPlayer : DogAction{
 		isDone = false;
 	}
     public override void UpdateAction(){
+		dog.Print (Vector3.Distance (dog.transform.position, player.position).ToString());
 		if (!isDone) {
 			if (Vector3.Distance (dog.transform.position, player.position) < distance || Vector3.Distance (player.position, target) < Vector3.Distance (dog.transform.position, target)) {
 				//Wait for animation

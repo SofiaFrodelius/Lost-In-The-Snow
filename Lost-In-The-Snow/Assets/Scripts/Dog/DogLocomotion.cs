@@ -16,6 +16,8 @@ public class DogLocomotion : MonoBehaviour {
 	private int angularSpeedId;
 	private int directionId;
 
+	private bool update = true;
+
 	private NavMeshAgent navAgent;
 	private Animator animator;
 	void Start () {
@@ -32,20 +34,26 @@ public class DogLocomotion : MonoBehaviour {
 		SetupAgentLocomotion();
 	}
 	void SetupAgentLocomotion(){
-		if (NavAgentDone()){
-			SetParameters(0, 0);
-		}else{
+		if (NavAgentDone ()) {
+			SetParameters (0, 0);
+		} else {
 			//Hämtar hastigheten med navagentens desirededVelocitys längd.
 			float speed = navAgent.desiredVelocity.magnitude;
 			//Hämtar inversen av rotationen mutliplicerat av desiredVelocity
-			Vector3 velocity = Quaternion.Inverse(transform.rotation) * navAgent.desiredVelocity;
+			Vector3 velocity = Quaternion.Inverse (transform.rotation) * navAgent.desiredVelocity;
 			//Beräknar vinkeln mot velocityn i grader.
-			float angle = Mathf.Atan2(velocity.x, velocity.z) * 180.0f / 3.14159f;
+			float angle = Mathf.Atan2 (velocity.x, velocity.z) * 180.0f / 3.14159f;
 			//Sets Mecanim Animator Parameters
-			SetParameters(speed, angle);
+			if (update) 
+				SetParameters (speed, angle);
 		}
 	}
-	//COMMENT THIS IN WHEN LOCOMOTION
+	public void StartIdleTurn(){
+		update = false;
+	}
+	public void StopIdleTurn(){
+		update = true;
+	}
 	void OnAnimatorMove(){
 		navAgent.velocity = animator.deltaPosition / Time.deltaTime;
 		transform.rotation = animator.rootRotation;

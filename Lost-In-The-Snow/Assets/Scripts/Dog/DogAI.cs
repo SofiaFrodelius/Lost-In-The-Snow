@@ -50,11 +50,6 @@ public class DogAI : MonoBehaviour {
 			}*/
 		}
 	}
-	public void StartAction(DogAction action){
-		EndAction ();
-		dog.currentAction = action;
-		dog.currentAction.StartAction ();
-	}
 	private void StartAction(ActionType actionType){
 		switch (actionType) {
 		case ActionType.IDLE:
@@ -71,6 +66,11 @@ public class DogAI : MonoBehaviour {
 					action.DecrementActionTimer ();
 			}
 		}
+	}
+	private void StartAction(DogAction action){
+		EndAction ();
+		dog.currentAction = action;
+		dog.currentAction.StartAction ();
 	}
 	private void EndAction(){
 		dog.currentAction.EndAction ();

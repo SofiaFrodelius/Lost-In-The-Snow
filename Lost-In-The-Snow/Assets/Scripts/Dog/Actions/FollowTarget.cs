@@ -22,6 +22,9 @@ public class FollowTarget : DogAction{
         if (!isDone){
 			if (Vector2.Distance(new Vector2(dog.transform.position.x, dog.transform.position.z), new Vector2((target.position + offset).x, (target.position + offset).z)) > width){
                 isAtTarget = false;
+				if(dog.terrain != null)
+					target.position = new Vector3(target.position.x, dog.terrain.SampleHeight (target.position), target.position.z);
+				offset.y = 0;
 				navAgent.SetDestination(target.position + offset);
             }
             else{

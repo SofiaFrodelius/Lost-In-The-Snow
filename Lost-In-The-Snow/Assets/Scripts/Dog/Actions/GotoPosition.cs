@@ -17,11 +17,13 @@ public class GotoPosition : DogAction{
 		if (!isDone){
 			Vector2 dogPos = new Vector2 (dog.transform.position.x, dog.transform.position.z);
 			if (Vector2.Distance(dogPos, new Vector2(position.x,position.z)) > width){
+				if (dog.terrain != null)
+					position.y = dog.terrain.SampleHeight (position);
 				navAgent.SetDestination(position);
 			}
 			else{
-				EndAction ();
 				isDone = true;
+				EndAction ();
 			}
 		}
 	}

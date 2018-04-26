@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class LeadPlayer : DogAction{
     Transform player;
 	Vector3 target;
+	float width = 1.5f;
 	float maxDistance;
 	DogAction currentAction;
 	bool isWaiting;
@@ -23,17 +24,15 @@ public class LeadPlayer : DogAction{
 		actionTimer = actionDelay;
 		isDone = false;
 		currentAction = new GotoPosition (dog, target);
+		currentAction.StartAction ();
 		isWaiting = false;
-		dog.Print ("HEJ");
 	}
     public override void UpdateAction(){
 		currentAction.UpdateAction ();
 		Vector2 playerPos = new Vector2 (player.position.x, player.position.z);
 		Vector2 targetPos = new Vector2 (target.x, target.z);
 		Vector2 dogPos = new Vector2 (dog.transform.position.x, dog.transform.position.z);
-		dog.Print (currentAction.ToString ());
-		//dog.Print (Vector2.Distance (dogPos, targetPos).ToString());
-		if (Vector2.Distance (dogPos, targetPos) < 1f) {
+		if (Vector2.Distance (dogPos, targetPos) < width) {
 			if (waitForPlayerAtTarget) {
 				if (Vector2.Distance (playerPos, targetPos) < 5f)
 					isDone = true;
@@ -41,11 +40,12 @@ public class LeadPlayer : DogAction{
 				isDone = true;
 			}
 		}
-
 		if (Vector2.Distance (playerPos, dogPos) < maxDistance || Vector2.Distance (playerPos, targetPos) < Vector2.Distance (dogPos, targetPos)) {
 			if (isWaiting) {
 				if (currentAction.IsDone ()) {
-					currentAction = new GotoPosition (dog, target);
+					currentAction.EndAction ();
+					currentAction = new GotoPosition (dog, target, width);
+					currentAction.StartAction ();
 					isWaiting = false;
 				}
 			}
