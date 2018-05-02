@@ -8,10 +8,12 @@ public class ChracterInteract : MonoBehaviour
     [SerializeField] private float maxInteractLength;
     [SerializeField] private LayerMask interactLayerMask;
     private Camera playerCam;
+	private Dog dog;
     // Use this for initialization
     void Start()
     {
         playerCam = Camera.main;
+		dog = GameObject.FindWithTag ("Dog").GetComponent<Dog>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class ChracterInteract : MonoBehaviour
         if (Input.GetButtonDown("CallDog"))
         {
             print("ROPAR ILAAAAA!");
+			dog.Call (transform);
         }
     }
     void InteractWithDog()
@@ -36,11 +39,10 @@ public class ChracterInteract : MonoBehaviour
         Ray ray = new Ray(playerCam.transform.position, playerCam.transform.forward);
         if (Input.GetButtonDown("PetDog"))
         {
-
             if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
             {
                 Debug.Log(hit.transform.gameObject.name);
-                //Lägg till klappahundmojängen emil :)
+				dog.Pet ();
             }
         }
     }
