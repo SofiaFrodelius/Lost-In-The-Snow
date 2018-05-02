@@ -8,7 +8,10 @@ public class CharacterUseItem : MonoBehaviour {
 
     private void Start()
     {
-        
+        if(ih == null)
+        {
+            ih = GetComponentInChildren<ItemHand>();
+        }
     }
     void Update () {
         if (Input.GetButton("Use"))
