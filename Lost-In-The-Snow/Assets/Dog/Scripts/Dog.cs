@@ -16,6 +16,8 @@ public class Dog : MonoBehaviour, IInteractible {
 
 	[Header("Debug Tools")]
 	public Transform TestWaypoint;
+	public float forwardd;
+	public float rightd;
     public Item grabbedItem;
     public GameObject itemObject;
 	public DogAction currentAction;

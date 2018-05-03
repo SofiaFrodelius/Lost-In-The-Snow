@@ -10,6 +10,7 @@ TagManager:
   - Axe
   - Stick
   - Dog
+  - Tree
   layers:
   - Default
   - TransparentFX
