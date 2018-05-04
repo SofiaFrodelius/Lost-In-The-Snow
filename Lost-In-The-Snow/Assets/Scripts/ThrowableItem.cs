@@ -51,6 +51,7 @@ public class ThrowableItem : MonoBehaviour, IUsable
 
     public void Use(ItemHand ih)
     {
+        //Debug.Log(ih.ActiveItem);
         Vector3 throwDirection = Camera.main.transform.forward;
         rb.isKinematic = false;
         rb.AddForce(throwDirection * throwForce, ForceMode.Impulse);
@@ -62,7 +63,6 @@ public class ThrowableItem : MonoBehaviour, IUsable
     }
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(name + " hit something");
         //Debug.Log("ColliderHit, Ha sönder snöboll och spawna partiklar");
     }
 }

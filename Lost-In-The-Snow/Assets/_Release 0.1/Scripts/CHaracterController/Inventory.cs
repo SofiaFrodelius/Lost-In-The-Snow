@@ -51,7 +51,6 @@ public class Inventory : MonoBehaviour
     //temporärkod
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G)) removeHoldableItem(0);
     }
 
     public Item getItemFromSlot(int slot)
@@ -149,9 +148,9 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                holdableSlots.Remove(holdableSlots[slotId]);
-                updateItemInHandCallback.Invoke();
+                holdableSlots.RemoveAt(slotId);
             }
+            updateItemInHandCallback.Invoke();
         }
     }
 

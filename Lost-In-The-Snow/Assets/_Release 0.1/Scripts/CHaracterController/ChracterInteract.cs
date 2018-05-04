@@ -55,7 +55,6 @@ public class ChracterInteract : MonoBehaviour
             
             if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
             {
-                Debug.Log(hit.transform.gameObject.name);
                 ExecuteEvents.ExecuteHierarchy<IInteractible>(hit.transform.gameObject, null, (handler, eventData) => handler.Interact());
                 ExecuteEvents.ExecuteHierarchy<IGrabable>(hit.transform.gameObject, null, pickup);
             }

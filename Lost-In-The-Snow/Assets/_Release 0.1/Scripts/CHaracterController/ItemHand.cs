@@ -38,10 +38,9 @@ public class ItemHand : MonoBehaviour
 
     public void updateItemInHand()
     {
-        if(selectedItem >= inventory.getNumOfUsedHoldableSlots() && selectedItem != 0)
+        if (selectedItem == inventory.getNumOfUsedHoldableSlots() && selectedItem > 0)
         {
-            selectedItem = inventory.getNumOfUsedHoldableSlots() - 1; // -1 to not be out of range in list because list starts at 0 getnumofholdableslots starts at 1
-            Debug.Log("Selected Item Changed");
+            selectedItem--;
         }
 
         GameObject itemToInstansiate;
@@ -49,10 +48,11 @@ public class ItemHand : MonoBehaviour
             itemToInstansiate = inventory.getObjectFromHoldableSlot(selectedItem);
         else itemToInstansiate = null;
 
+
         if (itemToInstansiate == null) activeItem = null;
-        else/* if (activeItem != itemToInstansiate)*/
+        else if (activeItem != itemToInstansiate)
         {
-            if (activeItem != null) Destroy(activeItem);
+            if (activeItem != null && activeItem.transform.parent != null) Destroy(activeItem); //fix only throw last item because of this line.
 
             activeItem = Instantiate(itemToInstansiate, transform);
             activeItem.layer = currentItemLayerValue;
@@ -61,6 +61,8 @@ public class ItemHand : MonoBehaviour
         }
         if (inventory.holdableItemsChangedCallback != null) //if hud exists
             inventory.holdableItemsChangedCallback.Invoke(selectedItem);
+
+
     }
 
 
