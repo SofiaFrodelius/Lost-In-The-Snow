@@ -51,6 +51,7 @@ public class GotoPosition : DogAction{
 			currentTarget = targetPosition;
 			return;
 		}
+		//Temporary values.
 		currentTarget = GetPos (2,5,-3,3,4,"Tree");
 	}
 	Vector3 GetPos(float minForward, float maxForward, float minRight, float maxRight, float radius, string tag){
