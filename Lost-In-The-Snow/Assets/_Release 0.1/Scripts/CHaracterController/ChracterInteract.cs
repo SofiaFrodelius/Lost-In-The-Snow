@@ -13,7 +13,7 @@ public class ChracterInteract : MonoBehaviour
     void Start()
     {
         playerCam = Camera.main;
-		dog = GameObject.FindWithTag ("Dog").GetComponent<Dog>();
+		//dog = GameObject.FindWithTag ("Dog").GetComponent<Dog>();
     }
 
     // Update is called once per frame
@@ -68,7 +68,8 @@ public class ChracterInteract : MonoBehaviour
         Inventory inventory;
         inventory = Inventory.instance;
         Item item;
-        handler.getItemOnPickup(out item);
+        item = handler.getItemOnPickup();
+        handler.destroyItem();
         if (inventory != null)
             inventory.addItem(item);
     }

@@ -10,8 +10,8 @@ public class Inventory : MonoBehaviour
 
     public int numOfSlots = 5;
     public int numOfHoldableSlots = 1;
-    private InventorySlot[] inventorySlots;
-    private InventorySlot[] holdableSlots;
+    private List<InventorySlot> inventorySlots;
+    private List<InventorySlot> holdableSlots;
     private int numOfUsedSlots = 0;
     private int numOfUsedHoldableSlots;
     public Item testItem; //temp
@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     {
         inventoryHUD = InventoryHUD.instance;
 
-        if(instance != null)
+        if (instance != null)
         {
             Debug.LogWarning("More than one instance of class inventory in scene.");
             return;
@@ -43,53 +43,43 @@ public class Inventory : MonoBehaviour
 
     public void Start()
     {
-        inventorySlots = new InventorySlot[numOfSlots];
-        holdableSlots = new InventorySlot[numOfHoldableSlots];
-
-
-        for(int i = 0; i < numOfSlots; i++)
-        {
-            inventorySlots[i] = new InventorySlot();
-        }
-        for(int i = 0; i < numOfHoldableSlots; i++)
-        {
-            holdableSlots[i] = new InventorySlot();
-        }
-
+        inventorySlots = new List<InventorySlot>();
+        holdableSlots = new List<InventorySlot>();
     }
 
 
     //temporärkod
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) inventoryHUD.showInventory();
+        if (Input.GetKeyDown(KeyCode.G)) removeHoldableItem(0);
     }
-
-
-
-
 
     public Item getItemFromSlot(int slot)
     {
-        return inventorySlots[slot].getItem();
+        if (inventorySlots.Count > slot)
+            return inventorySlots[slot].getItem();
+        else return null;
     }
 
     public Item getItemFromHoldableSlot(int slot)
     {
-        return holdableSlots[slot].getItem();
+        if (holdableSlots.Count > slot)
+            return holdableSlots[slot].getItem();
+        else return null;
     }
 
     public int getNumOfItemsInSlot(int slot)
     {
-        return inventorySlots[slot].getItemsInSlot();
+        if (inventorySlots.Count > slot)
+            return inventorySlots[slot].getItemsInSlot();
+        else return 0;
     }
 
     public void addItem(Item item)
     {
-
         if (!item.getHoldable())
         {
-            for (int i = 0; i < numOfUsedSlots; i++)
+            for (int i = 0; i < inventorySlots.Count; i++)
             {
                 if (inventorySlots[i].getItem() != null && inventorySlots[i].getItem().getId() == item.getId())
                 {
@@ -97,37 +87,92 @@ public class Inventory : MonoBehaviour
                     {
                         inventorySlots[i].incrementItemsInSlot();
                         inventoryChangedCallback.Invoke();
-                        return;
                     }
+                    return;
                 }
             }
 
-            if (numOfUsedSlots == numOfSlots)
+            if (inventorySlots.Count == numOfSlots)
             {
                 Debug.Log("Inventory is full. Could not add item to inventory.");
                 return;
             }
 
-            else
+            if (inventorySlots.Count < numOfSlots)
             {
-                inventorySlots[numOfUsedSlots].setItem(item);
-                inventorySlots[numOfUsedSlots].incrementItemsInSlot();
+                inventorySlots.Add(new InventorySlot());
+                inventorySlots[inventorySlots.Count - 1].setItem(item);
+                inventorySlots[inventorySlots.Count - 1].incrementItemsInSlot();
                 inventoryChangedCallback.Invoke();
-                numOfUsedSlots++;
             }
         }
 
-        else if(numOfUsedHoldableSlots < numOfHoldableSlots)
+        else
         {
-            holdableSlots[numOfUsedHoldableSlots].setItem(item);
-            holdableSlots[numOfUsedHoldableSlots].incrementItemsInSlot();
-            //holdaBleItemsChangedCallback.Invoke();
-            numOfUsedHoldableSlots++;
-            if(updateItemInHandCallback != null)
-                updateItemInHandCallback.Invoke();
+            for (int i = 0; i < holdableSlots.Count; i++)
+            {
+                if (holdableSlots[i].getItem() != null && holdableSlots[i].getItem().getId() == item.getId())
+                {
+                    if (holdableSlots[i].getItemsInSlot() < item.getMaxStack())
+                    {
+                        holdableSlots[i].incrementItemsInSlot();
+                        inventoryChangedCallback.Invoke();
+                        return;
+                    }
+                }
+            }
+
+            if (holdableSlots.Count == numOfSlots)
+            {
+                Debug.Log("Inventory is full. Could not add item to inventory.");
+                return;
+            }
+
+            if (holdableSlots.Count < numOfHoldableSlots)
+            {
+                holdableSlots.Add(new InventorySlot());
+                holdableSlots[holdableSlots.Count - 1].setItem(item);
+                holdableSlots[holdableSlots.Count - 1].incrementItemsInSlot();
+                if (updateItemInHandCallback != null)
+                    updateItemInHandCallback.Invoke();
+            }
         }
+    }
 
+    public void removeHoldableItem(int slotId)
+    {
+        if (getNumOfUsedHoldableSlots() > 0)
+        {
+            if (holdableSlots[slotId].getItemsInSlot() > 1)
+            {
+                holdableSlots[slotId].decrementItemsInSlot();
+            }
+            else
+            {
+                holdableSlots.Remove(holdableSlots[slotId]);
+                updateItemInHandCallback.Invoke();
+            }
+        }
+    }
 
+    public void removeNonHoldableItem(Item item)
+    {
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            if (inventorySlots[i].getItem() == item)
+            {
+                if (inventorySlots[i].getItemsInSlot() > 1)
+                {
+                    inventorySlots[i].decrementItemsInSlot();
+                }
+                else
+                {
+                    inventorySlots.Remove(inventorySlots[i]);
+                }
+                inventoryChangedCallback.Invoke();
+                return;
+            }
+        }
     }
 
 
@@ -137,7 +182,7 @@ public class Inventory : MonoBehaviour
     }
     public int getNumOfUsedHoldableSlots()
     {
-        return numOfUsedHoldableSlots;
+        return holdableSlots.Count;
     }
 
     public GameObject getObjectFromHoldableSlot(int i)
