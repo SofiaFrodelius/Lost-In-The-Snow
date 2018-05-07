@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class CharacterMovement : MonoBehaviour {
     [SerializeField] private AnimationCurve moveAccelaration;
     [Range(0f, 10f)]
@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour {
     [SerializeField] private float fallMultiplier;
 
     [SerializeField] private bool canJump;
+    [SerializeField] private StudioEventEmitter jumpEmitter;
 
     private float inputH, inputV;
     private bool inputSprint, inputJump, allowedToJump;
@@ -27,6 +28,7 @@ public class CharacterMovement : MonoBehaviour {
 
     private bool cutsceneLock = false;
     private Vector3 forcedTurnDirection;
+    
 
     // Use this for initialization
     void Start () {
@@ -88,6 +90,7 @@ public class CharacterMovement : MonoBehaviour {
         if (inputJump && cc.isGrounded)
         {
             //Play jumpSound
+            jumpEmitter.Play();
             moveDirection.y = jumpStartSpeed;
         }
     }

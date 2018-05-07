@@ -1,44 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class FallSoundOnInpact : MonoBehaviour {
     [SerializeField] private float distanceToPlaySound;
-    CharacterController cc;
-    bool allowedToPlay = false;
-    [Tooltip("If downwardsspeeds exceeds this value a land-sound will be played on land")]
+    
+    [Tooltip("If downwards speed exceeds this value a land-sound will be played on land")]
     [SerializeField] private float minFallSped;
+    StudioEventEmitter sEmitter;
+    CharacterController cc;
+    bool soundPlayed = false;
+
     private void Start()
     {
-        cc = GetComponent<CharacterController>();
+        cc = GetComponentInParent<CharacterController>();
+        sEmitter = GetComponent<StudioEventEmitter>();
+
+
     }
-    // Update is called once per frame
-    void Update () {
-        Debug.Log(cc.velocity.y);
-        RaycastHit hit = new RaycastHit();
-        Ray ray = new Ray(transform.position, Vector3.down);
+    private void Update()
+    {
+        if (cc.velocity.y < minFallSped && !soundPlayed)
         {
+            RaycastHit hit = new RaycastHit();
+            Ray ray = new Ray(transform.position, Vector3.down);
             if (Physics.Raycast(ray, out hit, distanceToPlaySound))
             {
-         //       Debug.Log(hit);
-            }
-            else
-            {
-                allowedToPlay = true;
+                sEmitter.Play();
+                soundPlayed = true;
             }
         }
-    }
-    bool ShouldPlayLandSound()
-    {
-        if (cc.velocity.y < minFallSped && allowedToPlay)
+        else if(cc.isGrounded)
         {
-
-            allowedToPlay = false;
+            soundPlayed = false;
         }
-        return false;
+    
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
+
 }
