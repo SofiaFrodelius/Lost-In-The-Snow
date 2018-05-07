@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
     private Vector2 look = Vector2.zero;
     private Transform playerTransform;
 
+    private bool cutsceneLock = false;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -18,14 +20,17 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 move = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        Vector2 controllerMove = new Vector2(Input.GetAxisRaw("Right Stick Horizontal"), Input.GetAxisRaw("Right Stick Vertical"));
-        move *= sensitivity;
-        controllerMove *= sensitivity;
-        look += move;
-        look += controllerMove;
-        look.y = Mathf.Clamp(look.y, -90, 90);
+        if (!cutsceneLock)
+        {
+            Vector2 move = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+            Vector2 controllerMove = new Vector2(Input.GetAxisRaw("Right Stick Horizontal"), Input.GetAxisRaw("Right Stick Vertical"));
+            move *= sensitivity;
+            controllerMove *= sensitivity;
+            look += move;
+            look += controllerMove;
+        }
 
+        look.y = Mathf.Clamp(look.y, -90, 90);
         transform.localRotation = Quaternion.AngleAxis(-look.y, Vector3.right);
         playerTransform.localRotation = Quaternion.AngleAxis(look.x, playerTransform.up);
 
@@ -38,6 +43,12 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
             Cursor.lockState = CursorLockMode.Locked;
 
+    }
+
+    public bool CutsceneLock
+    {
+        get { return cutsceneLock; }
+        set { cutsceneLock = value; }
     }
 
     public Vector2 getLook()

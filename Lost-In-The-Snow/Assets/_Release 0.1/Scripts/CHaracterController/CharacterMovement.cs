@@ -25,6 +25,9 @@ public class CharacterMovement : MonoBehaviour {
     private bool toggledMoving = false;
     private Timer accTajmer;
 
+    private bool cutsceneLock = false;
+    private Vector3 forcedTurnDirection;
+
     // Use this for initialization
     void Start () {
         cc = GetComponent<CharacterController>();
@@ -32,15 +35,30 @@ public class CharacterMovement : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update (){
+	void Update ()
+    {
         CheckInputs();
         CalculateMovement();
         CalculateCurrentSpeed();
         CalculateJump();
         CalculateAirTime();
         ApplyMovement();
-
+        if (cutsceneLock)
+            ForcedMovement();
     }
+
+    public bool CutsceneLock
+    {
+        get { return cutsceneLock; }
+        set
+        {
+            cutsceneLock = value;
+            CameraController camCon = Camera.main.GetComponent<CameraController>();
+            if (camCon != null)
+                camCon.CutsceneLock = value;
+        }
+    }
+
     void CalculateAirTime()
     {
         float dt = Time.deltaTime;
@@ -69,6 +87,7 @@ public class CharacterMovement : MonoBehaviour {
     {
         if (inputJump && cc.isGrounded)
         {
+            //Play jumpSound
             moveDirection.y = jumpStartSpeed;
         }
     }
@@ -100,12 +119,22 @@ public class CharacterMovement : MonoBehaviour {
     }
     private void CheckInputs()
     {
-        moving = Input.GetButton("Horizontal") == true || Input.GetButton("Vertical") == true ? true : false;
-        inputH = Input.GetAxisRaw("Horizontal");
-        inputV = Input.GetAxisRaw("Vertical");       
-        inputSprint = Input.GetButton("Sprint") ? true : false;
-        if(canJump) inputJump = Input.GetButtonDown("Jump") ? true : false;
-        
+        if (!cutsceneLock)
+        {
+            moving = Input.GetButton("Horizontal") == true || Input.GetButton("Vertical") == true ? true : false;
+            inputH = Input.GetAxisRaw("Horizontal");
+            inputV = Input.GetAxisRaw("Vertical");
+            inputSprint = Input.GetButton("Sprint") ? true : false;
+            if (canJump) inputJump = Input.GetButtonDown("Jump") ? true : false;
+        }
+        else
+        {
+            moving = false;
+            inputH = 0f;
+            inputV = 0f;
+            inputSprint = false;
+            inputJump = false;
+        }
     }
     public bool getSprint()
     {
@@ -125,4 +154,10 @@ public class CharacterMovement : MonoBehaviour {
         else accTajmer.ResetTimer();
     }
 
+    private void ForcedMovement()
+    {
+        CameraController camCon = Camera.main.GetComponent<CameraController>();
+        //if (camCon != null)
+        //    camCon.setLook(new Vector2(0f, 10f));
+    }
 }
