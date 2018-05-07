@@ -69,6 +69,7 @@ public class CharacterMovement : MonoBehaviour {
     {
         if (inputJump && cc.isGrounded)
         {
+            //Play jumpSound
             moveDirection.y = jumpStartSpeed;
         }
     }
