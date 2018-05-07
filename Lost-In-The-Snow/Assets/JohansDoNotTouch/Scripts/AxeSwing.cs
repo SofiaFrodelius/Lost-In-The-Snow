@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class AxeSwing : MonoBehaviour, IUsable
 {
-
-    Animator animator;
+    bool InspectBool = false;
+    bool TreeChopBool = false;
+    [SerializeField] private GameObject chopParticles;
+    [SerializeField] private Transform particlePos;
+    Animator anim;
     void Start()
     {
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
     public void Use(ItemHand ih)
     {
@@ -16,6 +19,20 @@ public class AxeSwing : MonoBehaviour, IUsable
     }
     void SwingAxe()
     {
-
+        anim.SetBool("TreeChopBool", true);
+        
+        
+    }
+    private void Update()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("TreeChop"))
+        {
+            anim.SetBool("TreeChopBool", false);
+        }
+    }
+    public void AxeHit()
+    {
+        Debug.Log("Instansierar partikelsystem");
+        Instantiate(chopParticles, particlePos);
     }
 }

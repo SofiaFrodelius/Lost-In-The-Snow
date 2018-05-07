@@ -25,11 +25,11 @@ public class TestAnim : MonoBehaviour {
         
         
     }
-    public void AxeHit()
-    {
-        foreach(ParticleSystem p in particles)
-        {
-            p.Play();
-        }
-    }
+    //public void AxeHit()
+    //{
+    //    foreach(ParticleSystem p in particles)
+    //    {
+    //        p.Play();
+    //    }
+    //}
 }

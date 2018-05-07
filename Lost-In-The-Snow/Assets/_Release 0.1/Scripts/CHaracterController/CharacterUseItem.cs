@@ -14,9 +14,13 @@ public class CharacterUseItem : MonoBehaviour {
         }
     }
     void Update () {
+
+
+
         if (Input.GetButtonDown("Use"))
         {
             Use();
+
         }
     }
     void Use()

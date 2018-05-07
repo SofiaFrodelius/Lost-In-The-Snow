@@ -106,7 +106,8 @@ ModelImporter:
       - time: 0.6264657
         functionName: AxeHit
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 1124715961825982, guid: acc4e760111f65448a43629c52e73fac,
+          type: 2}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
