@@ -44,7 +44,7 @@ public class Dog : MonoBehaviour, IInteractible {
 		
 	}
 	public bool IsIdle(){
-		return animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion.Idle");
+		return currentAction == null;
 	}
 	public void Call(Transform player){
 		ai.StartAction (new Call (this, player));
