@@ -22,6 +22,7 @@ public class ChracterInteract : MonoBehaviour
         Interact();
         CallDog();
         InteractWithDog();
+        PickUpDog();
     }
 
 
@@ -31,6 +32,20 @@ public class ChracterInteract : MonoBehaviour
         {
             print("ROPAR ILAAAAA!");
 			dog.Call (transform);
+        }
+    }
+    void PickUpDog()
+    {
+        RaycastHit hit = new RaycastHit();
+        Ray ray = new Ray(playerCam.transform.position, playerCam.transform.forward);
+        if (Input.GetButtonDown("PickupDog"))
+        {
+            if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                //dog.Pet();
+                //HUNDJÄVELN SKA UPP I FAMNHELVETET
+            }
         }
     }
     void InteractWithDog()
