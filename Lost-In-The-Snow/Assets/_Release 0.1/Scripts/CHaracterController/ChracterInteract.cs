@@ -13,7 +13,7 @@ public class ChracterInteract : MonoBehaviour
     void Start()
     {
         playerCam = Camera.main;
-		//dog = GameObject.FindWithTag ("Dog").GetComponent<Dog>();
+		dog = GameObject.FindWithTag ("Dog").GetComponent<Dog>();
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class ChracterInteract : MonoBehaviour
             if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
             {
                 Debug.Log(hit.transform.gameObject.name);
-                //dog.Pet();
+				dog.PickupDog ();
                 //HUNDJÄVELN SKA UPP I FAMNHELVETET
             }
         }

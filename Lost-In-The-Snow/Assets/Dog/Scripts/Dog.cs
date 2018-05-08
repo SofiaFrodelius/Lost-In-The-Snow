@@ -37,7 +37,10 @@ public class Dog : MonoBehaviour, IInteractible {
     }
 	void Update(){
 		if (currentAction != null) {
+			//Debug.Log (currentAction.ToString ());
 			currentAction.UpdateAction ();
+		} else {
+			Debug.Log ("No action");
 		}
     }
 	public void Interact(){
@@ -56,6 +59,7 @@ public class Dog : MonoBehaviour, IInteractible {
 		ai.StartAction (new PickupDog (this));
 	}
 	public void ParentDog(){
+		Debug.Log ("HELLO");
 		transform.parent = player;
 	}
 	public void BreakLoose(){
