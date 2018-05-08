@@ -1523,8 +1523,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Run Right 30
       takeName: Take 001
-      firstFrame: 1761
-      lastFrame: 1784
+      firstFrame: 1821
+      lastFrame: 1844
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
