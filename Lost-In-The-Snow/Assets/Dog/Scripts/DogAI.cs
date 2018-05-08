@@ -33,8 +33,8 @@ public class DogAI : MonoBehaviour {
 		bestMood.ChangeMood (100f, 50f, 75f, 0f);
 
 		//dog.currentAction = new RingARound (dog, dog.player, 5f);
-		//dog.currentAction = new Sit(dog, 5f);
-		//dog.currentAction.StartAction ();
+		dog.currentAction = new Sit(dog, 10f);
+		dog.currentAction.StartAction ();
 		//StartAction (ActionType.ACTIVE);
 
 	}
