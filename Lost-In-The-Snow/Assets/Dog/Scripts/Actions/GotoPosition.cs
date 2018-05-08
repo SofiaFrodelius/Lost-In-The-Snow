@@ -22,7 +22,7 @@ public class GotoPosition : DogAction{
 		currentTarget = dog.transform.position;
 	}
 	public override void UpdateAction(){
-		dog.Print(NavMesh.CalculatePath (dog.transform.position, targetPosition, NavMesh.AllAreas, path).ToString());//DONT BE FALSE OR i :cryinglaughter::gun:
+		//dog.Print(NavMesh.CalculatePath (dog.transform.position, targetPosition, NavMesh.AllAreas, path).ToString());//DONT BE FALSE OR i :cryinglaughter::gun:
 		for (int i = 0; i < path.corners.Length - 1; i++) {
 			Debug.DrawLine (path.corners [i], path.corners [i + 1], Color.red, 0.1f);	
 		}if (path.corners.Length > 1) {

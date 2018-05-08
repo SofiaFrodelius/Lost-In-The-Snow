@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pet : DogAction {
 	bool isStarted = false;
 	public Pet(Dog d): base(d){
+		importance = Importance.HIGH;
 	}
 	public override void StartAction(){	
 		isDone = false;

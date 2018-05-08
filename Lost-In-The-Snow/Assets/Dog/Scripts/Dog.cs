@@ -37,7 +37,7 @@ public class Dog : MonoBehaviour, IInteractible {
     }
 	void Update(){
 		if (currentAction != null) {
-			//Debug.Log (currentAction.ToString ());
+			Debug.Log (currentAction.ToString ());
 			currentAction.UpdateAction ();
 		} else {
 			Debug.Log ("No action");
@@ -53,13 +53,13 @@ public class Dog : MonoBehaviour, IInteractible {
 		ai.StartAction (new Call (this, player));
 	}
 	public void Pet(){
-		ai.StartAction (new Pet (this));
+		if(currentAction == null || currentAction.GetImportance() != DogAction.Importance.HIGH)
+			ai.StartAction (new Pet (this));
 	}
 	public void PickupDog(){
 		ai.StartAction (new PickupDog (this));
 	}
 	public void ParentDog(){
-		Debug.Log ("HELLO");
 		transform.parent = player;
 	}
 	public void BreakLoose(){
@@ -92,8 +92,5 @@ public class Dog : MonoBehaviour, IInteractible {
     }
 	public float GetDefaultSpeed(){
 		return defaultSpeed;
-	}
-	public void Print(string test){
-		print (test);
 	}
 }

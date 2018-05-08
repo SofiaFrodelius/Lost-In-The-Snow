@@ -30,7 +30,6 @@ public class ChracterInteract : MonoBehaviour
     {
         if (Input.GetButtonDown("CallDog"))
         {
-            print("ROPAR ILAAAAA!");
 			dog.Call (transform);
         }
     }
