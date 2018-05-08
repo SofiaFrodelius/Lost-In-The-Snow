@@ -27,13 +27,17 @@ public class CharacterMovement : MonoBehaviour {
     private Timer accTajmer;
 
     private bool cutsceneLock = false;
-    private Vector3 forcedTurnDirection;
-    
+    private Vector3 forcedPosition;
+    private Vector2 forcedLook;
+    private bool forcedMove = false;
+    private float t = 0f;
+    private int testIterator = 0;
 
     // Use this for initialization
     void Start () {
         cc = GetComponent<CharacterController>();
         accTajmer = new Timer(0f);
+        forcedPosition = transform.position;
     }
 	
 	// Update is called once per frame
@@ -43,10 +47,18 @@ public class CharacterMovement : MonoBehaviour {
         CalculateMovement();
         CalculateCurrentSpeed();
         CalculateJump();
-        CalculateAirTime();
+        if (!forcedMove)
+            CalculateAirTime();
         ApplyMovement();
-        if (cutsceneLock)
-            ForcedMovement();
+        if (forcedMove)
+            Forcing();
+        /*testIterator++;
+        if (testIterator >= 300)
+        {
+            testIterator = 0;
+            ForceMovement(forcedPosition, new Vector2(50f, -20f));
+            Debug.Log("TestIterator fire!");
+        }*/
     }
 
     public bool CutsceneLock
@@ -157,10 +169,41 @@ public class CharacterMovement : MonoBehaviour {
         else accTajmer.ResetTimer();
     }
 
-    private void ForcedMovement()
+    public void ForceMovement(Vector3 targetPosition, Vector2 targetLook)
     {
+        forcedPosition = targetPosition;
+        forcedLook = targetLook;
+        forcedMove = true;
+        CutsceneLock = true;
+        Debug.Log("ForceMovement");
+    }
+
+    private void Forcing()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, forcedPosition, 1.5f);
         CameraController camCon = Camera.main.GetComponent<CameraController>();
-        //if (camCon != null)
-        //    camCon.setLook(new Vector2(0f, 10f));
+        Vector2 newLook = camCon.getLook();
+        newLook.y = Mathf.MoveTowards(newLook.y, forcedLook.y, 1);
+        float hAngle = forcedLook.x - newLook.x;
+        if (hAngle >= 180)
+            newLook.x -= 4;
+        else if (hAngle <= -180)
+            newLook.x += 4;
+        camCon.setLook(newLook);
+        if (transform.position == forcedPosition)
+            Debug.Log("position match");
+        if (camCon.getLook() == forcedLook)
+            Debug.Log("look match");
+        if (transform.position == forcedPosition && camCon.getLook() == forcedLook)
+        {
+            forcedMove = false;
+            CutsceneLock = false;
+            Debug.Log("Release");
+        }
+    }
+
+    public bool GetForcedMove()
+    {
+        return forcedMove;
     }
 }

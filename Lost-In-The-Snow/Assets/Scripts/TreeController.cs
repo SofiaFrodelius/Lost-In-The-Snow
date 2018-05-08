@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeController : MonoBehaviour
+public class TreeController : MonoBehaviour, IInteractible
 {
     public bool isChoppable = false;
 

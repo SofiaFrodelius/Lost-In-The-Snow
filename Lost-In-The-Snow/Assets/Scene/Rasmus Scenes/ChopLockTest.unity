@@ -412,7 +412,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4581192634655566, guid: 01cb98abec9806640b709a5f30da47af, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 38.9
+      value: 36.145
       objectReference: {fileID: 0}
     - target: {fileID: 4581192634655566, guid: 01cb98abec9806640b709a5f30da47af, type: 2}
       propertyPath: m_LocalPosition.z
@@ -16467,6 +16467,19 @@ GameObject:
   m_PrefabParentObject: {fileID: 1465782588938326, guid: dffa97ae61829e4468f93338312584ba,
     type: 2}
   m_PrefabInternal: {fileID: 1866367760}
+--- !u!136 &1894185655
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1894185653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5303345
+  m_Height: 7.3785725
+  m_Direction: 1
+  m_Center: {x: -0.03465271, y: 1.680007, z: 0.004169464}
 --- !u!114 &1894185657
 MonoBehaviour:
   m_ObjectHideFlags: 0
