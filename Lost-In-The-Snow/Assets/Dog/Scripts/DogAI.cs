@@ -12,7 +12,7 @@ public class DogAI : MonoBehaviour {
 	private enum ActionType{ IDLE, ACTIVE};
 	private Mood bestMood;
 
-	private float acceleration = 1f;
+	private float acceleration = 2f;
 	private Dog dog;
 	private NavMeshAgent navAgent;
 	void Awake(){
@@ -46,10 +46,10 @@ public class DogAI : MonoBehaviour {
 			if (dog.currentAction.IsDone ()) {
 				EndAction ();
 			} if (Vector3.Distance (transform.position, dog.player.transform.position) < 5) {
-				if (!dog.player.GetComponent<CharacterMovement> ().getSprint ())
+				if (dog.player.GetComponent<CharacterMovement> ().getSprint ())
 					navAgent.speed = Mathf.Clamp (navAgent.speed + Time.deltaTime * acceleration, 1, 2);
 				else
-					navAgent.speed = Mathf.Clamp (navAgent.speed - Time.deltaTime * acceleration, 1, 2);
+					navAgent.speed = Mathf.Clamp (navAgent.speed - Time.deltaTime * acceleration/2, 1, 2);
 			} else {
 				navAgent.speed = Mathf.Clamp (navAgent.speed + Time.deltaTime * acceleration, 1, 2);
 			}
