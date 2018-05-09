@@ -32,6 +32,7 @@ public class CharacterMovement : MonoBehaviour {
     private bool forcedMove = false;
     private float t = 0f;
     private int testIterator = 0;
+    private int forcedTurn;
 
     // Use this for initialization
     void Start () {
@@ -39,38 +40,34 @@ public class CharacterMovement : MonoBehaviour {
         accTajmer = new Timer(0f);
         forcedPosition = transform.position;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-        CheckInputs();
-        CalculateMovement();
-        CalculateCurrentSpeed();
-        CalculateJump();
         if (!forcedMove)
+        {
+            CheckInputs();
+            CalculateMovement();
+            CalculateCurrentSpeed();
+            CalculateJump();
             CalculateAirTime();
-        ApplyMovement();
+            ApplyMovement();
+        }
         if (forcedMove)
             Forcing();
-        /*testIterator++;
-        if (testIterator >= 300)
+        testIterator++;
+        if (testIterator >= 400)
         {
             testIterator = 0;
             ForceMovement(forcedPosition, new Vector2(50f, -20f));
             Debug.Log("TestIterator fire!");
-        }*/
+        }
     }
 
     public bool CutsceneLock
     {
         get { return cutsceneLock; }
-        set
-        {
-            cutsceneLock = value;
-            CameraController camCon = Camera.main.GetComponent<CameraController>();
-            if (camCon != null)
-                camCon.CutsceneLock = value;
-        }
+        set { cutsceneLock = value; }
     }
 
     void CalculateAirTime()
@@ -174,7 +171,24 @@ public class CharacterMovement : MonoBehaviour {
         forcedPosition = targetPosition;
         forcedLook = targetLook;
         forcedMove = true;
-        CutsceneLock = true;
+        cutsceneLock = true;
+        CameraController camCon = Camera.main.GetComponent<CameraController>();
+        camCon.CutsceneLock = true;
+        float hAngle = targetLook.x - camCon.getLook().x;
+        if (hAngle >= 0)
+        {
+            if (hAngle >= 180)
+                forcedTurn = -1;
+            else
+                forcedTurn = 1;
+        }
+        else
+        {
+            if (hAngle <= -180)
+                forcedTurn = 1;
+            else
+                forcedTurn = -1;
+        }
         Debug.Log("ForceMovement");
     }
 
@@ -183,22 +197,27 @@ public class CharacterMovement : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, forcedPosition, 1.5f);
         CameraController camCon = Camera.main.GetComponent<CameraController>();
         Vector2 newLook = camCon.getLook();
-        newLook.y = Mathf.MoveTowards(newLook.y, forcedLook.y, 1);
-        float hAngle = forcedLook.x - newLook.x;
-        if (hAngle >= 180)
-            newLook.x -= 4;
-        else if (hAngle <= -180)
-            newLook.x += 4;
+        newLook.y = Mathf.MoveTowards(newLook.y, forcedLook.y, 2);
+        int turnSpeed = 4;
+        newLook.x += forcedTurn * turnSpeed;
+        if (forcedTurn == 1)
+        {
+            if (newLook.x > forcedLook.x)
+                if (newLook.x - forcedLook.x <= turnSpeed)
+                    newLook.x = forcedLook.x;
+        }
+        else
+        {
+            if (newLook.x < forcedLook.x)
+                if (forcedLook.x - newLook.x <= turnSpeed)
+                    newLook.x = forcedLook.x;
+        }
         camCon.setLook(newLook);
-        if (transform.position == forcedPosition)
-            Debug.Log("position match");
-        if (camCon.getLook() == forcedLook)
-            Debug.Log("look match");
         if (transform.position == forcedPosition && camCon.getLook() == forcedLook)
         {
             forcedMove = false;
-            CutsceneLock = false;
-            Debug.Log("Release");
+            cutsceneLock = false;
+            camCon.CutsceneLock = false;
         }
     }
 
