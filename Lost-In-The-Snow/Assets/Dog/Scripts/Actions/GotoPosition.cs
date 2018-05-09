@@ -22,7 +22,16 @@ public class GotoPosition : DogAction{
 		currentTarget = dog.transform.position;
 	}
 	public override void UpdateAction(){
-		//dog.Print(NavMesh.CalculatePath (dog.transform.position, targetPosition, NavMesh.AllAreas, path).ToString());//DONT BE FALSE OR i :cryinglaughter::gun:
+		if(NavMesh.CalculatePath (dog.transform.position, targetPosition, NavMesh.AllAreas, path)){//DONT BE FALSE OR i :cryinglaughter::gun:
+		}else{
+			Debug.Log ("NOT A VALID PATH APPARENTLY");
+			if (path.status == NavMeshPathStatus.PathComplete)
+				Debug.Log ("Path complete");
+			else if (path.status == NavMeshPathStatus.PathInvalid)
+				Debug.Log ("Path invalid");
+			else if (path.status == NavMeshPathStatus.PathPartial)
+				Debug.Log ("Path partial");
+		}
 		for (int i = 0; i < path.corners.Length - 1; i++) {
 			Debug.DrawLine (path.corners [i], path.corners [i + 1], Color.red, 0.1f);	
 		}if (path.corners.Length > 1) {

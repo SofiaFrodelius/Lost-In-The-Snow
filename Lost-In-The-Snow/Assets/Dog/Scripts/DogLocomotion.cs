@@ -51,7 +51,6 @@ public class DogLocomotion : MonoBehaviour {
 			animator.SetFloat (lookDirectionId, angle, headLookDampTime, Time.deltaTime);
 	}
 	void SetupAgentLocomotion(){
-		Debug.Log (update);
 		if (NavAgentDone ()) {
 			SetParameters (0, 0);
 		} else {
