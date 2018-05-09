@@ -162,12 +162,18 @@ public class CharacterMovement : MonoBehaviour {
     {
         forcedPosition = targetPosition;
         forcedLook = targetLook;
+        while (forcedLook.x < 0)
+            forcedLook.x += 360;
+        while (forcedLook.x >= 360)
+            forcedLook.x -= 360;
         forcedMove = true;
         cutsceneLock = true;
         CameraController camCon = Camera.main.GetComponent<CameraController>();
         camCon.CutsceneLock = true;
-        float hAngle = targetLook.x - camCon.getLook().x;
-        if (hAngle >= 0)
+        float hAngle = forcedLook.x - camCon.getLook().x;
+        if (hAngle == 0)
+            forcedTurn = 0;
+        else if (hAngle > 0)
         {
             if (hAngle >= 180)
                 forcedTurn = -1;
@@ -181,7 +187,6 @@ public class CharacterMovement : MonoBehaviour {
             else
                 forcedTurn = -1;
         }
-        Debug.Log("ForceMovement");
     }
 
     private void Forcing()
@@ -189,17 +194,31 @@ public class CharacterMovement : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, forcedPosition, 1.5f);
         CameraController camCon = Camera.main.GetComponent<CameraController>();
         Vector2 newLook = camCon.getLook();
-        newLook.y = Mathf.MoveTowards(newLook.y, forcedLook.y, 2);
-        int turnSpeed = 4;
+        float turnSpeed = 4 * 60 * Time.deltaTime;
+        newLook.y = Mathf.MoveTowards(newLook.y, forcedLook.y, turnSpeed);
+        if (newLook.x == forcedLook.x)
+            forcedTurn = 0;
         newLook.x += forcedTurn * turnSpeed;
+        if (newLook.x >= 360) newLook.x -= 360;
+        else if (newLook.x < 0) newLook.x += 360;
         if (forcedTurn == 1)
         {
+            if (forcedLook.x >= 360 - turnSpeed)
+            {
+                if (newLook.x < turnSpeed)
+                    newLook.x = forcedLook.x;
+            }
             if (newLook.x > forcedLook.x)
                 if (newLook.x - forcedLook.x <= turnSpeed)
                     newLook.x = forcedLook.x;
         }
-        else
+        else if (forcedTurn == -1)
         {
+            if (forcedLook.x <= turnSpeed)
+            {
+                if (newLook.x > 360 - turnSpeed)
+                    newLook.x = forcedLook.x;
+            }
             if (newLook.x < forcedLook.x)
                 if (forcedLook.x - newLook.x <= turnSpeed)
                     newLook.x = forcedLook.x;

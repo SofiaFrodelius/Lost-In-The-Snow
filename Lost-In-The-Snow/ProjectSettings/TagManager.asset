@@ -11,6 +11,7 @@ TagManager:
   - Stick
   - Dog
   - Tree
+  - Cuttable Tree
   layers:
   - Default
   - TransparentFX

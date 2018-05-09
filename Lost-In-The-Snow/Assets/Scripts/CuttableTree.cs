@@ -13,7 +13,7 @@ public class CuttableTree : MonoBehaviour, IInteractible
             charMove = playerObj.GetComponent<CharacterMovement>();
         if (charMove != null)
         {
-            float hAngle = 3;
+            float hAngle = 0;
             Vector2 targetLook = new Vector2(hAngle, 0f);
             charMove.ForceMovement(charMove.transform.position, targetLook);
         }
