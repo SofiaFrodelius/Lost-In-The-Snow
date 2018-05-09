@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
         transform.localRotation = Quaternion.AngleAxis(-look.y, Vector3.right);
         playerTransform.localRotation = Quaternion.AngleAxis(look.x, playerTransform.up);
 
-        
+        //Debug.Log(look.x);
 
         //Temp
         if (Input.GetKeyDown(KeyCode.Escape))

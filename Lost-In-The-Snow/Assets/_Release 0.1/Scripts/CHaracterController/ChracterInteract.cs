@@ -9,6 +9,11 @@ public class ChracterInteract : MonoBehaviour
     [SerializeField] private LayerMask interactLayerMask;
     private Camera playerCam;
 	private Dog dog;
+    private bool cutsceneLock = false;
+    private bool interactAllowed = true;
+    private bool callDogAllowed = true;
+    private bool interactDogAllowed = true;
+    private bool pickUpDogAllowed = true;
     // Use this for initialization
     void Start()
     {
@@ -19,10 +24,13 @@ public class ChracterInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Interact();
-        CallDog();
-        InteractWithDog();
-        PickUpDog();
+        if (!cutsceneLock)
+        {
+            if (interactAllowed) Interact();
+            if (callDogAllowed) CallDog();
+            if (interactDogAllowed) InteractWithDog();
+            if (pickUpDogAllowed) PickUpDog();
+        }
     }
 
 
@@ -85,5 +93,23 @@ public class ChracterInteract : MonoBehaviour
         handler.destroyItem();
         if (inventory != null)
             inventory.addItem(item);
+    }
+
+    public bool CutsceneLock
+    {
+        get { return cutsceneLock; }
+        set { cutsceneLock = value; }
+    }
+
+    public void PermitAction(int actionIndex, bool value)
+    {
+        if (actionIndex == 0)
+            interactAllowed = value;
+        if (actionIndex == 1)
+            callDogAllowed = value;
+        if (actionIndex == 2)
+            interactDogAllowed = value;
+        if (actionIndex == 3)
+            pickUpDogAllowed = value;
     }
 }
