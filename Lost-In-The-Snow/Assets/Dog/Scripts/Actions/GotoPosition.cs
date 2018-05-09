@@ -22,9 +22,6 @@ public class GotoPosition : DogAction{
 		currentTarget = dog.transform.position;
 	}
 	public override void UpdateAction(){
-		NavMeshHit hit;
-		if (NavMesh.SamplePosition (targetPosition, out hit, 2.0f, 1))
-			targetPosition = hit.position;
 		if(NavMesh.CalculatePath (dog.transform.position, targetPosition, NavMesh.AllAreas, path)){//DONT BE FALSE OR i :cryinglaughter::gun:
 		}else{
 			//navAgent.SetDestination (targetPosition);
@@ -58,13 +55,13 @@ public class GotoPosition : DogAction{
 		}
 	}
 	private void GetNewTarget(){
-		float maxForward = 5f;
+		float maxForward = 20f;
 		if (Vector2.Distance (new Vector2 (dog.transform.position.x, dog.transform.position.z), new Vector2 (targetPosition.x, targetPosition.z))< maxForward) {
 			currentTarget = targetPosition;
 			return;
 		}
 		//Temporary values.
-		currentTarget = GetPos (2,5,-3,3,4,"Tree");
+		currentTarget = GetPos (10,20,-10,10,5,"Tree");
 	}
 	Vector3 GetPos(float minForward, float maxForward, float minRight, float maxRight, float radius, string tag){
 		Vector3 pos = Vector3.zero;
