@@ -22,9 +22,12 @@ public class GotoPosition : DogAction{
 		currentTarget = dog.transform.position;
 	}
 	public override void UpdateAction(){
+		NavMeshHit hit;
+		if (NavMesh.SamplePosition (targetPosition, out hit, 2.0f, 1))
+			targetPosition = hit.position;
 		if(NavMesh.CalculatePath (dog.transform.position, targetPosition, NavMesh.AllAreas, path)){//DONT BE FALSE OR i :cryinglaughter::gun:
 		}else{
-			Debug.Log ("NOT A VALID PATH APPARENTLY");
+			//navAgent.SetDestination (targetPosition);
 			if (path.status == NavMeshPathStatus.PathComplete)
 				Debug.Log ("Path complete");
 			else if (path.status == NavMeshPathStatus.PathInvalid)
@@ -84,7 +87,7 @@ public class GotoPosition : DogAction{
 		}else {
 			pos = path.corners [1];
 		}
-		dog.TestWaypoint.position = (pos);
+		//dog.TestWaypoint.position = (pos);
 		return pos;
 	}
 	private Vector3 GetPerpendicular2DVector(Vector3 v){
