@@ -33,8 +33,8 @@ public class Dog : MonoBehaviour, IInteractible {
 		if(terrain == null) terrain = Terrain.activeTerrain;
 		ai = GetComponent<DogAI>();
 		animator = GetComponent<Animator>();
-        navAgent = GetComponent<NavMeshAgent>();
-    }
+		navAgent = GetComponent<NavMeshAgent> ();
+	}
 	void Update(){
 		if (currentAction != null) {
 			Debug.Log (currentAction.ToString ());
