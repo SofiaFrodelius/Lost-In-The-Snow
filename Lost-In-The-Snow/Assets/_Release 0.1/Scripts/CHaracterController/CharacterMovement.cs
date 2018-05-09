@@ -31,7 +31,6 @@ public class CharacterMovement : MonoBehaviour {
     private Vector2 forcedLook;
     private bool forcedMove = false;
     private float t = 0f;
-    private int testIterator = 0;
     private int forcedTurn;
 
     // Use this for initialization
@@ -55,13 +54,6 @@ public class CharacterMovement : MonoBehaviour {
         }
         if (forcedMove)
             Forcing();
-        testIterator++;
-        if (testIterator >= 400)
-        {
-            testIterator = 0;
-            ForceMovement(forcedPosition, new Vector2(50f, -20f));
-            Debug.Log("TestIterator fire!");
-        }
     }
 
     public bool CutsceneLock
