@@ -12,6 +12,7 @@ public class DogAI : MonoBehaviour {
 	private enum ActionType{ IDLE, ACTIVE};
 	private Mood bestMood;
 
+	private float acceleration = 1f;
 	private Dog dog;
 	private NavMeshAgent navAgent;
 	void Awake(){
@@ -45,13 +46,12 @@ public class DogAI : MonoBehaviour {
 			if (dog.currentAction.IsDone ()) {
 				EndAction ();
 			} if (Vector3.Distance (transform.position, dog.player.transform.position) < 5) {
-				navAgent.speed = Mathf.Clamp (navAgent.speed - Time.deltaTime * 3f, 1, 2);
-			}else if (!dog.player.GetComponent<CharacterMovement> ().getSprint ()) {//Player.getspeed > walking speed <-- me ny player controller.
-				if (dog.currentAction.GetImportance () != DogAction.Importance.HIGH) {
-					EndAction ();
-					dog.currentAction = activeActions [0];
-					dog.currentAction.StartAction ();
-				}
+				if (!dog.player.GetComponent<CharacterMovement> ().getSprint ())
+					navAgent.speed = Mathf.Clamp (navAgent.speed + Time.deltaTime * acceleration, 1, 2);
+				else
+					navAgent.speed = Mathf.Clamp (navAgent.speed - Time.deltaTime * acceleration, 1, 2);
+			} else {
+				navAgent.speed = Mathf.Clamp (navAgent.speed + Time.deltaTime * acceleration, 1, 2);
 			}
 		}
 	}
