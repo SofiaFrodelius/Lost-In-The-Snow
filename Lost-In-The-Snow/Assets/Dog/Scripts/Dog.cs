@@ -37,8 +37,8 @@ public class Dog : MonoBehaviour, IInteractible {
 	}
 	void Update(){
 		if (currentAction != null) {
-			Debug.Log (currentAction.ToString ());
 			currentAction.UpdateAction ();
+			Debug.Log (currentAction.ToString ());
 		} else {
 			Debug.Log ("No action");
 		}
