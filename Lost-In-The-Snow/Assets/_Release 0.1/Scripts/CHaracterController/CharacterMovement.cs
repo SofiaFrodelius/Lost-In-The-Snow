@@ -32,6 +32,7 @@ public class CharacterMovement : MonoBehaviour {
     private bool forcedMove = false;
     private float t = 0f;
     private int forcedTurn;
+    private bool forceRelease = true;
 
     // Use this for initialization
     void Start () {
@@ -158,7 +159,7 @@ public class CharacterMovement : MonoBehaviour {
         else accTajmer.ResetTimer();
     }
 
-    public void ForceMovement(Vector3 targetPosition, Vector2 targetLook)
+    public void ForceMovement(Vector3 targetPosition, Vector2 targetLook, bool release)
     {
         forcedPosition = targetPosition;
         forcedLook = targetLook;
@@ -169,7 +170,9 @@ public class CharacterMovement : MonoBehaviour {
         forcedMove = true;
         cutsceneLock = true;
         CameraController camCon = Camera.main.GetComponent<CameraController>();
-        camCon.CutsceneLock = true;
+        if (camCon != null) camCon.CutsceneLock = true;
+        ChracterInteract charInteract = GetComponent<ChracterInteract>();
+        if (charInteract != null) charInteract.CutsceneLock = true;
         float hAngle = forcedLook.x - camCon.getLook().x;
         if (hAngle == 0)
             forcedTurn = 0;
@@ -187,12 +190,14 @@ public class CharacterMovement : MonoBehaviour {
             else
                 forcedTurn = -1;
         }
+        forceRelease = release;
     }
 
     private void Forcing()
     {
         transform.position = Vector3.MoveTowards(transform.position, forcedPosition, 0.2f);
         CameraController camCon = Camera.main.GetComponent<CameraController>();
+        ChracterInteract charInteract = GetComponent<ChracterInteract>();
         Vector2 newLook = camCon.getLook();
         float turnSpeed = 4 * 60 * Time.deltaTime;
         newLook.y = Mathf.MoveTowards(newLook.y, forcedLook.y, turnSpeed);
@@ -227,13 +232,26 @@ public class CharacterMovement : MonoBehaviour {
         if (transform.position == forcedPosition && camCon.getLook() == forcedLook)
         {
             forcedMove = false;
-            cutsceneLock = false;
-            camCon.CutsceneLock = false;
+            if (forceRelease)
+            {
+                cutsceneLock = false;
+                camCon.CutsceneLock = false;
+                charInteract.CutsceneLock = false;
+            }
         }
     }
 
     public bool GetForcedMove()
     {
         return forcedMove;
+    }
+
+    public void CutsceneRelease()
+    {
+        CameraController camCon = Camera.main.GetComponent<CameraController>();
+        ChracterInteract charInteract = GetComponent<ChracterInteract>();
+        cutsceneLock = false;
+        if (camCon != null) camCon.CutsceneLock = false;
+        if (charInteract != null) charInteract.CutsceneLock = false;
     }
 }
