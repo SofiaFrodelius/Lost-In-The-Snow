@@ -191,7 +191,7 @@ public class CharacterMovement : MonoBehaviour {
 
     private void Forcing()
     {
-        transform.position = Vector3.MoveTowards(transform.position, forcedPosition, 1.5f);
+        transform.position = Vector3.MoveTowards(transform.position, forcedPosition, 0.2f);
         CameraController camCon = Camera.main.GetComponent<CameraController>();
         Vector2 newLook = camCon.getLook();
         float turnSpeed = 4 * 60 * Time.deltaTime;
