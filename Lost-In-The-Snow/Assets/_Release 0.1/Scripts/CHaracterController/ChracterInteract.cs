@@ -38,7 +38,7 @@ public class ChracterInteract : MonoBehaviour
     {
         if (Input.GetButtonDown("CallDog"))
         {
-			dog.Call (transform);
+			dog.Call ();
         }
     }
     void PickUpDog()
@@ -49,9 +49,12 @@ public class ChracterInteract : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
             {
-                Debug.Log(hit.transform.gameObject.name);
-				dog.PickupDog ();
-                //HUNDJÄVELN SKA UPP I FAMNHELVETET
+                if (hit.transform.tag == "Dog")
+                {
+                    Debug.Log(hit.transform.gameObject.name);
+                    dog.PickupDog();
+                    //HUNDJÄVELN SKA UPP I FAMNHELVETET
+                }
             }
         }
     }
@@ -63,8 +66,11 @@ public class ChracterInteract : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
             {
-                Debug.Log(hit.transform.gameObject.name);
-				dog.Pet ();
+                if (hit.transform.tag == "Dog")
+                {
+                    Debug.Log(hit.transform.gameObject.name);
+                    dog.Pet();
+                }
             }
         }
     }
@@ -83,16 +89,19 @@ public class ChracterInteract : MonoBehaviour
         }
     }
 
-    //callback funktion for iGrabable
-    private void pickup(IGrabable handler, BaseEventData eventData)
+	private void pickup(IGrabable handler, BaseEventData eventData)
     {
+        bool temp;
         Inventory inventory;
         inventory = Inventory.instance;
         Item item;
         item = handler.getItemOnPickup();
-        handler.destroyItem();
         if (inventory != null)
-            inventory.addItem(item);
+        {
+            temp = inventory.addItem(item);
+            if(temp) handler.destroyItem();
+        }
+        else handler.destroyItem();
     }
 
     public bool CutsceneLock
@@ -111,5 +120,7 @@ public class ChracterInteract : MonoBehaviour
             interactDogAllowed = value;
         if (actionIndex == 3)
             pickUpDogAllowed = value;
+
+        Debug.Log(interactAllowed);
     }
 }

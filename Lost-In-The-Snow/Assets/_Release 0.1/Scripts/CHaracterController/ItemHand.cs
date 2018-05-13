@@ -23,8 +23,8 @@ public class ItemHand : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetAxis("Scroll") > 0.1) scroll = 1;
-        else if (Input.GetAxis("Scroll") < -0.1) scroll = -1;
+        if (Input.GetAxis("Scroll") > 0.1) scroll = 1; //change to input based on keybind settings
+        else if (Input.GetAxis("Scroll") < -0.1) scroll = -1; //change to input based on keybind settings
         else scroll = 0;
 
         if (scroll != 0 && inventory != null && inventory.getNumOfUsedHoldableSlots() > 1)
@@ -52,10 +52,13 @@ public class ItemHand : MonoBehaviour
         if (itemToInstansiate == null) activeItem = null;
         else if (activeItem != itemToInstansiate)
         {
-            if (activeItem != null && activeItem.transform.parent != null) Destroy(activeItem); //fix only throw last item because of this line.
+            Collider tempCol;
+            if (activeItem != null && activeItem.transform.parent != null) Destroy(activeItem);
 
             activeItem = Instantiate(itemToInstansiate, transform);
             activeItem.layer = currentItemLayerValue;
+            tempCol = activeItem.GetComponent<Collider>();
+            if (tempCol) tempCol.enabled = false;
             updateAllChildLayers(activeItem.gameObject);
 
         }
@@ -96,6 +99,10 @@ public class ItemHand : MonoBehaviour
     {
         return selectedItem;
     }
+	//Emil did this might be wrong
+	public Item GetItemInHand(){
+		return inventory.getItemFromHoldableSlot (selectedItem);
+	}
 
 
 }
