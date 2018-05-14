@@ -12,6 +12,7 @@ TagManager:
   - Dog
   - Tree
   - Cuttable Tree
+  - Terrain
   layers:
   - Default
   - TransparentFX

@@ -172,6 +172,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void replaceHoldableItem(int slotId, Item item)
+    {
+        if(holdableSlots[slotId].getItemsInSlot() == 1)
+        {
+            holdableSlots[slotId].setItem(item);
+        }
+        else
+        {
+            holdableSlots[slotId].decrementItemsInSlot();
+            addItem(item);
+        }
+
+        if (updateItemInHandCallback != null)
+            updateItemInHandCallback.Invoke();
+    }
+
+
     public void removeNonHoldableItem(Item item)
     {
         for (int i = 0; i < inventorySlots.Count; i++)

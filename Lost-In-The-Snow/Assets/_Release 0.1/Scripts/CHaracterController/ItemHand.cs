@@ -103,6 +103,10 @@ public class ItemHand : MonoBehaviour
 	public Item GetItemInHand(){
 		return inventory.getItemFromHoldableSlot (selectedItem);
 	}
+    public void IncrementSelectedItem()
+    {
+        selectedItem++;
+    }
 
 
 }
