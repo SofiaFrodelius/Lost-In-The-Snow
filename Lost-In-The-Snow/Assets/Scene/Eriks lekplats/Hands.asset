@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9803c63d76a10e24e908e452f02b4fce, type: 3}
+  m_Name: Hands
+  m_EditorClassIdentifier: 
+  itemID: 10
+  maxStack: 0
+  itemName: Hands
+  itemDescription: 
+  neutralImage: {fileID: 21300000, guid: b1c9e394e050189488ee72c368c85a50, type: 3}
+  selectedImage: {fileID: 21300000, guid: 1f1d6453da848cf44a5912c442987195, type: 3}
+  associatedGameobject: {fileID: 1537545773635134, guid: 87bc84fce774cb642896d26c10e4add3,
+    type: 2}
+  holdableItem: 1
