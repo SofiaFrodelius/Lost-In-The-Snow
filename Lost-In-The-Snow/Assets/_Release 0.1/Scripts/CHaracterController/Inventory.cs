@@ -260,7 +260,7 @@ public class Inventory : MonoBehaviour
 
     public void OnDestroy()
     {
-        invSaveLoad.saveInventory();
+        if(invSaveLoad != null) invSaveLoad.saveInventory();
     }
 
 }

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Name: Bucket
   m_EditorClassIdentifier: 
   itemID: 10
-  maxStack: 0
-  itemName: 
-  itemDescription: 
-  neutralImage: {fileID: 0}
-  selectedImage: {fileID: 0}
-  associatedGameobject: {fileID: 0}
-  holdableItem: 0
+  maxStack: 1
+  itemName: BucketEmpty
+  itemDescription: Empty Bucket
+  neutralImage: {fileID: 21300012, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  selectedImage: {fileID: 21300012, guid: 28b41fef228d6814f90e541deaf9f262, type: 3}
+  associatedGameobject: {fileID: 1470934095834612, guid: 1da2bfe63b2d19d44aea608a323f7a5e,
+    type: 2}
+  holdableItem: 1

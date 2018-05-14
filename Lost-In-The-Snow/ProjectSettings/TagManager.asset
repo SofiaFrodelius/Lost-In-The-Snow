@@ -13,6 +13,7 @@ TagManager:
   - Tree
   - Cuttable Tree
   - Terrain
+  - Stove
   layers:
   - Default
   - TransparentFX
