@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaitForFetch : DogAction
 {
 	public WaitForFetch(Dog d) : base(d){
+		importance = Importance.LOW;
 	}
 	public override void StartAction(){
 		isDone = false;
