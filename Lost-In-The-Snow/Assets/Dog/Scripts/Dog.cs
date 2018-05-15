@@ -38,7 +38,7 @@ public class Dog : MonoBehaviour, IInteractible {
 		itemHand = player.GetComponentInChildren<ItemHand> ();
 	}
 	void Update(){
-		if (itemHand.GetItemInHand ().name == "Stick" && currentAction == null)
+		if (itemHand.GetItemInHand() != null && itemHand.GetItemInHand ().name == "Stick" && currentAction == null)
 			ai.StartAction (new FollowPlayer (this, player));
 		if (currentAction != null) {
 			currentAction.UpdateAction ();
@@ -49,6 +49,8 @@ public class Dog : MonoBehaviour, IInteractible {
     }
 	public void Interact(){
 		
+	}
+	public void AlternateInteract(){
 	}
 	public bool IsIdle(){
 		return currentAction == null;
