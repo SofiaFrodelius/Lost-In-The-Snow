@@ -38,8 +38,13 @@ public class Dog : MonoBehaviour, IInteractible {
 		itemHand = player.GetComponentInChildren<ItemHand> ();
 	}
 	void Update(){
-		if (itemHand.GetItemInHand() != null && itemHand.GetItemInHand ().name == "Stick" && currentAction == null)
-			ai.StartAction (new FollowPlayer (this, player));
+		if (itemHand.GetItemInHand () != null && itemHand.GetItemInHand ().name == "Stick" && currentAction == null) {
+			if (Vector3.Distance (transform.position, player.position) < 3) {
+				ai.StartAction (new WaitForFetch (this));
+			} else {
+				ai.StartAction (new FollowPlayer (this, player));
+			}
+		}
 		if (currentAction != null) {
 			currentAction.UpdateAction ();
 			Debug.Log (currentAction.ToString ());
