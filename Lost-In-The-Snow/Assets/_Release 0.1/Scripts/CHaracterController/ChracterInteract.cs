@@ -30,6 +30,7 @@ public class ChracterInteract : MonoBehaviour
             if (callDogAllowed) CallDog();
             if (interactDogAllowed) InteractWithDog();
             if (pickUpDogAllowed) PickUpDog();
+            alternateInteract(); //add if alternateinteractallowed
         }
     }
 
@@ -89,6 +90,20 @@ public class ChracterInteract : MonoBehaviour
         }
     }
 
+
+    void alternateInteract()
+    {
+        RaycastHit hit = new RaycastHit();
+        Ray ray = new Ray(playerCam.transform.position, playerCam.transform.forward);
+        if (Input.GetButtonDown("AlternateInteract"))
+        {
+            if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
+            {
+                ExecuteEvents.ExecuteHierarchy<IInteractible>(hit.transform.gameObject, null, (handler, eventData) => handler.AlternateInteract());
+            }
+        }
+    }
+
 	private void pickup(IGrabable handler, BaseEventData eventData)
     {
         bool temp;
@@ -120,7 +135,19 @@ public class ChracterInteract : MonoBehaviour
             interactDogAllowed = value;
         if (actionIndex == 3)
             pickUpDogAllowed = value;
-
-        Debug.Log(interactAllowed);
     }
+
+
+    public float MaxInteractLength
+    {
+        get
+        {
+            return maxInteractLength;
+        }
+        set
+        {
+            maxInteractLength = value;
+        }
+    }
+
 }

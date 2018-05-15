@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public interface IInteractible : IEventSystemHandler{
-    void Interact();
-    void AlternateInteract();
+public interface IChoosable : IEventSystemHandler
+{
+    void choose1();
+    void choose2();
+
 }

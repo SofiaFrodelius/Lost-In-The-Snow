@@ -20,7 +20,10 @@ public class HoldableInventorySlotHUD : MonoBehaviour
         if (item != null)
         {
             currentItem = item;
-            if (selected) itemImage.sprite = item.getSelectedImage();
+            if (selected)
+            {
+                itemImage.sprite = item.getSelectedImage();
+            }
             else itemImage.sprite = item.getNeutralImage();
             itemImage.color = new Color(itemImage.color.r, itemImage.color.g, itemImage.color.b, 1);
         }

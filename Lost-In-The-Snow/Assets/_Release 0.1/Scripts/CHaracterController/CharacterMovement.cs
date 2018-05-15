@@ -44,7 +44,7 @@ public class CharacterMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (!forcedMove)
+        if (!forcedMove && !cutsceneLock)
         {
             CheckInputs();
             CalculateMovement();

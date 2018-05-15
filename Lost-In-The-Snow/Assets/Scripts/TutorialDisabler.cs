@@ -20,13 +20,12 @@ public class TutorialDisabler : MonoBehaviour
 
     private void Update()
     {
-        ////change keycode.e to "input/interact" later
         //if(Input.GetButtonDown("Interact"))
         //{
         //    RaycastHit hit = new RaycastHit();
         //    Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
-            
+
         //    if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
         //    {
         //        Debug.Log("Hit: " + hit.transform.name);
@@ -35,18 +34,37 @@ public class TutorialDisabler : MonoBehaviour
         //    }
         //}
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetButtonDown("PetDog"))
         {
-            tutorial.finishTutorial(petIlaTutorialID);
+            RaycastHit hit = new RaycastHit();
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+            if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
+            {
+                Debug.Log("finishedtutorial1");
+                if (hit.transform.tag == "Dog")
+                {
+                    tutorial.finishTutorial(petIlaTutorialID);
+                }
+            }
         }
 
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetButtonDown("CallDog"))
         {
             tutorial.finishTutorial(callIlaTutorialID);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha3))
+
+        if (Input.GetButtonDown("PickupDog"))
         {
-            tutorial.finishTutorial(pickUpIlaTutorialID);
+            RaycastHit hit = new RaycastHit();
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            if (Physics.Raycast(ray, out hit, maxInteractLength, interactLayerMask))
+            {
+                if (hit.transform.tag == "Dog")
+                {
+                    tutorial.finishTutorial(pickUpIlaTutorialID);
+                }
+            }
         }
     }
 }

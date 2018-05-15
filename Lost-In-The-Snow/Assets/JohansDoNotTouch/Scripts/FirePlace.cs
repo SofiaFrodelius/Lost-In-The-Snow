@@ -30,6 +30,9 @@ public class FirePlace : MonoBehaviour, IInteractible
         if (particleSys.isPlaying) particleSys.Stop();
         else particleSys.Play();
     }
-    
 
+    public void AlternateInteract()
+    {
+        throw new System.NotImplementedException();
+    }
 }

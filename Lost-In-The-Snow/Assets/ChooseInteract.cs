@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dorra : MonoBehaviour, IInteractible {
-    private Vector3 StartRotation;
-
+public class ChooseInteract : MonoBehaviour, IInteractible
+{
     public void AlternateInteract()
     {
         throw new System.NotImplementedException();
@@ -12,11 +11,6 @@ public class Dorra : MonoBehaviour, IInteractible {
 
     public void Interact()
     {
-        //Debug.Log("Door");
-        //Play door sound
-        //
-        SceneHandler.ChangeScene(0);
-        
-        //ToggleDoor();
+
     }
 }

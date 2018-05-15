@@ -10,6 +10,11 @@ public class CuttableTree : MonoBehaviour, IInteractible
     private CharacterMovement charMove = null;
     GameObject activeItem = null;
 
+    public void AlternateInteract()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void Interact()
     {
         playerObj = GameObject.FindWithTag("Player");
