@@ -10,6 +10,8 @@ public class EyeCast : MonoBehaviour
     private InteractPrompt ip;
     private InteractPrompt current;
 
+    private VoiceLinePromt vlp;
+
     private void Start()
     {
         if (ci)
@@ -30,6 +32,7 @@ public class EyeCast : MonoBehaviour
         {
             if(Physics.Raycast(transform.position, transform.forward, out hit, interactLength))
             {
+                
                 ip = hit.transform.GetComponent<InteractPrompt>();
                 if (ip != null && ip != current)
                 {
@@ -46,7 +49,14 @@ public class EyeCast : MonoBehaviour
                     current.promptToggle(false);
                     current = null;
                 }
-             }
+
+                vlp = hit.transform.GetComponent<VoiceLinePromt>();
+                if (vlp != null)
+                {
+                    vlp.PlayVoiceLine();
+                    vlp = null;
+                }
+            }
             else if (current)
             {
                 current.promptToggle(false);
