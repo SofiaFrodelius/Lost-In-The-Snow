@@ -47,6 +47,7 @@ public class GotoPosition : DogAction{
 				navAgent.SetDestination(currentTarget);
 			}
 			else if(Vector2.Distance(dogPos, new Vector2(targetPosition.x, targetPosition.z))> width){
+				dog.isSniffing = false;
 				GetNewTarget ();
 			}else{
 				isDone = true;
@@ -73,6 +74,8 @@ public class GotoPosition : DogAction{
 		GameObject obj = ScanForObject.Scan (scanPos, radius, tag, dog.dogLayerMask);
 		if (obj != null) {
 			pos = obj.transform.position;
+			if (Random.Range (0, 2) == 0)
+				dog.isSniffing = true;
 			//Temporary I guess.
 			obj.tag = "Untagged";
 		}else {

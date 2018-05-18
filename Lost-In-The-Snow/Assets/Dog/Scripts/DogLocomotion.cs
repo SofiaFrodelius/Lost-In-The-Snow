@@ -57,7 +57,10 @@ public class DogLocomotion : MonoBehaviour {
 			animator.SetFloat (lookDirectionId, angle, headLookDampTime, Time.deltaTime);
 			animator.SetFloat (lookUpId, upAngle, headLookDampTime, Time.deltaTime);
 		}
-
+		if (dog.isSniffing)
+			animator.SetLayerWeight (3, 1);
+		else
+			animator.SetLayerWeight (3, 0);
 	}
 	void SetupAgentLocomotion(){
 		if (NavAgentDone ()) {

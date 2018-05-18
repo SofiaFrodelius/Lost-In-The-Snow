@@ -21,6 +21,7 @@ public class Dog : MonoBehaviour, IInteractible {
     public Item grabbedItem;
     public GameObject itemObject;
 	public DogAction currentAction;
+	public bool isSniffing = false;
 
 	private DogAI ai;
 	private Animator animator;
@@ -82,9 +83,11 @@ public class Dog : MonoBehaviour, IInteractible {
 			ai.StartAction (new PickupDog (this));
 	}
 	public void ParentDog(){
-		transform.parent = player;
+		Debug.Log ("YaYAY");
+		transform.parent = player.GetChild(2);
 	}
 	public void BreakLoose(){
+		Debug.Log ("YaYAYBREAK");
 		transform.parent = null;
 	}
 	public void AddEffectToMood(Mood effect){

@@ -17,7 +17,7 @@ public class ScriptedDog : MonoBehaviour {
 		dogAI = GetComponent<DogAI> ();
 		for (int i = 0; i < wayPoints.Count; i++) {
 			if (wayPoints [i] != null)
-				actions.Add (new LeadPlayer (dog, dog.player, wayPoints [i].transform.position, maxDistance, false));
+				actions.Add (new LeadPlayer (dog, dog.player, wayPoints [i].transform.position, maxDistance, false, wayPoints[wayPoints.Count-1].transform.position));
 			else
 				actions.Add (new Sit (dog, sitTimer)); 
 		}
