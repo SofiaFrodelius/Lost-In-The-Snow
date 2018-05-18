@@ -315,6 +315,11 @@ Prefab:
       propertyPath: TestWaypoint
       value: 
       objectReference: {fileID: 753696393}
+    - target: {fileID: 114294206197092172, guid: 60ae571d9632ff0428b1df9091240c0a,
+        type: 2}
+      propertyPath: wayPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 210810988}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60ae571d9632ff0428b1df9091240c0a, type: 2}
   m_IsPrefabParent: 0
@@ -403,25 +408,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &885230706 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1923277274761688, guid: 60ae571d9632ff0428b1df9091240c0a,
-    type: 2}
-  m_PrefabInternal: {fileID: 682473880}
---- !u!114 &885230707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 885230706}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24a3fd04ec39ee848942c486237ab9e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 10
-  wayPoints:
-  - {fileID: 210810988}
 --- !u!1001 &1349204437
 Prefab:
   m_ObjectHideFlags: 0
