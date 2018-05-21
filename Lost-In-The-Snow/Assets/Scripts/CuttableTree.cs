@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CuttableTree : MonoBehaviour, IInteractible
 {
-    private int hitPoints = 5;
+    private int hitPoints = 3;
     private bool activated = false;
     private GameObject playerObj;
     private CharacterMovement charMove = null;
     GameObject activeItem = null;
+    [SerializeField] private GameObject firewood;
 
     public void AlternateInteract()
     {
@@ -35,7 +36,7 @@ public class CuttableTree : MonoBehaviour, IInteractible
                     hAngle = Mathf.Atan2(deltaVector.x, deltaVector.y);
                     hAngle *= 360;
                     hAngle /= Mathf.PI * 2;
-                    hAngle += 3;
+                    hAngle += 2;
                     while (hAngle < 0)
                         hAngle += 360;
                     while (hAngle >= 360)
@@ -61,23 +62,33 @@ public class CuttableTree : MonoBehaviour, IInteractible
                 {
                     // Play Animation here
                     Debug.Log("Tree chopping animation");
-                    AxeSwing axeSwing = activeItem.GetComponent<AxeSwing>();
-                    if (axeSwing != null)
+                    GrabableObject grabableObject = activeItem.GetComponent<GrabableObject>();
+                    if (grabableObject != null)
                     {
-                        axeSwing.Use(Camera.main.GetComponentInChildren<ItemHand>());
-                        // if (animation finished)
+                        //if (animation finished)
                         //{
                         activated = false;
                         charMove.CutsceneRelease();
                         hitPoints--;
                         if (hitPoints <= 0)
                         {
-                            Debug.Log("DING DONG, the tree is dead!");
+                            // Tree dying stuff goes here
+                            for (int i = 0; i < 15; i++)
+                            {
+                                Instantiate(firewood, transform.position + new Vector3(0, 0.2f + (0.4f * i), 0), Quaternion.LookRotation(Vector3.up));
+                            }
+                            gameObject.SetActive(false);
                         }
                         //}
                     }
+                    else
+                    {
+                        Debug.Log("axeSwing is null");
+
+                    }
                 }
             }
+            else Debug.Log("charMove is null");
         }
     }
 }
