@@ -39,6 +39,8 @@ public class ChracterInteract : MonoBehaviour
     {
         if (Input.GetButtonDown("CallDog"))
         {
+            float distanceToDog = Vector3.Distance(transform.position, dog.transform.position);
+            GetComponent<IlaCallVoiceLinePicker>().PlayVoiceLine(distanceToDog);
 			dog.Call ();
         }
     }
