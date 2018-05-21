@@ -92,7 +92,7 @@ public class CharacterMovement : MonoBehaviour {
         if (inputJump && cc.isGrounded)
         {
             //Play jumpSound
-            //jumpEmitter.Play();
+            jumpEmitter.Play();
             moveDirection.y = jumpStartSpeed;
         }
     }
