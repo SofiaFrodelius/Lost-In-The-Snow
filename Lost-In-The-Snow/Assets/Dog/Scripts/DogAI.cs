@@ -18,7 +18,6 @@ public class DogAI : MonoBehaviour {
 	private Animator animator;
 
 
-    float k = 3;
 	void Awake(){
 		dog = GetComponent<Dog> ();
 		navAgent = GetComponent<NavMeshAgent> ();
