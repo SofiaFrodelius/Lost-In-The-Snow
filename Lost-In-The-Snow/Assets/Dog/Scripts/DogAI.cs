@@ -64,15 +64,6 @@ public class DogAI : MonoBehaviour {
 				}
 			}
 		}
-        if(k< 0)
-        {
-            k = 2;
-            StartAction(new Bark(dog));
-        }
-        else
-        {
-            k -= Time.deltaTime;
-        }
 	}
 	public void StartAction(DogAction action){
 		EndAction ();
