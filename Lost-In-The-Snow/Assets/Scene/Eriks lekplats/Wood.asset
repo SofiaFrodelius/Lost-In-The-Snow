@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9803c63d76a10e24e908e452f02b4fce, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  itemID: 1
+  itemID: 9999
   maxStack: 3
   itemName: Wood
   itemDescription: 
@@ -19,4 +19,4 @@ MonoBehaviour:
   selectedImage: {fileID: 21300000, guid: 7ac5b2e886902c24aaee8f0753fcd71c, type: 3}
   associatedGameobject: {fileID: 1982692177095370, guid: 6413ea7d516c8ad4ab25fba171e19784,
     type: 2}
-  holdableItem: 1
+  holdableItem: 0

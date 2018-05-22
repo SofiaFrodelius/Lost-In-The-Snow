@@ -9,6 +9,9 @@ public class AxeSwing : MonoBehaviour, IUsable
     [SerializeField] private GameObject chopParticles;
     [SerializeField] private Transform particlePos;
     Animator anim;
+    private bool isChopping = false;
+    private int counter = 0;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -19,20 +22,32 @@ public class AxeSwing : MonoBehaviour, IUsable
     }
     void SwingAxe()
     {
-        anim.SetBool("TreeChopBool", true);
-        
-        
+        if (!isChopping)
+        {
+            anim.SetTrigger("AxeChop");
+            isChopping = true;
+        }
     }
     private void Update()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsTag("TreeChop"))
+        if (isChopping)
         {
-            anim.SetBool("TreeChopBool", false);
+            counter++;
+            if (counter >= 275)
+            {
+                counter = 0;
+                isChopping = false;
+            }
         }
     }
     public void AxeHit()
     {
         Debug.Log("Instansierar partikelsystem");
         Instantiate(chopParticles, particlePos);
+    }
+
+    public bool IsChopping
+    {
+        get { return isChopping; }
     }
 }

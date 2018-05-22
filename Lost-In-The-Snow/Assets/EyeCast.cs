@@ -46,7 +46,7 @@ public class EyeCast : MonoBehaviour
                 }
                 else if(ip == null && current)
                 {
-                    current.promptToggle(false);
+                    current.disableAllPrompts();
                     current = null;
                 }
 
@@ -59,7 +59,7 @@ public class EyeCast : MonoBehaviour
             }
             else if (current)
             {
-                current.promptToggle(false);
+                current.disableAllPrompts();
                 current = null;
             }
             yield return new WaitForSeconds(0.15f);

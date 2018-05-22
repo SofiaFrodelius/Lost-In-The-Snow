@@ -35,9 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197263971290884}
   - component: {fileID: 95946733123523416}
-  - component: {fileID: 114519542349160376}
   - component: {fileID: 54870717544951710}
-  - component: {fileID: 114452161659222718}
   - component: {fileID: 65433430226834316}
   - component: {fileID: 114300964206384846}
   m_Layer: 0
@@ -191,34 +189,6 @@ MonoBehaviour:
   chopParticles: {fileID: 1122087454980176, guid: cd55405e5d656154eaecec01224b7e18,
     type: 2}
   particlePos: {fileID: 4240439431426570}
---- !u!114 &114452161659222718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1124715961825982}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21782d184c4940243a46d340e2e6e61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  throwForce: 20
---- !u!114 &114519542349160376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1124715961825982}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bf195ce2c7fbe742bbd99a2c3f6e7a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!137 &137870589931871372
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

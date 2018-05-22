@@ -11,7 +11,7 @@ public class InteractSceneSwitch : MonoBehaviour, IInteractible
 
     public void AlternateInteract()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void Interact()

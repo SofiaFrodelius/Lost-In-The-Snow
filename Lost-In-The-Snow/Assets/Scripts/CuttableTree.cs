@@ -6,6 +6,7 @@ public class CuttableTree : MonoBehaviour, IInteractible
 {
     private int hitPoints = 3;
     private bool activated = false;
+    private bool chopFinished = true;
     private GameObject playerObj;
     private CharacterMovement charMove = null;
     GameObject activeItem = null;
@@ -36,7 +37,7 @@ public class CuttableTree : MonoBehaviour, IInteractible
                     hAngle = Mathf.Atan2(deltaVector.x, deltaVector.y);
                     hAngle *= 360;
                     hAngle /= Mathf.PI * 2;
-                    hAngle += 2;
+                    hAngle += 1.8f;
                     while (hAngle < 0)
                         hAngle += 360;
                     while (hAngle >= 360)
@@ -44,7 +45,7 @@ public class CuttableTree : MonoBehaviour, IInteractible
                     Vector2 targetLook = new Vector2(hAngle, 0f);
                     Vector3 cuttingposition = new Vector3(-deltaVector.x, 0, -deltaVector.y);
                     cuttingposition.Normalize();
-                    float cuttingDistance = 2;
+                    float cuttingDistance = 1.9f;
                     charMove.ForceMovement(transform.position + new Vector3(cuttingposition.x * cuttingDistance, charMove.transform.position.y - transform.position.y,
                         cuttingposition.z * cuttingDistance), targetLook, false);
                 }
@@ -60,32 +61,40 @@ public class CuttableTree : MonoBehaviour, IInteractible
             {
                 if (!charMove.GetForcedMove())
                 {
-                    // Play Animation here
-                    Debug.Log("Tree chopping animation");
-                    GrabableObject grabableObject = activeItem.GetComponent<GrabableObject>();
-                    if (grabableObject != null)
+                    AxeSwing axeSwing = activeItem.GetComponent<AxeSwing>();
+                    if (axeSwing != null)
                     {
-                        //if (animation finished)
-                        //{
-                        activated = false;
-                        charMove.CutsceneRelease();
-                        hitPoints--;
-                        if (hitPoints <= 0)
+                        // Play animation here
+                        ItemHand itemHand = Camera.main.GetComponentInChildren<ItemHand>();
+                        if (itemHand != null && chopFinished)
                         {
-                            // Tree dying stuff goes here
-                            for (int i = 0; i < 15; i++)
-                            {
-                                Instantiate(firewood, transform.position + new Vector3(0, 0.2f + (0.4f * i), 0), Quaternion.LookRotation(Vector3.up));
-                            }
-                            gameObject.SetActive(false);
+                            axeSwing.Use(itemHand);
+                            chopFinished = false;
                         }
-                        //}
+                        if (!chopFinished)
+                        {
+                            if (!axeSwing.IsChopping)
+                            {
+                                chopFinished = true;
+                            }
+                        }
+                        if (chopFinished)
+                        {
+                            activated = false;
+                            charMove.CutsceneRelease();
+                            hitPoints--;
+                            if (hitPoints <= 0)
+                            {
+                                // Tree dying stuff goes here
+                                for (int i = 0; i < 10; i++)
+                                {
+                                    Instantiate(firewood, transform.position + new Vector3(0, 0.2f + (0.5f * i), 0), Quaternion.LookRotation(Vector3.up));
+                                }
+                                gameObject.SetActive(false);
+                            }
+                        }
                     }
-                    else
-                    {
-                        Debug.Log("axeSwing is null");
-
-                    }
+                    else Debug.Log("axeSwing is null");
                 }
             }
             else Debug.Log("charMove is null");

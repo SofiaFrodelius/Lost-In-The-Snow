@@ -18,7 +18,6 @@ public class DogAI : MonoBehaviour {
 	private Animator animator;
 
 
-    float k = 3;
 	void Awake(){
 		dog = GetComponent<Dog> ();
 		navAgent = GetComponent<NavMeshAgent> ();
@@ -41,7 +40,7 @@ public class DogAI : MonoBehaviour {
 		bestMood.ChangeMood (100f, 50f, 75f, 0f);
 
 		//dog.currentAction = new RingARound (dog, dog.player, 5f);
-		//StartAction(new Sit(dog, 10));
+		
 		//StartAction (ActionType.ACTIVE);
 
 	}
@@ -64,15 +63,6 @@ public class DogAI : MonoBehaviour {
 				}
 			}
 		}
-        if(k< 0)
-        {
-            k = 2;
-            StartAction(new Bark(dog));
-        }
-        else
-        {
-            k -= Time.deltaTime;
-        }
 	}
 	public void StartAction(DogAction action){
 		EndAction ();

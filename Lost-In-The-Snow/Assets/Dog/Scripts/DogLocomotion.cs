@@ -54,7 +54,7 @@ public class DogLocomotion : MonoBehaviour {
 			angle = 90 - Vector3.Angle (transform.forward, hit.normal);
 		}
 		Vector3 angleVector3 = new Vector3 (angle, transform.eulerAngles.y, transform.eulerAngles.z);
-		transform.eulerAngles = Vector3.Lerp (transform.eulerAngles, angleVector3, Time.deltaTime*10);
+		transform.eulerAngles = angleVector3;//Vector3.Lerp (transform.eulerAngles, angleVector3, Time.deltaTime*10);
 	}
 	void SetupLookDirection(){
 		float distanceToPlayer = Vector2.Distance (new Vector2 (dog.transform.position.x, dog.transform.position.z), new Vector2 (dog.player.position.x, dog.player.position.z));

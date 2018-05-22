@@ -237,6 +237,47 @@ public class Inventory : MonoBehaviour
         else return null;
     }
 
+    public bool isItemInInventory(Item item, int num = 1)
+    {
+        if (num < 1) return true;
+
+        if(item.getHoldable())
+        {
+            for(int i = 0; i < holdableSlots.Count; i++)
+            {
+                if (holdableSlots[i].getItem() == item && holdableSlots[i].getItemsInSlot() >= num) return true;
+                else continue;
+            }
+        }
+
+        else if (!item.getHoldable())
+        {
+            for (int i = 0; i < inventorySlots.Count; i++)
+            {
+                if (inventorySlots[i].getItem() == item && inventorySlots[i].getItemsInSlot() >= num) return true;
+                else continue;
+            }
+        }
+
+        return false;
+    }
+
+    public int getNumOfSpecificItemInInventory(Item item)
+    {
+        if (!item.getHoldable())
+        {
+            for (int i = 0; i < inventorySlots.Count; i++)
+            {
+                if (inventorySlots[i].getItem() == item) return getNumOfItemsInSlot(i);
+                else continue;
+            }
+        }
+        return 0;
+    }
+
+
+
+
 
     public void loadInventory(List<InventorySlot> HS, List<InventorySlot> NHS, int usedHoldableSlots, int numHoldableSlots, int usedRegularSlots, int numRegularSlots) //HS holdableSlots, NHS nonHoldableSlots
     {

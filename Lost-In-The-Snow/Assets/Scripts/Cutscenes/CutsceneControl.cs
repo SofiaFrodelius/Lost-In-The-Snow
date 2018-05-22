@@ -6,7 +6,7 @@ public class CutsceneControl : MonoBehaviour
 {
     public Transform cameraTarget;
     public Camera cam;
-    public bool resetRotMode = false, resetPosMode = false, smoothMode = false, camLock = false, relativeUp = true;
+    public bool resetRotMode = false, resetPosMode = false, smoothMode = false, camLock = false, relativeUp = true, keepValues = false;
     public float smoothSpeed = 1.0f;
     [Range(0.0f, 0.5f)]
     public float deadZoneX = 0.3f, deadZoneY = 0.3f;
@@ -73,7 +73,7 @@ public class CutsceneControl : MonoBehaviour
                 {
                     cam.transform.forward = lastDir;
                     targetScreenPosition = cam.WorldToScreenPoint(cameraTarget.position);
-                    float step = smoothSpeed * 0.01f * Time.deltaTime;
+                    float step = smoothSpeed * Time.deltaTime;
                     //cam.transform.forward = Vector3.RotateTowards(cam.transform.forward, deltaVector, step, 0.0f);
                     Vector3 newDir = Vector3.RotateTowards(cam.transform.forward, deltaVector, step, 0.0f);
                     if (relativeUp && baseTransform != null)
@@ -115,10 +115,15 @@ public class CutsceneControl : MonoBehaviour
         }
         else
         {
-            if (smoothing)
+            if (keepValues)
+            {
+                smoothing = false;
+                cam.transform.forward = lastDir;
+            }
+            else if (smoothing)
             {
                 Vector3 targetDirection = cam.transform.forward, targetUp = cam.transform.up;
-                float step = smoothSpeed * 0.01f * Time.deltaTime;
+                float step = smoothSpeed * Time.deltaTime;
                 //cam.transform.forward = Vector3.RotateTowards(lastDir, targetDirection, step, 0.0f);
                 Vector3 newDir = Vector3.RotateTowards(lastDir, targetDirection, step, 0.0f);
                 if (baseTransform != null)
