@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class Feed : MonoBehaviour, IInteractible
 {
     Inventory inv;
     [SerializeField] private Item rabbit;
     private InteractPrompt ip;
+    [SerializeField] private StudioEventEmitter dogEatSound;
+    [SerializeField] private StudioEventEmitter playerEatSound;
 
 
     private void Start()
@@ -24,6 +26,7 @@ public class Feed : MonoBehaviour, IInteractible
             inv.removeNonHoldableItem(rabbit);
             ip.updatePrompts();
             Debug.Log("Feeds Dog");
+            dogEatSound.Play();
         }
     }
 
@@ -35,6 +38,7 @@ public class Feed : MonoBehaviour, IInteractible
             inv.removeNonHoldableItem(rabbit);
             ip.updatePrompts();
             Debug.Log("Feeds Player");
+            playerEatSound.Play();
         }
     }
 }
