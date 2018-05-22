@@ -31,7 +31,6 @@ public class VoiceLinePromt : MonoBehaviour {
         yield return new WaitForSeconds(timeToWaitForPlay);
 
         allowedToPlay = true;
-    
 
     }
 }

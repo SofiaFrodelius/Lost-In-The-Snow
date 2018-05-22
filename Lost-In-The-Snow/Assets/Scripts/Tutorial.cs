@@ -93,6 +93,9 @@ public class Tutorial : MonoBehaviour
                 ci.PermitAction(3, true);
                 //pick up dog enable
                 break;
+            case 5:
+                finishTutorial(activeTutorial);
+                break;
         }
 
 
@@ -131,6 +134,10 @@ public class Tutorial : MonoBehaviour
                     ci.PermitAction(1, true);
                     ci.PermitAction(2, true);
                     ci.PermitAction(3, true);
+                    currentCR = StartCoroutine(waitForIdleTrigger(activeTutorial + 1));
+                    break;
+
+                case 5:
                     dog.GetComponent<ScriptedDog>().enabled = true;
                     break;
             }

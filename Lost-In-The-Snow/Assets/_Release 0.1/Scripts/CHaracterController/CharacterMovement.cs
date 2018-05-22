@@ -55,6 +55,9 @@ public class CharacterMovement : MonoBehaviour {
         }
         if (forcedMove)
             Forcing();
+
+
+        Debug.Log(CutsceneLock);
     }
 
     public bool CutsceneLock
@@ -253,5 +256,17 @@ public class CharacterMovement : MonoBehaviour {
         cutsceneLock = false;
         if (camCon != null) camCon.CutsceneLock = false;
         if (charInteract != null) charInteract.CutsceneLock = false;
+    }
+
+    public float MovementSpeed
+    {
+        get { return movementSpeed; }
+        set { movementSpeed = value; }
+    }
+
+    public float SprintMultiplier
+    {
+        get { return sprintMultiplier; }
+        set { sprintMultiplier = value; }
     }
 }
