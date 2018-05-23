@@ -14,6 +14,7 @@ public class Dog : MonoBehaviour, IInteractible {
 	public Terrain terrain;
 	public Mood currentMood;
 	public bool isSniffing = false;
+	public bool isBreathing = false;
 	public DogAction currentAction;
 	public DogAction savedAction;
 

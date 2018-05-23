@@ -33,6 +33,8 @@ public class DogLocomotion : MonoBehaviour {
 		directionId = Animator.StringToHash("Direction");
 		lookDirectionId = Animator.StringToHash ("LookDirection");
 		lookUpId = Animator.StringToHash ("LookUp");
+
+		StartCoroutine (BreathingTimer (10f));
 	}
 	void Update(){
 		SetupSlopeAngleRotation ();
@@ -42,6 +44,17 @@ public class DogLocomotion : MonoBehaviour {
 			animator.SetLayerWeight (3, Mathf.Clamp(animator.GetLayerWeight(3)+ Time.deltaTime,0,1));
 		else
 			animator.SetLayerWeight (3, Mathf.Clamp(animator.GetLayerWeight(3)- Time.deltaTime,0,1));
+		animator.SetBool ("IsBreathing", dog.isBreathing);
+		
+	}
+	IEnumerator BreathingTimer(float time){
+		while(true){
+			if (Random.Range (0, 4) == 0) {
+				dog.isBreathing = true;
+			}else
+				dog.isBreathing = false;
+			yield return new WaitForSeconds(time);
+		}
 	}
 	void SetupSlopeAngleRotation(){
 		RaycastHit hit;
