@@ -48,9 +48,9 @@ public class DogLocomotion : MonoBehaviour {
 		float angle = 0;
 		Ray forwardRay = new Ray (transform.position, transform.forward);
 		Ray downwardRay = new Ray (transform.position, -Vector3.up);
-		if (Physics.Raycast (forwardRay, out hit,0.5f)) {
+		if (Physics.Raycast (forwardRay, out hit,0.5f, dog.dogLayerMask)) {
 			angle = 90 - Vector3.Angle (transform.forward, hit.normal);
-		}else if(Physics.Raycast(downwardRay, out hit, 1f)){
+		}else if(Physics.Raycast(downwardRay, out hit, 1f, dog.dogLayerMask)){
 			angle = 90 - Vector3.Angle (transform.forward, hit.normal);
 		}
 		Vector3 angleVector3 = new Vector3 (angle, transform.eulerAngles.y, transform.eulerAngles.z);
@@ -95,10 +95,8 @@ public class DogLocomotion : MonoBehaviour {
 		update = true;
 	}
 	void OnAnimatorMove(){
-		if (dog.usingRootMotion) {
-			navAgent.velocity = animator.deltaPosition / Time.deltaTime;
-			transform.rotation = animator.rootRotation;
-		}
+		navAgent.velocity = animator.deltaPosition / Time.deltaTime;
+		transform.rotation = animator.rootRotation;
 	}
 	void SetParameters(float speed, float direction){
 		AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
