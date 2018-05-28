@@ -78,6 +78,7 @@ public class Dog : MonoBehaviour, IInteractible {
 			ai.StartAction (new Fetch (this, player));
 	}
 	public void Call(){
+		isSniffing = false;
 		if (currentAction != null)
 			savedAction = currentAction;
 		if (characterMovement.CutsceneLock) 

@@ -62,9 +62,15 @@ public class DogLocomotion : MonoBehaviour {
 		Ray forwardRay = new Ray (transform.position, transform.forward);
 		Ray downwardRay = new Ray (transform.position, -Vector3.up);
 		if (Physics.Raycast (forwardRay, out hit,0.5f, dog.dogLayerMask)) {
-			angle = 90 - Vector3.Angle (transform.forward, hit.normal);
+			if (hit.transform.tag == "Terrain") {
+				angle = 90 - Vector3.Angle (transform.forward, hit.normal);
+				Debug.Log ("HIT with angle : " + angle);
+			}
 		}else if(Physics.Raycast(downwardRay, out hit, 1f, dog.dogLayerMask)){
-			angle = 90 - Vector3.Angle (transform.forward, hit.normal);
+			if (hit.transform.tag == "Terrain") {
+				angle = 90 - Vector3.Angle (transform.forward, hit.normal);
+				Debug.Log ("HIT2 with angle : " + angle);
+			}
 		}
 		Vector3 angleVector3 = new Vector3 (angle, transform.eulerAngles.y, transform.eulerAngles.z);
 		transform.eulerAngles = angleVector3;//Vector3.Lerp (transform.eulerAngles, angleVector3, Time.deltaTime*10);

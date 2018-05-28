@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 10
+  sitTimer: 5
   wayPoints:
   - {fileID: 688375868}
   - {fileID: 285015743}
@@ -930,7 +931,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 05af9920998a54f0bbaf72785afbc568, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6082c1fe1f37a4b7989369a030da4509, type: 2}
 --- !u!1 &1743175355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,6 +1289,16 @@ Prefab:
     - target: {fileID: 4357899999530612, guid: 60ae571d9632ff0428b1df9091240c0a, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245083820031236, guid: 60ae571d9632ff0428b1df9091240c0a,
+        type: 2}
+      propertyPath: OverrideMinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114245083820031236, guid: 60ae571d9632ff0428b1df9091240c0a,
+        type: 2}
+      propertyPath: OverrideMaxDistance
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60ae571d9632ff0428b1df9091240c0a, type: 2}
